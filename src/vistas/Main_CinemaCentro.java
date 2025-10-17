@@ -1,3 +1,5 @@
+package vistas;
+
 /**
 *
 * @autor Benegas Gonzalez Cristian Rene
