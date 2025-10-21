@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conexion {
-    private static final String url = "jdbc:mariadb://localhost:3306/";
+    private static final String url = "jdbc:mariadb://localhost:3306/cinemacentro";
     private static final String usuario = "root";
     private static final String password = "";
     private static Connection conexion = null;
@@ -18,6 +18,7 @@ public class Conexion {
             try {
                 Class.forName("org.mariadb.jdbc.Driver");
                 conexion = DriverManager.getConnection(url, usuario, password);
+                System.out.println("Conexion exitosa");
             } catch (SQLException | ClassNotFoundException ex) {
                 System.out.println("No se puede conectar o no se puede cargar el driver.Error: " + ex.getMessage());
             }
