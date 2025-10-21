@@ -13,29 +13,29 @@ import java.util.ArrayList;
  * @author Usuario
  */
 public class Comprador {
-    private int dni;
+    private int dniComprador;
     private String nombre;
     private LocalDate fechaNacimiento;
-    private int password;
-    private ArrayList<String> medioDePago;
+    private String password;
+    private String medioDePago;
 
     public Comprador() {
     }
 
-    public Comprador(int dni, String nombre, LocalDate fechaNacimiento, int password, ArrayList<String> medioDePago) {
-        this.dni = dni;
+    public Comprador(int dniComprador, String nombre, LocalDate fechaNacimiento, String password, String medioDePago) {
+        this.dniComprador = dniComprador;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
         this.password = password;
         this.medioDePago = medioDePago;
     }
 
-    public int getDni() {
-        return dni;
+    public int getDniComprador() {
+        return dniComprador;
     }
 
-    public void setDni(int dni) {
-        this.dni = dni;
+    public void setDniComprador(int dniComprador) {
+        this.dniComprador = dniComprador;
     }
 
     public String getNombre() {
@@ -54,25 +54,25 @@ public class Comprador {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public int getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    public ArrayList<String> getMedioDePago() {
+    public String getMedioDePago() {
         return medioDePago;
     }
 
-    public void setMedioDePago(ArrayList<String> medioDePago) {
+    public void setMedioDePago(String medioDePago) {
         this.medioDePago = medioDePago;
     }
 
     @Override
     public String toString() {
-        return "Comprador{" + "dni=" + dni + ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", password=" + password + ", medioDePago=" + medioDePago + '}';
+        return "Comprador{" + "dni=" + dniComprador + ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", password=" + password + ", medioDePago=" + medioDePago + '}';
     }
     
     
