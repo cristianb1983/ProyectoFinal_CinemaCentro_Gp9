@@ -17,7 +17,9 @@ public class Main_CinemaCentro {
 public static void main(String[] args) {
 //    Comprador com0 = new Comprador(44530873, "Rodrigo", LocalDate.now(), "123abc", "Efectivo");
 //    Comprador com1 = new Comprador(44530846, "Mariano", LocalDate.now(), "324jk", "Efectivo");
-//    Comprador com2 = new Comprador(36235643, "Ayelen", LocalDate.now(), "987hyu", "Efectivo");
+//    Comprador com2 = new Comprador(23456234, "Ayelen", LocalDate.now(), "987hyu", "Efectivo");
+//    Comprador com3 = new Comprador(25678245, "Julian", LocalDate.now(), "35fhj", "Efectivo");
+//    Comprador com4 = new Comprador(32567842, "Cristian", LocalDate.now(), "tfj234", "Efectivo");
     CompradorData compradorD = new CompradorData(Conexion.buscarConexion());
 //    compradorD.RegistrarComprador(com2);
     
@@ -29,7 +31,7 @@ public static void main(String[] args) {
     //compradorD.actualizarComprador(comActualizar);
     
     //bajaFisica funciona
-    compradorD.bajaFisica(44530873);
+    //compradorD.bajaFisica(44530873);
 
     
     }
