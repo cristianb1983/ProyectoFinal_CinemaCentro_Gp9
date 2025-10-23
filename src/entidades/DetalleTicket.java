@@ -17,9 +17,9 @@ public class DetalleTicket {
         this.subtotal = subtotal;
     }
 
-    private double calcularSubtotal() {
-        return proyeccion.getprecio() * cantidad;
-    }
+//    private double calcularSubtotal() {
+//        return proyeccion.getprecio() * cantidad;
+//    }
 
     public int getIdDetalle() {
         return idDetalle;
