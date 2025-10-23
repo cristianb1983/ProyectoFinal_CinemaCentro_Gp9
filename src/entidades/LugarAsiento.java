@@ -10,7 +10,7 @@ package entidades;
  * @author Usuario
  */
 public class LugarAsiento {
-    private int idLugar;
+    private int idLugar = -1;
     private char fila;
     private int numero;
     private boolean estado;
@@ -19,8 +19,7 @@ public class LugarAsiento {
     public LugarAsiento() {
     }
 
-    public LugarAsiento(int idLugar, char fila, int numero, boolean estado, Proyeccion idProyeccion) {
-        this.idLugar = idLugar;
+    public LugarAsiento(char fila, int numero, boolean estado, Proyeccion idProyeccion) {
         this.fila = fila;
         this.numero = numero;
         this.estado = estado;
