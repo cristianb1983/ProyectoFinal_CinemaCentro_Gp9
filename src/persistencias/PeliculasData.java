@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  *
@@ -56,15 +57,15 @@ public class PeliculasData {
         String query = "UPDATE pelicula SET titulo = ?, director = ?, actores = ?, origen = ?, genero = ?, estreno = ?, enCartelera = ? where idPelicula = ?";
         try {
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setInt(1, p.getIdPelicula());
-            ps.setString(2, p.getTitulo());
-            ps.setString(3, p.getDirector());
-            ps.setString(4, p.getActores());
-            ps.setString(5, p.getOrigen());
-            ps.setString(6, p.getGenero());
-            ps.setDate(7, Date.valueOf(p.getEstreno()));
-            ps.setBoolean(8, p.isEnCartelera());
-
+           
+            ps.setString(1, p.getTitulo());
+            ps.setString(2, p.getDirector());
+            ps.setString(3, p.getActores());
+            ps.setString(4, p.getOrigen());
+            ps.setString(5, p.getGenero());
+            ps.setDate(6, Date.valueOf(p.getEstreno()));
+            ps.setBoolean(7, p.isEnCartelera());
+            ps.setInt(8, p.getIdPelicula());
             int exito = ps.executeUpdate();
             if (exito == 1) {
                 System.out.println("Pelicula modificada con exito!!!");
@@ -74,12 +75,12 @@ public class PeliculasData {
         }
     }
 
-    public Pelicula buscarPelicula(int idpelicula) {
+    public Pelicula buscarPelicula(int idPelicula) {
         Pelicula p = null;
         String query = "SELECT * FROM pelicula WHERE idPelicula = ?";
         try {
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setInt(1, idpelicula);
+            ps.setInt(1, idPelicula);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 p = new Pelicula();
@@ -112,5 +113,82 @@ public class PeliculasData {
             e.getMessage();
         }    
     }
+      public ArrayList<Pelicula> listarPeliculasenCartelera() {
+        Pelicula p = null;
+        ArrayList<Pelicula> peliculas = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM pelicula";
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                p = new Pelicula();
+                p.setIdPelicula(rs.getInt("idPelicula"));
+                p.setDirector(rs.getString("director"));
+                p.setActores(rs.getString("actores"));
+                p.setOrigen(rs.getString("origen"));
+                p.setGenero(rs.getString("genero"));
+                p.setEstreno(rs.getDate("estreno").toLocalDate());
+                p.setEnCartelera(rs.getBoolean("enCartelera"));
+                if (p.getEstreno()== LocalDate.now()||p.getEstreno().isBefore(LocalDate.now())) {
+                   peliculas.add(p);  
+                }
+            }
+            ps.close();
+        } catch (SQLException e) {
+            e.getMessage();
+        }
+        return peliculas;
+    }
+       public ArrayList<Pelicula> estrenos() {
+        Pelicula p = null;
+        ArrayList<Pelicula> estrenos = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM pelicula";
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                p = new Pelicula();
+                p.setIdPelicula(rs.getInt("idPelicula"));
+                p.setDirector(rs.getString("director"));
+                p.setActores(rs.getString("actores"));
+                p.setOrigen(rs.getString("origen"));
+                p.setGenero(rs.getString("genero"));
+                p.setEstreno(rs.getDate("estreno").toLocalDate());
+                p.setEnCartelera(rs.getBoolean("enCartelera"));
+                if (p.getEstreno().isAfter(LocalDate.now())) {
+                    estrenos.add(p); 
+                }
+               
+            }
+            ps.close();
+        } catch (SQLException e) {
+            e.getMessage();
+        }
+        return estrenos;
+    }
 
+public void actualizarCartelera(Pelicula p){
+        String query = "UPDATE pelicula SET titulo = ?, director = ?, actores = ?, origen = ?, genero = ?, estreno = ?, enCartelera = ? where idPelicula = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+           
+            ps.setString(1, p.getTitulo());
+            ps.setString(2, p.getDirector());
+            ps.setString(3, p.getActores());
+            ps.setString(4, p.getOrigen());
+            ps.setString(5, p.getGenero());
+            ps.setDate(6, Date.valueOf(p.getEstreno()));
+            ps.setBoolean(7, p.isEnCartelera());
+            ps.setInt(8, p.getIdPelicula());
+            if (true) {
+                
+            }
+            if (exito == 1) {
+                System.out.println("Pelicula modificada con exito!!!");
+            }
+        } catch (SQLException e) {
+            System.out.println("No se pudo actualizar");
+        }
+    }
+}
 }

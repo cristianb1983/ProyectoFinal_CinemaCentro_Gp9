@@ -39,7 +39,7 @@ public static void main(String[] args) {
      //Pelicula peli0 = new Pelicula ("crb","cristian","felipe y lautaro","argentina","familia",LocalDate.now(),true);
     // pd.cargarPelicula(peli0);// cargar pelicula funciona
     //System.out.println(pd.buscarPelicula(1));// buscar pelicula funciona
-   pd.EliminarPelicula(1);
+    //pd.EliminarPelicula(1);//eliminar pelicula funciona
 } 
     
 }
