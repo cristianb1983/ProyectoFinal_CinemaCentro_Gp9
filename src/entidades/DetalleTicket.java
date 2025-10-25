@@ -4,23 +4,34 @@ import java.util.List;
 
 public class DetalleTicket {
 
-    private int idDetalle;
-    private Proyeccion proyeccion;
+    private int idDetalle = -1;
+    private TicketCompra idTicket;
+    private Proyeccion idProyeccion;
     private List<LugarAsiento> lugares;
     private int cantidad;
     private double subtotal;
 
-    public DetalleTicket(Proyeccion proyeccion, List<LugarAsiento> lugares, int cantidad, double subtotal) {
-        this.proyeccion = proyeccion;
+    public DetalleTicket(TicketCompra idTicket, Proyeccion idProyeccion, List<LugarAsiento> lugares, int cantidad, double subtotal) {
+        this.idTicket = idTicket;
+        this.idProyeccion = idProyeccion;
         this.lugares = lugares;
         this.cantidad = cantidad;
         this.subtotal = subtotal;
     }
 
 //    private double calcularSubtotal() {
-//        return proyeccion.getprecio() * cantidad;
+//        return idProyeccion.getprecio() * cantidad;
 //    }
 
+    public TicketCompra getIdTicket() {
+        return idTicket;
+    }
+
+    public void setIdTicket(TicketCompra idTicket) {
+        this.idTicket = idTicket;
+    }
+
+    
     public int getIdDetalle() {
         return idDetalle;
     }
@@ -29,12 +40,12 @@ public class DetalleTicket {
         this.idDetalle = idDetalle;
     }
 
-    public Proyeccion getProyeccion() {
-        return proyeccion;
+    public Proyeccion getIdProyeccion() {
+        return idProyeccion;
     }
 
-    public void setProyeccion(Proyeccion proyeccion) {
-        this.proyeccion = proyeccion;
+    public void setIdProyeccion(Proyeccion idProyeccion) {
+        this.idProyeccion = idProyeccion;
     }
 
     public List<LugarAsiento> getLugares() {
@@ -63,7 +74,7 @@ public class DetalleTicket {
 
     @Override
     public String toString() {
-        return "Detalle Ticket: " + proyeccion + " Lugares:" + cantidad + ", Subtotal: $" + subtotal;
+        return "Detalle Ticket: " + idProyeccion + " Lugares:" + cantidad + ", Subtotal: $" + subtotal;
     }
 
 }
