@@ -1,10 +1,12 @@
 package vistas;
 
 import entidades.Comprador;
+import entidades.Pelicula;
 import java.sql.Connection;
 import java.time.LocalDate;
 import persistencias.CompradorData;
 import persistencias.Conexion;
+import persistencias.PeliculasData;
 
 /**
 *
@@ -24,7 +26,7 @@ public static void main(String[] args) {
 //    compradorD.RegistrarComprador(com2);
     
     //Buscar funciona
-    //System.out.println(compradorD.buscarComprador(44530873));
+    //System.out.println(compradorD.buscarComprador(44530873))
     
     //Actualizar funciona
     //Comprador comActualizar = new Comprador(44530873, "Pedro", LocalDate.now(), "hhhhh", "Debito");
@@ -32,8 +34,12 @@ public static void main(String[] args) {
     
     //bajaFisica funciona
     //compradorD.bajaFisica(44530873);
-
     
-    }
-
+     PeliculasData pd = new PeliculasData(Conexion.buscarConexion());
+     //Pelicula peli0 = new Pelicula ("crb","cristian","felipe y lautaro","argentina","familia",LocalDate.now(),true);
+    // pd.cargarPelicula(peli0);// cargar pelicula funciona
+    //System.out.println(pd.buscarPelicula(1));// buscar pelicula funciona
+   pd.EliminarPelicula(1);
+} 
+    
 }

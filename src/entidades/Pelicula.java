@@ -5,6 +5,7 @@ import static java.time.temporal.TemporalQueries.localDate;
 
 
 public class Pelicula {
+private int idPelicula = -1;    
 private String titulo;
 private String director;
 private String actores;
@@ -26,6 +27,11 @@ private boolean enCartelera;
         this.enCartelera = enCartelera;
     }
 
+   
+
+  
+
+  
     public String getTitulo() {
         return titulo;
     }
@@ -82,10 +88,19 @@ private boolean enCartelera;
         this.enCartelera = enCartelera;
     }
 
-    @Override
-    public String toString() {
-        return "Pelicula{" + "titulo=" + titulo + ", director=" + director + ", actores=" + actores + ", origen=" + origen + ", genero=" + genero + ", estreno=" + estreno + ", enCartelera=" + enCartelera + '}';
+    public int getIdPelicula() {
+        return idPelicula;
     }
 
+    public void setIdPelicula(int idPelicula) {
+        this.idPelicula = idPelicula;
+    }
+
+    @Override
+    public String toString() {
+        return "Pelicula{" + "idPelicula=" + idPelicula + ", titulo=" + titulo + ", director=" + director + ", actores=" + actores + ", origen=" + origen + ", genero=" + genero + ", estreno=" + estreno + ", enCartelera=" + enCartelera + '}';
+    }
+    
+   
 
 }
