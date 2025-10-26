@@ -166,29 +166,5 @@ public class PeliculasData {
         }
         return estrenos;
     }
+}
 
-public void actualizarCartelera(Pelicula p){
-        String query = "UPDATE pelicula SET titulo = ?, director = ?, actores = ?, origen = ?, genero = ?, estreno = ?, enCartelera = ? where idPelicula = ?";
-        try {
-            PreparedStatement ps = con.prepareStatement(query);
-           
-            ps.setString(1, p.getTitulo());
-            ps.setString(2, p.getDirector());
-            ps.setString(3, p.getActores());
-            ps.setString(4, p.getOrigen());
-            ps.setString(5, p.getGenero());
-            ps.setDate(6, Date.valueOf(p.getEstreno()));
-            ps.setBoolean(7, p.isEnCartelera());
-            ps.setInt(8, p.getIdPelicula());
-            if (true) {
-                
-            }
-            if (exito == 1) {
-                System.out.println("Pelicula modificada con exito!!!");
-            }
-        } catch (SQLException e) {
-            System.out.println("No se pudo actualizar");
-        }
-    }
-}
-}
