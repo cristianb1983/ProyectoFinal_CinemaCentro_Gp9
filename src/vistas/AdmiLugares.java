@@ -26,40 +26,139 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton2 = new javax.swing.JButton();
         jpDatos = new javax.swing.JPanel();
+        jlIdLugar = new javax.swing.JLabel();
+        jlFila = new javax.swing.JLabel();
+        jlColumna = new javax.swing.JLabel();
+        jlEstado = new javax.swing.JLabel();
         jlMedioPago = new javax.swing.JLabel();
+        jtfDni = new javax.swing.JTextField();
+        jtfNombre = new javax.swing.JTextField();
+        jtfFechaNacimiento = new javax.swing.JTextField();
+        jtfMedioPago = new javax.swing.JTextField();
+        jrbNoSubtitulada = new javax.swing.JRadioButton();
+        jrbSISubtitulada = new javax.swing.JRadioButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
         jPanel1 = new javax.swing.JPanel();
         jlTitulo = new javax.swing.JLabel();
         jbGuardar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jbActualizar = new javax.swing.JButton();
         jbLimpiar = new javax.swing.JButton();
+
+        jButton2.setBackground(new java.awt.Color(0, 0, 204));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Borrar");
 
         jpDatos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 51, 255)));
 
+        jlIdLugar.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        jlIdLugar.setForeground(new java.awt.Color(0, 0, 102));
+        jlIdLugar.setText("IdLigar");
+
+        jlFila.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        jlFila.setForeground(new java.awt.Color(0, 0, 102));
+        jlFila.setText("Fila");
+
+        jlColumna.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        jlColumna.setForeground(new java.awt.Color(0, 0, 102));
+        jlColumna.setText("Columna");
+
+        jlEstado.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        jlEstado.setForeground(new java.awt.Color(0, 0, 102));
+        jlEstado.setText("Estado");
+
         jlMedioPago.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         jlMedioPago.setForeground(new java.awt.Color(0, 0, 102));
-        jlMedioPago.setText("Elija la funcion:");
+        jlMedioPago.setText("Medio de pago:");
+
+        jtfDni.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 51, 204)));
+        jtfDni.setCaretColor(new java.awt.Color(0, 51, 204));
+
+        jtfNombre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 51, 204)));
+
+        jtfFechaNacimiento.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 51, 204)));
+
+        jtfMedioPago.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 51, 204)));
+
+        jrbNoSubtitulada.setText("Desocupado");
+
+        jrbSISubtitulada.setText("Ocupado");
+
+        jRadioButton1.setText("Deshabilitado");
 
         javax.swing.GroupLayout jpDatosLayout = new javax.swing.GroupLayout(jpDatos);
         jpDatos.setLayout(jpDatosLayout);
         jpDatosLayout.setHorizontalGroup(
             jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpDatosLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jlMedioPago, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(430, Short.MAX_VALUE))
+                .addGap(56, 56, 56)
+                .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlFila)
+                    .addComponent(jlIdLugar)
+                    .addComponent(jlColumna)
+                    .addComponent(jlEstado)
+                    .addComponent(jlMedioPago))
+                .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDatosLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpDatosLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jpDatosLayout.createSequentialGroup()
+                                .addComponent(jrbSISubtitulada)
+                                .addGap(18, 18, 18)
+                                .addComponent(jrbNoSubtitulada)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jRadioButton1))
+                            .addComponent(jtfFechaNacimiento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfDni, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfMedioPago))))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jpDatosLayout.setVerticalGroup(
             jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpDatosLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jlMedioPago)
-                .addContainerGap(390, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jpDatosLayout.createSequentialGroup()
+                        .addComponent(jtfDni, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpDatosLayout.createSequentialGroup()
+                        .addComponent(jlIdLugar)
+                        .addGap(39, 39, 39)
+                        .addComponent(jlFila)))
+                .addGap(30, 30, 30)
+                .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jpDatosLayout.createSequentialGroup()
+                        .addComponent(jtfFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jrbSISubtitulada)
+                            .addComponent(jrbNoSubtitulada)
+                            .addComponent(jRadioButton1)))
+                    .addGroup(jpDatosLayout.createSequentialGroup()
+                        .addComponent(jlColumna)
+                        .addGap(39, 39, 39)
+                        .addComponent(jlEstado)))
+                .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpDatosLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jlMedioPago))
+                    .addGroup(jpDatosLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jtfMedioPago, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 204));
 
         jlTitulo.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        jlTitulo.setText("Cargar Lugares");
+        jlTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        jlTitulo.setText("Cargar lugar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -68,18 +167,30 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jlTitulo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jlTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
+        jbGuardar.setBackground(new java.awt.Color(0, 0, 204));
+        jbGuardar.setForeground(new java.awt.Color(255, 255, 255));
         jbGuardar.setText("Guardar");
 
+        jButton1.setBackground(new java.awt.Color(0, 0, 204));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Buscar");
+
+        jbActualizar.setBackground(new java.awt.Color(0, 0, 204));
+        jbActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        jbActualizar.setText("Actualizar");
+
+        jbLimpiar.setBackground(new java.awt.Color(0, 0, 153));
+        jbLimpiar.setForeground(new java.awt.Color(255, 255, 255));
         jbLimpiar.setText("Limpiar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -87,29 +198,43 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jbGuardar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jbLimpiar))
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jpDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(47, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jbGuardar)
+                        .addGap(27, 27, 27)
+                        .addComponent(jButton1)
+                        .addGap(27, 27, 27)
+                        .addComponent(jbActualizar)
+                        .addGap(27, 27, 27)
+                        .addComponent(jButton2)
+                        .addGap(27, 27, 27)
+                        .addComponent(jbLimpiar)
+                        .addContainerGap(117, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jpDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(182, 182, 182))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addGap(14, 14, 14)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(28, 28, 28)
                 .addComponent(jpDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbGuardar)
-                    .addComponent(jbLimpiar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jbGuardar)
+                        .addComponent(jbActualizar)
+                        .addComponent(jbLimpiar)
+                        .addComponent(jButton2))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -117,12 +242,26 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JButton jbActualizar;
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbLimpiar;
+    private javax.swing.JLabel jlColumna;
+    private javax.swing.JLabel jlEstado;
+    private javax.swing.JLabel jlFila;
+    private javax.swing.JLabel jlIdLugar;
     private javax.swing.JLabel jlMedioPago;
     private javax.swing.JLabel jlTitulo;
     private javax.swing.JPanel jpDatos;
+    private javax.swing.JRadioButton jrbNoSubtitulada;
+    private javax.swing.JRadioButton jrbSISubtitulada;
+    private javax.swing.JTextField jtfDni;
+    private javax.swing.JTextField jtfFechaNacimiento;
+    private javax.swing.JTextField jtfMedioPago;
+    private javax.swing.JTextField jtfNombre;
     // End of variables declaration//GEN-END:variables
 
 }

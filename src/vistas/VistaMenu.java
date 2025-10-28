@@ -115,6 +115,11 @@ public class VistaMenu extends javax.swing.JFrame {
         jMenu1.add(jMenuItem12);
 
         jMenuItem14.setText("Lugares");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem14);
 
         jMenuBar1.add(jMenu1);
@@ -156,6 +161,14 @@ public class VistaMenu extends javax.swing.JFrame {
         admiProy.setVisible(true);
         escritorio.add(admiProy);
     }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        AdmiLugares admiLugar = new AdmiLugares();
+        admiLugar.setVisible(true);
+        escritorio.add(admiLugar);
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     /**
      * @param args the command line arguments
