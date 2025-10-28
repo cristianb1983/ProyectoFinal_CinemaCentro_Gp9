@@ -37,7 +37,7 @@ public class VistaMenu extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        jMIgestionPeliculas = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
@@ -84,13 +84,8 @@ public class VistaMenu extends javax.swing.JFrame {
 
         jMenu1.setText("Administracion");
 
-        jMenuItem6.setText("Peliculas");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem6);
+        jMIgestionPeliculas.setText("Peliculas");
+        jMenu1.add(jMIgestionPeliculas);
 
         jMenuItem7.setText("Salas");
         jMenu1.add(jMenuItem7);
@@ -167,14 +162,6 @@ public class VistaMenu extends javax.swing.JFrame {
         escritorio.add(admiLugar);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        escritorio.removeAll();
-        escritorio.repaint();
-        VistaPeliculas vistapelis = new VistaPeliculas();
-        vistapelis.setVisible(true);
-        escritorio.add(vistapelis);
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
-
     private void jMIcarteleraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIcarteleraActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
@@ -221,6 +208,7 @@ public class VistaMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenuItem jMIcartelera;
+    private javax.swing.JMenuItem jMIgestionPeliculas;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -235,7 +223,6 @@ public class VistaMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
