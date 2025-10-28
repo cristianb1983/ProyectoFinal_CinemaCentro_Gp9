@@ -142,5 +142,21 @@ public class ProyeccionData {
         return listarProyecciones;
     }
     
-}
+    public void actualizarPrecio2D3D(int idProyeccion, boolean es3D, double nuevoPrecio) {
+        String query = "UPDATE proyeccion SET precio = ?, es3D = ? WHERE idProyeccion = ?";
 
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setDouble(1, nuevoPrecio);
+            ps.setBoolean(2, es3D);
+            ps.setInt(3, idProyeccion);
+            
+            ps.executeUpdate();   
+        } catch (SQLException e) {
+            System.out.println("Error al actualizar el precio de la proyeccion. Verificar.");
+            e.getMessage();
+        }
+    }
+    
+}
+    
