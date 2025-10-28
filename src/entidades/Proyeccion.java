@@ -5,26 +5,26 @@ import java.time.LocalTime;
 
 public class Proyeccion {
 private int idProyeccion;
-private Pelicula pelicula;
+private int idPelicula;
 private String idioma;
 private boolean es3D;
 private boolean subtitulada;
 private LocalTime horaInicio;
 private LocalTime horaFin;
-private Sala sala;
+private int idSala;
 private double precio;
 
 public Proyeccion(){}
 
-    public Proyeccion(Pelicula pelicula, String idioma, boolean es3D, boolean subtitulada, LocalTime horaInicio, LocalTime horaFin, Sala sala, double precio) {
+    public Proyeccion(int idPelicula, String idioma, boolean es3D, boolean subtitulada, LocalTime horaInicio, LocalTime horaFin, int idSala, double precio) {
         int idProyeccion = -1;
-        this.pelicula = pelicula;
+        this.idPelicula = idPelicula;
         this.idioma = idioma;
         this.es3D = es3D;
         this.subtitulada = subtitulada;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
-        this.sala = sala;
+        this.idSala = idSala;
         this.precio = precio;
     }
 
@@ -32,8 +32,8 @@ public Proyeccion(){}
         return idProyeccion;
     }    
     
-    public Pelicula getPelicula() {
-        return pelicula;
+    public int getIdPelicula() {
+        return idPelicula;
     }
 
     public String getIdioma() {
@@ -56,16 +56,16 @@ public Proyeccion(){}
         return horaFin;
     }
 
-    public Sala getSala() {
-        return sala;
+    public int getIdSala() {
+        return idSala;
     }
 
     public double getPrecio() {
         return precio;
     }
 
-    public void setPelicula(Pelicula pelicula) {
-        this.pelicula = pelicula;
+    public void setPelicula(int idPelicula) {
+        this.idPelicula = idPelicula;
     }
 
     public void setIdioma(String idioma) {
@@ -88,8 +88,8 @@ public Proyeccion(){}
         this.horaFin = horaFin;
     }
 
-    public void setSala(Sala sala) {
-        this.sala = sala;
+    public void setSala(int idSala) {
+        this.idSala = idSala;
     }
 
     public void setPrecio(double precio) {
@@ -98,7 +98,7 @@ public Proyeccion(){}
 
     @Override
     public String toString() {
-        return "Proyeccion{" + "idProyeccion=" + idProyeccion + ", pelicula=" + pelicula + ", idioma=" + idioma + ", es3D=" + es3D + ", subtitulada=" + subtitulada + ", horaInicio=" + horaInicio + ", horaFin=" + horaFin + ", sala=" + sala + ", precio=" + precio + '}';
+        return "Proyeccion{" + "idProyeccion=" + idProyeccion + ", idPelicula=" + idPelicula + ", idioma=" + idioma + ", es3D=" + es3D + ", subtitulada=" + subtitulada + ", horaInicio=" + horaInicio + ", horaFin=" + horaFin + ", idSala=" + idSala + ", precio=" + precio + '}';
     }
 
   
