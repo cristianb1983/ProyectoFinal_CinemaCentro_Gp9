@@ -167,4 +167,3 @@ public class PeliculasData {
         return estrenos;
     }
 }
-
