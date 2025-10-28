@@ -115,6 +115,32 @@ public class ProyeccionData {
         }
         return p;
     }
-            
+    
+    public List<Proyeccion> listadoProyecciones(){
+        List<Proyeccion> listarProyecciones = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM proyeccion";
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                proyeccion = new Proyeccion();
+                proyeccion.setPelicula(rs.getInt("idPelicula"));
+                proyeccion.setSala(rs.getInt("idSala"));
+                proyeccion.setIdioma(rs.getString("Idioma"));
+                proyeccion.setEs3D(rs.getBoolean("Es3D"));
+                proyeccion.setSubtitulada(rs.getBoolean("Subtitulada"));
+                proyeccion.setHoraInicio(rs.getTime("HoraInicio").toLocalTime());
+                proyeccion.setHoraFin(rs.getTime("HoraFin").toLocalTime());
+                proyeccion.setPrecio(rs.getDouble("Precio"));             
+                listarProyecciones.add(proyeccion);
+            }
+            ps.close();
+        } catch (SQLException e) {
+            System.out.println("Error al listar las proyecciones. Verificar.");
+            e.getMessage();
+        }
+        return listarProyecciones;
+    }
+    
 }
 
