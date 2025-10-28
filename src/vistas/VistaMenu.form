@@ -9,17 +9,12 @@
             <Property name="text" type="java.lang.String" value="Peliculas"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="jMIcartelera">
               <Properties>
-                <Property name="text" type="java.lang.String" value="En Cartelera"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Proximos Estrenos"/>
+                <Property name="text" type="java.lang.String" value="Ver Cartelera y Proximos Estrenos"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIcarteleraActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -62,6 +57,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Peliculas"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem6ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
               <Properties>
