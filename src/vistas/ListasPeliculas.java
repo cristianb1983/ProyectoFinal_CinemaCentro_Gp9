@@ -8,6 +8,7 @@ package vistas;
 import entidades.Pelicula;
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import persistencias.Conexion;
 import persistencias.PeliculasData;
@@ -17,18 +18,18 @@ import persistencias.PeliculasData;
  * @author crb_p
  */
 public class ListasPeliculas extends javax.swing.JInternalFrame {
-
+    private PeliculasData peliData;
     private DefaultTableModel modeloTabla = new DefaultTableModel();
 
     public ListasPeliculas(Connection buscarConexion) {
     }
     Connection con = Conexion.buscarConexion();
-
+    
     public ListasPeliculas() {
         initComponents();
         tablaCabecera();
         borrarFilasDeTabla();
-
+        peliData = new PeliculasData(con);
     }
 
     private void borrarFilasDeTabla() {
@@ -88,6 +89,11 @@ public class ListasPeliculas extends javax.swing.JInternalFrame {
         });
 
         jRBestrenos.setText("PROXIMOS ESTRENOS");
+        jRBestrenos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRBestrenosActionPerformed(evt);
+            }
+        });
 
         jTpeliculas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -145,11 +151,50 @@ public class ListasPeliculas extends javax.swing.JInternalFrame {
 
     private void jRBcarteleraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBcarteleraActionPerformed
          borrarFilasDeTabla();
-        jRBestrenos.setSelected(false);
-         
+         jRBestrenos.setSelected(false);
+         cargarDatosEnCartelera();
     }//GEN-LAST:event_jRBcarteleraActionPerformed
 
+    private void jRBestrenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBestrenosActionPerformed
+         borrarFilasDeTabla();
+         jRBcartelera.setSelected(false);
+         cargarEstrenos();
+         
+    }//GEN-LAST:event_jRBestrenosActionPerformed
+
+    private void cargarDatosEnCartelera(){
+       borrarFilasDeTabla();
+       List<Pelicula> listaPelisCarterlera = peliData.listarPeliculasenCartelera();
+        for (Pelicula peli : listaPelisCarterlera) {
+            modeloTabla.addRow(new Object[]{
+            peli.getIdPelicula(),
+            peli.getTitulo(),
+            peli.getDirector(),
+            peli.getActores(),
+            peli.getOrigen(),
+            peli.getGenero(),
+            peli.getEstreno(),
+            peli.isEnCartelera()
+            });
+        }
+    }
     
+    private void cargarEstrenos(){
+       borrarFilasDeTabla();
+       List<Pelicula> listaEstrenos = peliData.estrenos();
+        for (Pelicula peliEstreno : listaEstrenos) {
+            modeloTabla.addRow(new Object[]{
+            peliEstreno.getIdPelicula(),
+            peliEstreno.getTitulo(),
+            peliEstreno.getDirector(),
+            peliEstreno.getActores(),
+            peliEstreno.getOrigen(),
+            peliEstreno.getGenero(),
+            peliEstreno.getEstreno(),
+            peliEstreno.isEnCartelera()
+            });
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
