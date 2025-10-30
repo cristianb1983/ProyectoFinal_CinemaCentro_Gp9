@@ -5,6 +5,7 @@ import java.time.LocalTime;
 
 public class Proyeccion {
 private int idProyeccion;
+private Pelicula pelicula;
 private int idPelicula;
 private String idioma;
 private boolean es3D;
@@ -12,22 +13,41 @@ private boolean subtitulada;
 private LocalTime horaInicio;
 private LocalTime horaFin;
 private int idSala;
+private Sala sala;
 private double precio;
 
 public Proyeccion(){}
 
-    public Proyeccion(int idPelicula, String idioma, boolean es3D, boolean subtitulada, LocalTime horaInicio, LocalTime horaFin, int idSala, double precio) {
+    public Proyeccion(Pelicula pelicula, String idioma, boolean es3D, boolean subtitulada, LocalTime horaInicio, LocalTime horaFin, Sala sala, int idSala, double precio) {
         int idProyeccion = -1;
+        this.pelicula = pelicula;
         this.idPelicula = idPelicula;
         this.idioma = idioma;
         this.es3D = es3D;
         this.subtitulada = subtitulada;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
+        this.sala = sala;
         this.idSala = idSala;
         this.precio = precio;
     }
-
+    
+    public Pelicula getPelicula() {
+        return pelicula;
+    }
+    
+    public Sala getSala() {
+        return sala;
+    }
+    
+    public void setPelicula(Pelicula pelicula) {
+        this.pelicula = pelicula;
+    }
+    
+    public void setSala(Sala sala) {
+        this.sala = sala;
+    }
+    
     public int getIdProyeccion() {
         return idProyeccion;
     }    
