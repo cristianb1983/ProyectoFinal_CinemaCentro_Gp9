@@ -70,33 +70,22 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         jpDatos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 51, 255)));
 
         jlIdProyeccion.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jlIdProyeccion.setForeground(new java.awt.Color(0, 0, 102));
         jlIdProyeccion.setText("idProyeccion");
 
         jlIdPelicula.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jlIdPelicula.setForeground(new java.awt.Color(0, 0, 102));
         jlIdPelicula.setText("idPelicula");
 
         jlIdSala.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jlIdSala.setForeground(new java.awt.Color(0, 0, 102));
         jlIdSala.setText("idSala");
 
         jlIdioma.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jlIdioma.setForeground(new java.awt.Color(0, 0, 102));
         jlIdioma.setText("idioma");
 
         jlSubtitulada.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jlSubtitulada.setForeground(new java.awt.Color(0, 0, 102));
         jlSubtitulada.setText("subtitulada");
 
-        jtfIdProyeccion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 51, 204)));
         jtfIdProyeccion.setCaretColor(new java.awt.Color(0, 51, 204));
 
-        jtfIdPelicula.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 51, 204)));
-
-        jtfIdSala.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 51, 204)));
-
-        jtfIdioma.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 51, 204)));
         jtfIdioma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfIdiomaActionPerformed(evt);
@@ -104,10 +93,8 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         });
 
         jlHoraDeInicio.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jlHoraDeInicio.setForeground(new java.awt.Color(0, 0, 102));
         jlHoraDeInicio.setText("hora de inicio");
 
-        jtfHoraInicio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 51, 204)));
         jtfHoraInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfHoraInicioActionPerformed(evt);
@@ -115,15 +102,9 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         });
 
         jlHoraDeFin.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jlHoraDeFin.setForeground(new java.awt.Color(0, 0, 102));
         jlHoraDeFin.setText("hora del fin");
 
-        jtfHoraFin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 51, 204)));
-
-        jtfPrecio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 51, 204)));
-
         jlPrecio.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jlPrecio.setForeground(new java.awt.Color(0, 0, 102));
         jlPrecio.setText("Precio del lugar");
 
         jrbSISubtitulada.setText("Si");
@@ -135,7 +116,6 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         jrbSIEs3d.setText("Si");
 
         jlEs3d.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jlEs3d.setForeground(new java.awt.Color(0, 0, 102));
         jlEs3d.setText("es 3D");
 
         javax.swing.GroupLayout jpDatosLayout = new javax.swing.GroupLayout(jpDatos);
@@ -162,12 +142,11 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jrbNoEs3d))
                             .addComponent(jtfHoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(jpDatosLayout.createSequentialGroup()
-                                    .addComponent(jrbSISubtitulada)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jrbNoSubtitulada))
-                                .addComponent(jtfIdSala, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDatosLayout.createSequentialGroup()
+                                .addComponent(jrbSISubtitulada)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jrbNoSubtitulada))
+                            .addComponent(jtfIdSala, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -249,7 +228,7 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
 
         jlTitulo.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jlTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        jlTitulo.setText("Cargar comprador");
+        jlTitulo.setText("Cargar Proyección");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -302,12 +281,13 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
                 .addGap(31, 31, 31)
                 .addComponent(jpDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbGuardar)
-                    .addComponent(jbLimpiar)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jbActualizar))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jbGuardar)
+                        .addComponent(jbLimpiar)
+                        .addComponent(jButton2)
+                        .addComponent(jbActualizar)))
                 .addGap(30, 30, 30))
         );
 

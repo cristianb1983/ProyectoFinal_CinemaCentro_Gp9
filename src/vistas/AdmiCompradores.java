@@ -51,40 +51,25 @@ public class AdmiCompradores extends javax.swing.JInternalFrame {
         jpDatos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 51, 255)));
 
         jlDni.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jlDni.setForeground(new java.awt.Color(0, 0, 102));
         jlDni.setText("Dni:");
 
         jlNombre.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jlNombre.setForeground(new java.awt.Color(0, 0, 102));
         jlNombre.setText("Nombre:");
 
         jlNac.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jlNac.setForeground(new java.awt.Color(0, 0, 102));
         jlNac.setText("Fecha de nac:");
 
         jlPass.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jlPass.setForeground(new java.awt.Color(0, 0, 102));
         jlPass.setText("Password:");
 
         jlMedioPago.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jlMedioPago.setForeground(new java.awt.Color(0, 0, 102));
         jlMedioPago.setText("Medio de pago:");
 
-        jtfDni.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 51, 204)));
-        jtfDni.setCaretColor(new java.awt.Color(0, 51, 204));
-
-        jtfNombre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 51, 204)));
-
-        jtfFechaNacimiento.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 51, 204)));
-
-        jtfPassword.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 51, 204)));
         jtfPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfPasswordActionPerformed(evt);
             }
         });
-
-        jtfMedioPago.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 51, 204)));
 
         javax.swing.GroupLayout jpDatosLayout = new javax.swing.GroupLayout(jpDatos);
         jpDatos.setLayout(jpDatosLayout);

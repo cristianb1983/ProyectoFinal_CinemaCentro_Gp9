@@ -54,33 +54,19 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
         jpDatos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 51, 255)));
 
         jlIdLugar.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jlIdLugar.setForeground(new java.awt.Color(0, 0, 102));
-        jlIdLugar.setText("IdLigar");
+        jlIdLugar.setText("IdLugar");
 
         jlFila.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jlFila.setForeground(new java.awt.Color(0, 0, 102));
         jlFila.setText("Fila");
 
         jlColumna.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jlColumna.setForeground(new java.awt.Color(0, 0, 102));
         jlColumna.setText("Columna");
 
         jlEstado.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jlEstado.setForeground(new java.awt.Color(0, 0, 102));
         jlEstado.setText("Estado");
 
         jlMedioPago.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jlMedioPago.setForeground(new java.awt.Color(0, 0, 102));
         jlMedioPago.setText("Medio de pago:");
-
-        jtfDni.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 51, 204)));
-        jtfDni.setCaretColor(new java.awt.Color(0, 51, 204));
-
-        jtfNombre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 51, 204)));
-
-        jtfFechaNacimiento.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 51, 204)));
-
-        jtfMedioPago.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 51, 204)));
 
         jrbNoSubtitulada.setText("Desocupado");
 
@@ -154,8 +140,6 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 204));
-
         jlTitulo.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jlTitulo.setForeground(new java.awt.Color(255, 255, 255));
         jlTitulo.setText("Cargar lugar");
@@ -209,11 +193,9 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
                         .addGap(27, 27, 27)
                         .addComponent(jButton2)
                         .addGap(27, 27, 27)
-                        .addComponent(jbLimpiar)
-                        .addContainerGap(117, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jpDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jbLimpiar))
+                    .addComponent(jpDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
