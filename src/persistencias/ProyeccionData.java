@@ -6,6 +6,8 @@
 package persistencias;
 
 import entidades.Proyeccion;
+import entidades.Pelicula;
+import entidades.Sala;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,6 +15,7 @@ import java.sql.SQLException;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  *
  * @author julia
@@ -29,8 +32,8 @@ public class ProyeccionData {
         String query = "INSERT INTO proyeccion (idPelicula, idSala, idioma, es3D, subtitulada, horaInicio, horaFin, precioLugar) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try{
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setInt(1, p.getIdPelicula());
-            ps.setInt(2, p.getIdSala());
+            ps.setInt(1, p.getPelicula().getIdPelicula());
+            ps.setInt(2, p.getSala().getIdSala());
             ps.setString(3, p.getIdioma());
             ps.setBoolean(4, p.isEs3D());
             ps.setBoolean(5, p.isSubtitulada());
@@ -54,8 +57,8 @@ public class ProyeccionData {
          
         try {
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setInt(1, p.getIdPelicula());
-            ps.setInt(2, p.getIdSala());
+            ps.setInt(1, p.getPelicula().getIdPelicula());
+            ps.setInt(2, p.getSala().getIdSala());
             ps.setString(3, p.getIdioma());
             ps.setBoolean(4, p.isEs3D());
             ps.setBoolean(5, p.isSubtitulada());
@@ -99,8 +102,12 @@ public class ProyeccionData {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 p = new Proyeccion();
-                p.setPelicula(rs.getInt("idPelicula"));
-                p.setSala(rs.getInt("idSala"));
+                Pelicula pelicula = new Pelicula();
+                Sala sala = new Sala();
+                pelicula.setIdPelicula(rs.getInt("idPelicula"));
+                sala.setIdSala(rs.getInt("idSala"));
+                p.setPelicula(pelicula);
+                p.setSala(sala);
                 p.setIdioma(rs.getString("Idioma"));
                 p.setEs3D(rs.getBoolean("Es3D"));
                 p.setSubtitulada(rs.getBoolean("Subtitulada"));
@@ -124,8 +131,12 @@ public class ProyeccionData {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 proyeccion = new Proyeccion();
-                proyeccion.setPelicula(rs.getInt("idPelicula"));
-                proyeccion.setSala(rs.getInt("idSala"));
+                Pelicula pelicula = new Pelicula();
+                Sala sala = new Sala();
+                pelicula.setIdPelicula(rs.getInt("idPelicula"));
+                sala.setIdSala(rs.getInt("idSala"));
+                proyeccion.setPelicula(pelicula);
+                proyeccion.setSala(sala);
                 proyeccion.setIdioma(rs.getString("Idioma"));
                 proyeccion.setEs3D(rs.getBoolean("Es3D"));
                 proyeccion.setSubtitulada(rs.getBoolean("Subtitulada"));
