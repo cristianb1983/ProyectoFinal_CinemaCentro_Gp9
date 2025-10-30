@@ -2,16 +2,21 @@ package persistencias;
 
 import entidades.DetalleTicket;
 import entidades.LugarAsiento;
+import entidades.Proyeccion;
+import entidades.TicketCompra;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DetalleTicketData {
     Connection conex = Conexion.buscarConexion();
-    
+    public DetalleTicketData(Connection conex){
+        this.conex = conex;
+    }
     public boolean registrarDetalleTicket(DetalleTicket detalle) {
        String query = "INSERT INTO detalleticket(idTicket, idProyeccion, cantidad, subTotal) VALUES(?, ?, ?, ?)";
        try {
@@ -51,6 +56,7 @@ public class DetalleTicketData {
        }
     }
     
+    //Falta probar
     public void actualizarDetaleTicket(DetalleTicket detalle, List<Integer> Idlugares){
         String query = "UPDATE detalleticket SET idTicket = ?, idProyeccion = ?, cantidad = ?, subTotal = ? where idDetalle = ?";
         try {
@@ -84,7 +90,6 @@ public class DetalleTicketData {
        }
     }
      
-      
     public void borrarDetalleTicket(int idDetalleBorrar, List<Integer> idLugaresBorrar){
         String query = "DELETE FROM detalleticket WHERE idDetalle = ?";
         String queryLugares = "DELETE FROM lugar_detalleticket WHERE lugaresId = ?";
@@ -104,5 +109,49 @@ public class DetalleTicketData {
             System.out.println("No se pudo borrar el DetalleTicket, compuebe el id");
             System.out.println(e.getMessage());
         }
+    }
+    
+    public DetalleTicket buscarDetalleTicket(int idDetalle){
+        DetalleTicket detalle = null;
+        String query = "SELECT detalleticket.*, idLugar, fila, numero " +
+                "FROM detalleticket " +
+                "JOIN lugar_detalleticket ON lugar_detalleticket.detalleId = detalleticket.idDetalle " + 
+                "JOIN lugar ON lugar.idLugar = lugar_detalleticket.lugarId " +
+                "WHERE idDetalle = ?;";
+        try {
+            PreparedStatement ps = conex.prepareStatement(query);
+            ps.setInt(1, idDetalle);
+            ResultSet rs = ps.executeQuery();
+            List<LugarAsiento> lugares = new ArrayList();
+            //Creamos y asignamos a detalleTicket los atributos
+            while(rs.next()){
+                if(detalle == null){
+                    detalle = new DetalleTicket();
+                    detalle.setIdDetalle(idDetalle);
+
+                    TicketCompra ticket = new TicketCompra();
+                    ticket.setIdTicket(rs.getInt("idTicket"));
+                    detalle.setIdTicket(ticket);
+
+                    Proyeccion proyeccion = new Proyeccion();
+                    proyeccion.setPelicula(rs.getInt("idProyeccion"));
+                    detalle.setIdProyeccion(proyeccion);
+
+                    detalle.setCantidad(rs.getInt("cantidad"));
+                    detalle.setSubtotal(rs.getDouble("subTotal"));   
+                }
+                LugarAsiento lugar = new LugarAsiento();
+                lugar.setIdLugar(rs.getInt("idLugar"));
+                lugar.setFila(rs.getString("fila").charAt(0));
+                lugar.setNumero(rs.getInt("numero"));
+                lugares.add(lugar);
+            }
+            detalle.setLugares(lugares);
+            ps.close();
+        }catch(SQLException e) {
+            System.out.println("");
+            System.out.println(e.getMessage());
+        }
+        return detalle;
     }
 }

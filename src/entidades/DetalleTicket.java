@@ -11,6 +11,9 @@ public class DetalleTicket {
     private int cantidad;
     private double subtotal;
 
+    public DetalleTicket(){
+        
+    }
     public DetalleTicket(TicketCompra idTicket, Proyeccion idProyeccion, List<LugarAsiento> lugares, int cantidad, double subtotal) {
         this.idTicket = idTicket;
         this.idProyeccion = idProyeccion;
@@ -74,7 +77,12 @@ public class DetalleTicket {
 
     @Override
     public String toString() {
-        return "Detalle Ticket: " + idProyeccion + " Lugares:" + cantidad + ", Subtotal: $" + subtotal;
+        return "Detalle Ticket: " + idDetalle + "\n" +
+            "idTicket: " + idTicket.getIdTicket() + "\n" +
+            "idProyeccion: " + idProyeccion.getIdProyeccion() + "\n" +
+            "Cantidad: " + cantidad + "\n" +
+            "Subtotal: " + subtotal + "\n" +
+            "idLugar: " + lugares;
     }
 
 }

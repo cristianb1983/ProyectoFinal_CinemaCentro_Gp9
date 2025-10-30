@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.time.LocalDate;
 import persistencias.CompradorData;
 import persistencias.Conexion;
+import persistencias.DetalleTicketData;
 import persistencias.PeliculasData;
 
 /**
@@ -35,11 +36,17 @@ public static void main(String[] args) {
     //bajaFisica funciona
     //compradorD.bajaFisica(44530873);
     
-     PeliculasData pd = new PeliculasData(Conexion.buscarConexion());
+//     PeliculasData pd = new PeliculasData(Conexion.buscarConexion());
      //Pelicula peli0 = new Pelicula ("crb","cristian","felipe y lautaro","argentina","familia",LocalDate.now(),true);
     // pd.cargarPelicula(peli0);// cargar pelicula funciona
     //System.out.println(pd.buscarPelicula(1));// buscar pelicula funciona
     //pd.EliminarPelicula(1);//eliminar pelicula funciona
-} 
+    
+    
+    //Prueba buscarDetalleTicket
+    DetalleTicketData detalleD = new DetalleTicketData(Conexion.buscarConexion());
+    System.out.println(detalleD.buscarDetalleTicket(10));
+   
+    } 
     
 }
