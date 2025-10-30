@@ -45,8 +45,6 @@ public class VistaMenu extends javax.swing.JFrame {
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem15 = new javax.swing.JMenuItem();
-        jMenuItem16 = new javax.swing.JMenuItem();
-        jMenuItem17 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CinemaCentro");
@@ -96,6 +94,11 @@ public class VistaMenu extends javax.swing.JFrame {
         jMenu1.add(jMIgestionPeliculas);
 
         jMIgestionSalas.setText("Salas");
+        jMIgestionSalas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIgestionSalasActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMIgestionSalas);
 
         jMIgestionTickets.setText("Tickets");
@@ -130,14 +133,13 @@ public class VistaMenu extends javax.swing.JFrame {
 
         jMenu5.setText("Estadisticas");
 
-        jMenuItem15.setText("Tickets por Fecha");
+        jMenuItem15.setText("Ver Estadisticas");
+        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem15ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem15);
-
-        jMenuItem16.setText("tickets por Pelicula");
-        jMenu5.add(jMenuItem16);
-
-        jMenuItem17.setText("Compradores por Fecha");
-        jMenu5.add(jMenuItem17);
 
         jMenuBar1.add(jMenu5);
 
@@ -147,11 +149,11 @@ public class VistaMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 1020, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
         );
 
         pack();
@@ -205,6 +207,22 @@ public class VistaMenu extends javax.swing.JFrame {
         escritorio.add(compra);
     }//GEN-LAST:event_jMIcompraActionPerformed
 
+    private void jMIgestionSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIgestionSalasActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        GestionSalas salas = new GestionSalas();
+        salas.setVisible(true);
+        escritorio.add(salas);
+    }//GEN-LAST:event_jMIgestionSalasActionPerformed
+
+    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaEstadisticas est = new VistaEstadisticas();
+        est.setVisible(true);
+        escritorio.add(est);
+    }//GEN-LAST:event_jMenuItem15ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -257,8 +275,6 @@ public class VistaMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
-    private javax.swing.JMenuItem jMenuItem16;
-    private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
