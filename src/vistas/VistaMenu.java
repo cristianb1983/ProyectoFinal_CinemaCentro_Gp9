@@ -32,14 +32,14 @@ public class VistaMenu extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMIcartelera = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        jMIcompra = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMIgestionPeliculas = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        jMIgestionSalas = new javax.swing.JMenuItem();
+        jMIgestionTickets = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
@@ -50,8 +50,6 @@ public class VistaMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CinemaCentro");
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 610));
 
         jMenu2.setText("Peliculas");
 
@@ -67,8 +65,13 @@ public class VistaMenu extends javax.swing.JFrame {
 
         jMenu3.setText("Compra Online");
 
-        jMenuItem4.setText("Comprar entradas");
-        jMenu3.add(jMenuItem4);
+        jMIcompra.setText("Comprar entradas");
+        jMIcompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIcompraActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMIcompra);
 
         jMenuItem3.setText("Detalles de compra");
         jMenu3.add(jMenuItem3);
@@ -85,13 +88,18 @@ public class VistaMenu extends javax.swing.JFrame {
         jMenu1.setText("Administracion");
 
         jMIgestionPeliculas.setText("Peliculas");
+        jMIgestionPeliculas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIgestionPeliculasActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMIgestionPeliculas);
 
-        jMenuItem7.setText("Salas");
-        jMenu1.add(jMenuItem7);
+        jMIgestionSalas.setText("Salas");
+        jMenu1.add(jMIgestionSalas);
 
-        jMenuItem8.setText("Tickets");
-        jMenu1.add(jMenuItem8);
+        jMIgestionTickets.setText("Tickets");
+        jMenu1.add(jMIgestionTickets);
 
         jMenuItem11.setBackground(new java.awt.Color(0, 51, 0));
         jMenuItem11.setText("Compradores");
@@ -135,6 +143,17 @@ public class VistaMenu extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -169,6 +188,22 @@ public class VistaMenu extends javax.swing.JFrame {
         listarpeliculas.setVisible(true);
         escritorio.add(listarpeliculas);
     }//GEN-LAST:event_jMIcarteleraActionPerformed
+
+    private void jMIgestionPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIgestionPeliculasActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaPeliculas vistapelis = new VistaPeliculas();
+        vistapelis.setVisible(true);
+        escritorio.add(vistapelis);
+    }//GEN-LAST:event_jMIgestionPeliculasActionPerformed
+
+    private void jMIcompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIcompraActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        GestionCompraDeTickets compra = new GestionCompraDeTickets();
+        compra.setVisible(true);
+        escritorio.add(compra);
+    }//GEN-LAST:event_jMIcompraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,7 +243,10 @@ public class VistaMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenuItem jMIcartelera;
+    private javax.swing.JMenuItem jMIcompra;
     private javax.swing.JMenuItem jMIgestionPeliculas;
+    private javax.swing.JMenuItem jMIgestionSalas;
+    private javax.swing.JMenuItem jMIgestionTickets;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -222,9 +260,6 @@ public class VistaMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 }

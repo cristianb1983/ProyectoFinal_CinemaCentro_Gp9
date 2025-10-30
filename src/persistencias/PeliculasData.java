@@ -117,7 +117,7 @@ public class PeliculasData {
         Pelicula p = null;
         ArrayList<Pelicula> peliculas = new ArrayList<>();
         try {
-            String query = "SELECT * FROM pelicula";
+            String query = "SELECT * FROM pelicula WHERE enCartelera = true" ;
             PreparedStatement ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -143,7 +143,7 @@ public class PeliculasData {
         Pelicula p = null;
         ArrayList<Pelicula> estrenos = new ArrayList<>();
         try {
-            String query = "SELECT * FROM pelicula";
+            String query = "SELECT * FROM pelicula WHERE enCartelera = false ";
             PreparedStatement ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
