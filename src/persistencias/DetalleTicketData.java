@@ -15,6 +15,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DetalleTicketData {
+    
+    private Connection con;
+
+    public DetalleTicketData() {
+        con = Conexion.buscarConexion();
+    }  
+    
     Connection conex = Conexion.buscarConexion();
     public DetalleTicketData(Connection conex){
         this.conex = conex;
@@ -23,8 +30,8 @@ public class DetalleTicketData {
        String query = "INSERT INTO detalleticket(idTicket, idProyeccion, cantidad, subTotal) VALUES(?, ?, ?, ?)";
        try {
             PreparedStatement ps = conex.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, detalle.getIdTicket().getIdTicket());
-            ps.setInt(2, detalle.getIdProyeccion().getIdProyeccion());
+            ps.setInt(1, detalle.getTicket().getIdTicket());
+            ps.setInt(2, detalle.getProyeccion().getIdProyeccion());
             ps.setInt(3, detalle.getCantidad());
             ps.setDouble(4, detalle.getSubtotal());
             ps.executeUpdate();
@@ -65,8 +72,8 @@ public class DetalleTicketData {
             //El prepare es quien enviara con la conec la query
             PreparedStatement ps = conex .prepareStatement(query);
             //Remplaso los comodines y ejecuto y actualizo
-            ps.setInt(1, detalle.getIdTicket().getIdTicket());
-            ps.setInt(2, detalle.getIdProyeccion().getIdProyeccion());
+            ps.setInt(1, detalle.getTicket().getIdTicket());
+            ps.setInt(2, detalle.getProyeccion().getIdProyeccion());
             ps.setInt(3, detalle.getCantidad());
             ps.setDouble(4, detalle.getSubtotal());
             ps.setInt(5, detalle.getIdDetalle());
@@ -136,7 +143,7 @@ public class DetalleTicketData {
 
                     TicketCompra ticket = new TicketCompra();
                     ticket.setIdTicket(rs.getInt("idTicket"));
-                    detalle.setIdTicket(ticket);
+                    detalle.setTicket(ticket);
 
                     //A proyeccion le asignamos su id, el numero de sala y el titulo de pelicula
                     Proyeccion proyeccion = new Proyeccion();
@@ -149,14 +156,14 @@ public class DetalleTicketData {
                     
                     proyeccion.setSala(sala);
                     proyeccion.setPelicula(pelicula);
-                    detalle.setIdProyeccion(proyeccion);
+                    detalle.setProyeccion(proyeccion);
                     
                     detalle.setCantidad(rs.getInt("cantidad"));
                     detalle.setSubtotal(rs.getDouble("subTotal"));   
                 }
                 LugarAsiento lugar = new LugarAsiento();
                 lugar.setIdLugar(rs.getInt("idLugar"));
-                lugar.setFila(rs.getString("fila").charAt(0));
+                lugar.setFila(rs.getString("fila"));
                 lugar.setNumero(rs.getInt("numero"));
                 lugares.add(lugar);
             }
@@ -194,7 +201,7 @@ public class DetalleTicketData {
                 
                 TicketCompra ticket = new TicketCompra();
                 ticket.setIdTicket(rs.getInt("idTicket"));
-                detallesDni.setIdTicket(ticket);
+                detallesDni.setTicket(ticket);
                 
                 Proyeccion proyeccion = new Proyeccion();
                 proyeccion.setIdProyeccion(rs.getInt("idProyeccion"));
@@ -204,7 +211,7 @@ public class DetalleTicketData {
                 pelicula.setTitulo(rs.getString("titulo"));
                 proyeccion.setSala(sala);
                 proyeccion.setPelicula(pelicula);
-                detallesDni.setIdProyeccion(proyeccion);
+                detallesDni.setProyeccion(proyeccion);
                 
                 detallesDni.setCantidad(rs.getInt("cantidad"));
                 detallesDni.setSubtotal(rs.getDouble("subTotal"));
@@ -212,7 +219,7 @@ public class DetalleTicketData {
             
             LugarAsiento lugar = new LugarAsiento();
             lugar.setIdLugar(rs.getInt("idLugar"));
-            lugar.setFila(rs.getString("fila").charAt(0));
+            lugar.setFila(rs.getString("fila"));
             lugar.setNumero(rs.getInt("numero"));
             lugares.add(lugar);
         }

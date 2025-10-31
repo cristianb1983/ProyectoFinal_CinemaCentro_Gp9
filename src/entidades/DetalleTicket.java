@@ -1,40 +1,42 @@
 package entidades;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DetalleTicket {
 
     private int idDetalle = -1;
-    private TicketCompra idTicket;
-    private Proyeccion idProyeccion;
-    private List<LugarAsiento> lugares;
+    private TicketCompra ticket;
+    private Proyeccion proyeccion;
     private int cantidad;
     private double subtotal;
+    private List<LugarAsiento> lugares;
 
-    public DetalleTicket(){
-        
+    public DetalleTicket() {
+        lugares = new ArrayList<>();
     }
-    public DetalleTicket(TicketCompra idTicket, Proyeccion idProyeccion, List<LugarAsiento> lugares, int cantidad, double subtotal) {
-        this.idTicket = idTicket;
-        this.idProyeccion = idProyeccion;
-        this.lugares = lugares;
+
+    public DetalleTicket(Proyeccion proyeccion, int cantidad, double subtotal) {
+        this.proyeccion = proyeccion;
         this.cantidad = cantidad;
         this.subtotal = subtotal;
+        this.lugares = new ArrayList<>();;
     }
 
-//    private double calcularSubtotal() {
-//        return idProyeccion.getprecio() * cantidad;
-//    }
+    public DetalleTicket(TicketCompra ticket, Proyeccion proyeccion, int cantidad, double subtotal, List<LugarAsiento> lugares) {
+        this.ticket = ticket;
+        this.proyeccion = proyeccion;
+        this.cantidad = cantidad;
+        this.subtotal = subtotal;
 
-    public TicketCompra getIdTicket() {
-        return idTicket;
+        if (lugares != null) {
+            this.lugares = lugares;
+        } else {
+            System.out.println("No se recibió lista de lugares, se crea una nueva vacía.");
+            this.lugares = new ArrayList<>();
+        }
     }
 
-    public void setIdTicket(TicketCompra idTicket) {
-        this.idTicket = idTicket;
-    }
-
-    
     public int getIdDetalle() {
         return idDetalle;
     }
@@ -43,20 +45,20 @@ public class DetalleTicket {
         this.idDetalle = idDetalle;
     }
 
-    public Proyeccion getIdProyeccion() {
-        return idProyeccion;
+    public TicketCompra getTicket() {
+        return ticket;
     }
 
-    public void setIdProyeccion(Proyeccion idProyeccion) {
-        this.idProyeccion = idProyeccion;
+    public void setTicket(TicketCompra ticket) {
+        this.ticket = ticket;
     }
 
-    public List<LugarAsiento> getLugares() {
-        return lugares;
+    public Proyeccion getProyeccion() {
+        return proyeccion;
     }
 
-    public void setLugares(List<LugarAsiento> lugares) {
-        this.lugares = lugares;
+    public void setProyeccion(Proyeccion proyeccion) {
+        this.proyeccion = proyeccion;
     }
 
     public int getCantidad() {
@@ -65,6 +67,7 @@ public class DetalleTicket {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+        recalcularSubtotal();
     }
 
     public double getSubtotal() {
@@ -75,16 +78,52 @@ public class DetalleTicket {
         this.subtotal = subtotal;
     }
 
+    public List<LugarAsiento> getLugares() {
+        return lugares;
+    }
+
+    public void setLugares(List<LugarAsiento> lugares) {
+        if (lugares != null) {
+            this.lugares = lugares;
+        } else {
+            this.lugares = new ArrayList<>();
+        }
+        recalcularSubtotal();
+    }
+
+    public void agregarLugar(LugarAsiento lugar) {
+        if (lugar != null) {
+            this.lugares.add(lugar);
+            this.cantidad = lugares.size();
+            recalcularSubtotal();
+        }
+    }
+
+    public void eliminarLugar(LugarAsiento lugar) {
+        if (lugar != null && lugares.remove(lugar)) {
+            this.cantidad = lugares.size();
+            recalcularSubtotal();
+        }
+    }
+
+    public void recalcularSubtotal() {
+        if (proyeccion != null) {
+            this.subtotal = this.cantidad * proyeccion.getPrecio();
+        } else {
+            this.subtotal = 0;
+        }
+    }
+
     @Override
     public String toString() {
-        return "Detalle Ticket: " + idDetalle + "\n" +
-                "idTicket: " + idTicket.getIdTicket() + "\n" +
-                "idProyeccion: " + idProyeccion.getIdProyeccion() + "\n" +
-                "NroSala: " + idProyeccion.getSala().getNroSala() + "\n" +
-                "Pelicula: " + idProyeccion.getPelicula().getTitulo() + "\n" +
-                "Cantidad: " + cantidad + "\n" +
-                "Subtotal: " + subtotal + "\n" +
-                "Lugares: " + lugares;
+        return "Detalle Ticket: " + idDetalle + "\n"
+                + "Ticket: " + ticket.getIdTicket() + "\n"
+                + "Proyeccion: " + proyeccion.getIdProyeccion() + "\n"
+                + "NroSala: " + proyeccion.getSala().getNroSala() + "\n"
+                + "Pelicula: " + proyeccion.getPelicula().getTitulo() + "\n"
+                + "Cantidad: " + cantidad + "\n"
+                + "Subtotal: " + subtotal + "\n"
+                + "Lugares: " + lugares;
     }
 
 }

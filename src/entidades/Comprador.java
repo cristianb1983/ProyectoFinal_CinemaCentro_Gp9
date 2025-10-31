@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author Usuario
  */
 public class Comprador {
-    private int dniComprador;
+    private long dniComprador;
     private String nombre;
     private LocalDate fechaNacimiento;
     private String password;
@@ -22,7 +22,7 @@ public class Comprador {
     public Comprador() {
     }
 
-    public Comprador(int dniComprador, String nombre, LocalDate fechaNacimiento, String password, String medioDePago) {
+    public Comprador(long dniComprador, String nombre, LocalDate fechaNacimiento, String password, String medioDePago) {
         this.dniComprador = dniComprador;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
@@ -30,11 +30,11 @@ public class Comprador {
         this.medioDePago = medioDePago;
     }
 
-    public int getDniComprador() {
+    public long getDniComprador() {
         return dniComprador;
     }
 
-    public void setDniComprador(int dniComprador) {
+    public void setDniComprador(long dniComprador) {
         this.dniComprador = dniComprador;
     }
 

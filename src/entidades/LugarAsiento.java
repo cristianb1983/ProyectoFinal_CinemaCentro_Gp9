@@ -10,20 +10,29 @@ package entidades;
  * @author Usuario
  */
 public class LugarAsiento {
+
     private int idLugar = -1;
-    private char fila;
+    private String fila;
     private int numero;
-    private boolean estado;
-    private Proyeccion idProyeccion;
+    private String estado;
+    private Proyeccion proyeccion;
 
     public LugarAsiento() {
     }
 
-    public LugarAsiento(char fila, int numero, boolean estado, Proyeccion idProyeccion) {
+    public LugarAsiento(String fila, int numero, String estado, Proyeccion proyeccion) {
         this.fila = fila;
         this.numero = numero;
         this.estado = estado;
-        this.idProyeccion = idProyeccion;
+        this.proyeccion = proyeccion;
+    }
+
+    public LugarAsiento(int idLugar, String fila, int numero, String estado, Proyeccion proyeccion) {
+        this.idLugar = idLugar;
+        this.fila = fila;
+        this.numero = numero;
+        this.estado = estado;
+        this.proyeccion = proyeccion;
     }
 
     public int getIdLugar() {
@@ -34,11 +43,11 @@ public class LugarAsiento {
         this.idLugar = idLugar;
     }
 
-    public char getFila() {
+    public String getFila() {
         return fila;
     }
 
-    public void setFila(char fila) {
+    public void setFila(String fila) {
         this.fila = fila;
     }
 
@@ -50,26 +59,25 @@ public class LugarAsiento {
         this.numero = numero;
     }
 
-    public boolean isEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 
-    public Proyeccion getIdProyeccion() {
-        return idProyeccion;
+    public Proyeccion getProyeccion() {
+        return proyeccion;
     }
 
-    public void setIdProyeccion(Proyeccion idProyeccion) {
-        this.idProyeccion = idProyeccion;
+    public void setProyeccion(Proyeccion proyeccion) {
+        this.proyeccion = proyeccion;
     }
 
     @Override
     public String toString() {
-        return "LugarAsiento{" + "idLugar=" + idLugar + ", fila=" + fila + ", numero=" + numero + ", estado=" + estado + ", idProyeccion=" + idProyeccion + '}';
+        return "LugarAsiento{" + "idLugar=" + idLugar + ", fila=" + fila + ", numero=" + numero + ", estado=" + estado + ", idProyeccion=" + proyeccion + '}';
     }
-    
-    
+
 }

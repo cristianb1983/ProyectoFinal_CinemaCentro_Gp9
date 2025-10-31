@@ -9,7 +9,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-
 public class TicketCompra {
 
     private int idTicket;
@@ -30,14 +29,14 @@ public class TicketCompra {
         this.comprador = comprador;
         this.tipoCompra = tipoCompra;
         this.codigoVenta = codigoVenta;
-        this.monto = calcularMonto();
         this.detalles = detalles;
+        this.monto = calcularMonto();
     }
 
     private double calcularMonto() {
         double total = 0;
 
-        if (detalles != null || detalles.isEmpty()) {
+        if (detalles != null && !detalles.isEmpty()) {
             for (DetalleTicket detalle : detalles) {
                 if (detalle != null) {
                     total += detalle.getSubtotal();
@@ -109,6 +108,7 @@ public class TicketCompra {
 
     public void setDetalles(List<DetalleTicket> detalles) {
         this.detalles = detalles;
+        this.monto = calcularMonto(); 
     }
 
     @Override

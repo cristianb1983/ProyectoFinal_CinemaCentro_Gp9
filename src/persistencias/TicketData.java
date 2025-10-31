@@ -1,6 +1,7 @@
 package persistencias;
 
-import com.sun.org.apache.bcel.internal.Constants;
+import entidades.Comprador;
+import entidades.DetalleTicket;
 import entidades.TicketCompra;
 import java.sql.Connection;
 import java.sql.Date;
@@ -9,43 +10,75 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.time.LocalDate;
+import java.util.List;
 
 public class TicketData {
 
-    private Connection con;
+    private final Connection con;
+    private final DetalleTicketData detalleData;
+    private final LugarData lugarData;
 
     public TicketData() {
         this.con = Conexion.buscarConexion();
+        detalleData = new DetalleTicketData();
+        lugarData = new LugarData();
     }
 
-    public void guardarTicket(TicketCompra ticket) {
-        String sql = "INSERT INTO ticketcompra (fechaCompra, fechaFuncion, monto, dniComprador, tipoCompra, codigoVenta) VALUES (?,?,?,?,?,?)";
+    public boolean generarTicket(TicketCompra ticket) {
+        return false;
+    }
+
+    public boolean modificarTicket(TicketCompra ticket) {
+        return false;
+    }
+
+    public boolean anularTicket(int idTicket) {
+        return false;
+    }
+
+    public TicketCompra buscarTicketPorId(int idTicket) {
+        TicketCompra ticket = null;
+
+        String sql = "SELECT t.*, c.nombre, c.fechaNac, c.medioPago "
+                + "FROM ticketcompra t "
+                + "JOIN comprador c"
+                + "ON t.dniComprador = c.dni"
+                + "WHERE t.idTicket = ?";
 
         try {
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setTimestamp(1, Timestamp.valueOf(ticket.getFechaCompra()));
-            ps.setDate(2, Date.valueOf(ticket.getFechaFuncion()));
-            ps.setDouble(3, ticket.getMonto());
-            ps.setLong(4, ticket.getComprador().getDniComprador());
-            ps.setString(5, ticket.getTipoCompra());
-            ps.setString(6, ticket.getCodigoVenta());
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idTicket);
 
-            ps.executeUpdate();
-
-            ResultSet rs = ps.getGeneratedKeys();
+            ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                ticket.setIdTicket(rs.getInt(1));
+                Comprador comprador = new Comprador();
+                comprador.setDniComprador(rs.getLong("dni"));
+                comprador.setNombre(rs.getString("nombre"));
+                comprador.setMedioDePago(rs.getString("medioPago"));
+
+                ticket = new TicketCompra();
+                ticket.setIdTicket(rs.getInt("idTicket"));
+                ticket.setFechaCompra(rs.getTimestamp("fechaCompra").toLocalDateTime());
+                ticket.setFechaFuncion(rs.getDate("fechaFuncion").toLocalDate());
+                ticket.setMonto(rs.getDouble("monto"));
+                ticket.setComprador(comprador);
+                ticket.setTipoCompra(rs.getString("tipoCompra"));
+                ticket.setCodigoVenta(rs.getString("codigoVenta"));
+
             }
-
-            System.out.println("Ticket guardado correctamente.");
-
         } catch (SQLException ex) {
-            System.out.println("Error al guardar ticket: " + ex.getMessage());
+            System.out.println("Error al buscar ticket: " + ex.getMessage());
         }
 
+        return ticket;
+    }
+
+    public List<TicketCompra> listarTicketsPorFecha(LocalDate desde, LocalDate hasta) {
+    }
+
+    public List<TicketCompra> listarTicketPorPelicula(int idPelicula) {
     }
 
 }

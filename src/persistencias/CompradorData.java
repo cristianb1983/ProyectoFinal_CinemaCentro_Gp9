@@ -18,7 +18,7 @@ public class CompradorData {
         String query = "INSERT INTO comprador (dni, nombre, fechaNac, password, medioPago) VALUES(?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = conex.prepareStatement(query);
-            ps.setInt(1, com.getDniComprador());
+            ps.setLong(1, com.getDniComprador());
             ps.setString(2, com.getNombre());
             ps.setDate(3, Date.valueOf(com.getFechaNacimiento()));
             ps.setString(4, com.getPassword());
@@ -67,7 +67,7 @@ public class CompradorData {
             ps.setDate(2,  Date.valueOf(comprador.getFechaNacimiento()));
             ps.setString(3, comprador.getPassword());
             ps.setString(4, comprador.getMedioDePago());
-            ps.setInt(5, comprador.getDniComprador());
+            ps.setLong(5, comprador.getDniComprador());
             ps.executeUpdate();
 //            int exito = ps.executeUpdate();
 //            if (exito == 1) {
