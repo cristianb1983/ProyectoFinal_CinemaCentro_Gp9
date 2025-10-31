@@ -5,37 +5,57 @@ import java.time.LocalTime;
 
 public class Proyeccion {
 private int idProyeccion;
-private int idPelicula;
+private Pelicula pelicula;
 private String idioma;
 private boolean es3D;
 private boolean subtitulada;
 private LocalTime horaInicio;
 private LocalTime horaFin;
-private int idSala;
+private Sala sala;
 private double precio;
 
 public Proyeccion(){}
 
-    public Proyeccion(int idPelicula, String idioma, boolean es3D, boolean subtitulada, LocalTime horaInicio, LocalTime horaFin, int idSala, double precio) {
+    public Proyeccion(Pelicula pelicula, String idioma, boolean es3D, boolean subtitulada, LocalTime horaInicio, LocalTime horaFin, Sala sala, double precio) {
         int idProyeccion = -1;
-        this.idPelicula = idPelicula;
+        this.pelicula = pelicula;
         this.idioma = idioma;
         this.es3D = es3D;
         this.subtitulada = subtitulada;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
-        this.idSala = idSala;
+        this.sala = sala;
         this.precio = precio;
     }
-
+    
+    public Pelicula getPelicula() {
+        return pelicula;
+    }
+    
+    public int getPeliculaID() {
+        return pelicula.getIdPelicula();
+    }
+    
+     public int getSalaID() {
+        return sala.getIdSala();
+    }
+    
+    public Sala getSala() {
+        return sala;
+    }
+    
+    public void setPelicula(Pelicula pelicula) {
+        this.pelicula = pelicula;
+    }
+    
+    public void setSala(Sala sala) {
+        this.sala = sala;
+    }
+    
     public int getIdProyeccion() {
         return idProyeccion;
     }    
     
-    public int getIdPelicula() {
-        return idPelicula;
-    }
-
     public String getIdioma() {
         return idioma;
     }
@@ -56,17 +76,11 @@ public Proyeccion(){}
         return horaFin;
     }
 
-    public int getIdSala() {
-        return idSala;
-    }
 
     public double getPrecio() {
         return precio;
     }
 
-    public void setPelicula(int idPelicula) {
-        this.idPelicula = idPelicula;
-    }
 
     public void setIdioma(String idioma) {
         this.idioma = idioma;
@@ -88,18 +102,16 @@ public Proyeccion(){}
         this.horaFin = horaFin;
     }
 
-    public void setSala(int idSala) {
-        this.idSala = idSala;
-    }
-
     public void setPrecio(double precio) {
         this.precio = precio;
     }
 
     @Override
     public String toString() {
-        return "Proyeccion{" + "idProyeccion=" + idProyeccion + ", idPelicula=" + idPelicula + ", idioma=" + idioma + ", es3D=" + es3D + ", subtitulada=" + subtitulada + ", horaInicio=" + horaInicio + ", horaFin=" + horaFin + ", idSala=" + idSala + ", precio=" + precio + '}';
+        return "Proyeccion{" + "idProyeccion=" + idProyeccion + ", pelicula=" + pelicula + ", idioma=" + idioma + ", es3D=" + es3D + ", subtitulada=" + subtitulada + ", horaInicio=" + horaInicio + ", horaFin=" + horaFin + ", sala=" + sala + ", precio=" + precio + '}';
     }
+
+
 
   
 
