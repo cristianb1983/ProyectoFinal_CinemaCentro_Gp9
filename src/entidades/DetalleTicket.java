@@ -78,11 +78,13 @@ public class DetalleTicket {
     @Override
     public String toString() {
         return "Detalle Ticket: " + idDetalle + "\n" +
-            "idTicket: " + idTicket.getIdTicket() + "\n" +
-            "idProyeccion: " + idProyeccion.getIdProyeccion() + "\n" +
-            "Cantidad: " + cantidad + "\n" +
-            "Subtotal: " + subtotal + "\n" +
-            "idLugar: " + lugares;
+                "idTicket: " + idTicket.getIdTicket() + "\n" +
+                "idProyeccion: " + idProyeccion.getIdProyeccion() + "\n" +
+                "NroSala: " + idProyeccion.getSala().getNroSala() + "\n" +
+                "Pelicula: " + idProyeccion.getPelicula().getTitulo() + "\n" +
+                "Cantidad: " + cantidad + "\n" +
+                "Subtotal: " + subtotal + "\n" +
+                "Lugares: " + lugares;
     }
 
 }

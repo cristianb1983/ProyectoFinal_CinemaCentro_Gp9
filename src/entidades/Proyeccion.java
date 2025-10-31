@@ -80,8 +80,11 @@ public Proyeccion(){}
     public double getPrecio() {
         return precio;
     }
-
-
+    
+    public void setIdProyeccion(int idProyeccion) {
+        this.idProyeccion = idProyeccion;
+    }
+    
     public void setIdioma(String idioma) {
         this.idioma = idioma;
     }

@@ -2,7 +2,9 @@ package persistencias;
 
 import entidades.DetalleTicket;
 import entidades.LugarAsiento;
+import entidades.Pelicula;
 import entidades.Proyeccion;
+import entidades.Sala;
 import entidades.TicketCompra;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -113,11 +115,14 @@ public class DetalleTicketData {
     
     public DetalleTicket buscarDetalleTicket(int idDetalle){
         DetalleTicket detalle = null;
-        String query = "SELECT detalleticket.*, idLugar, fila, numero " +
-                "FROM detalleticket " +
-                "JOIN lugar_detalleticket ON lugar_detalleticket.detalleId = detalleticket.idDetalle " + 
-                "JOIN lugar ON lugar.idLugar = lugar_detalleticket.lugarId " +
-                "WHERE idDetalle = ?;";
+        String query = "SELECT detalleticket.*, idLugar, fila, numero, nroSala, titulo " +
+                        "FROM detalleticket " +
+                        "JOIN lugar_detalleticket ON lugar_detalleticket.detalleId = detalleticket.idDetalle " +
+                        "JOIN lugar ON lugar.idLugar = lugar_detalleticket.lugarId " +
+                        "JOIN proyeccion ON proyeccion.idProyeccion = detalleticket.idProyeccion " +
+                        "JOIN pelicula ON pelicula.idPelicula = proyeccion.idPelicula "+
+                        "JOIN sala ON sala.idSala = proyeccion.idSala " +
+                        "WHERE idDetalle = ?;";
         try {
             PreparedStatement ps = conex.prepareStatement(query);
             ps.setInt(1, idDetalle);
@@ -133,10 +138,19 @@ public class DetalleTicketData {
                     ticket.setIdTicket(rs.getInt("idTicket"));
                     detalle.setIdTicket(ticket);
 
+                    //A proyeccion le asignamos su id, el numero de sala y el titulo de pelicula
                     Proyeccion proyeccion = new Proyeccion();
-                    proyeccion.setPelicula(rs.getInt("idProyeccion"));
+                    proyeccion.setIdProyeccion(rs.getInt("idProyeccion"));
+//                  Sala sala = salaD.buscarSala(rs.getInt("idSala"));
+                    Sala sala = new Sala();
+                    sala.setNroSala(rs.getInt("nroSala"));
+                    Pelicula pelicula = new Pelicula();
+                    pelicula.setTitulo(rs.getString("titulo"));
+                    
+                    proyeccion.setSala(sala);
+                    proyeccion.setPelicula(pelicula);
                     detalle.setIdProyeccion(proyeccion);
-
+                    
                     detalle.setCantidad(rs.getInt("cantidad"));
                     detalle.setSubtotal(rs.getDouble("subTotal"));   
                 }
@@ -153,5 +167,61 @@ public class DetalleTicketData {
             System.out.println(e.getMessage());
         }
         return detalle;
+    }
+   
+   public DetalleTicket buscarDetallePorComprador(int dniComprador){
+        DetalleTicket detallesDni = null;
+        String query = "SELECT detalleticket.*, idLugar, fila, numero, nroSala, titulo " +
+                "FROM detalleticket " +
+                "JOIN lugar_detalleticket ON lugar_detalleticket.detalleId = detalleticket.idDetalle " +
+                "JOIN lugar ON lugar.idLugar = lugar_detalleticket.lugarId " + 
+                "JOIN proyeccion ON proyeccion.idProyeccion = detalleticket.idProyeccion " + 
+                "JOIN pelicula ON pelicula.idPelicula = proyeccion.idPelicula " + 
+                "JOIN sala ON sala.idSala = proyeccion.idSala " +
+                "JOIN ticketcompra on ticketcompra.idTicket = detalleticket.idTicket " + 
+                "JOIN comprador ON comprador.dni = ticketcompra.dniComprador " +
+                "WHERE comprador.dni = ?;";
+        try {
+        PreparedStatement ps = conex.prepareStatement(query);
+        ps.setInt(1, dniComprador);
+        ResultSet rs = ps.executeQuery();
+        
+        List<LugarAsiento> lugares = new ArrayList(); 
+        while(rs.next()){
+            if(detallesDni == null){
+                detallesDni = new DetalleTicket();
+                detallesDni.setIdDetalle(rs.getInt("idDetalle"));
+                
+                TicketCompra ticket = new TicketCompra();
+                ticket.setIdTicket(rs.getInt("idTicket"));
+                detallesDni.setIdTicket(ticket);
+                
+                Proyeccion proyeccion = new Proyeccion();
+                proyeccion.setIdProyeccion(rs.getInt("idProyeccion"));
+                Sala sala = new Sala();
+                sala.setNroSala(rs.getInt("nroSala"));
+                Pelicula pelicula = new Pelicula();
+                pelicula.setTitulo(rs.getString("titulo"));
+                proyeccion.setSala(sala);
+                proyeccion.setPelicula(pelicula);
+                detallesDni.setIdProyeccion(proyeccion);
+                
+                detallesDni.setCantidad(rs.getInt("cantidad"));
+                detallesDni.setSubtotal(rs.getDouble("subTotal"));
+            }
+            
+            LugarAsiento lugar = new LugarAsiento();
+            lugar.setIdLugar(rs.getInt("idLugar"));
+            lugar.setFila(rs.getString("fila").charAt(0));
+            lugar.setNumero(rs.getInt("numero"));
+            lugares.add(lugar);
+        }
+        
+        detallesDni.setLugares(lugares);
+        }catch(SQLException | NullPointerException e){
+            System.out.println("ERROR, revise el dni ingresado");
+            System.out.println(e.getMessage());
+        }
+        return detallesDni;
     }
 }

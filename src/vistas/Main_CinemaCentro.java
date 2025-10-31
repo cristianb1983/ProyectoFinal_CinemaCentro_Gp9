@@ -45,7 +45,8 @@ public static void main(String[] args) {
     
     //Prueba buscarDetalleTicket
     DetalleTicketData detalleD = new DetalleTicketData(Conexion.buscarConexion());
-    System.out.println(detalleD.buscarDetalleTicket(10));
+//    System.out.println(detalleD.buscarDetalleTicket(10));
+//    System.out.println(detalleD.buscarDetallePorComprador(2345668));
    
     } 
     
