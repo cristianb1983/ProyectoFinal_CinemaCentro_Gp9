@@ -3,6 +3,7 @@ package persistencias;
 import entidades.Comprador;
 import entidades.DetalleTicket;
 import entidades.TicketCompra;
+import entidades.LugarAsiento;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -21,12 +22,55 @@ public class TicketData {
 
     public TicketData() {
         this.con = Conexion.buscarConexion();
-        detalleData = new DetalleTicketData();
-        lugarData = new LugarData();
+        this.detalleData = new DetalleTicketData(con);
+        this.lugarData = new LugarData();
     }
 
     public boolean generarTicket(TicketCompra ticket) {
-        return false;
+        String sql = "INSERT INTO ticketcompra (fechaCompra, fechaFuncion, monto, dniComprador, tipoCompra, codigoVenta)"
+                + "VALUES (?, ?, ?, ?, ?, ?)";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            ps.setTimestamp(1, Timestamp.valueOf(ticket.getFechaCompra()));
+            ps.setDate(2, Date.valueOf(ticket.getFechaFuncion()));
+            ps.setDouble(3, ticket.getMonto());
+            ps.setLong(4, ticket.getComprador().getDniComprador());
+            ps.setString(5, ticket.getTipoCompra());
+            ps.setString(6, ticket.getCodigoVenta());
+
+            int filas = ps.executeUpdate();
+
+            if (filas > 0) {
+                ResultSet rs = ps.getGeneratedKeys();
+                if (rs.next()) {
+                    ticket.setIdTicket(rs.getInt(1));
+
+                    //Guardamos los detalles asociados
+                    if (ticket.getDetalles() != null && !ticket.getDetalles().isEmpty()) {
+                        for (DetalleTicket det : ticket.getDetalles()) {
+                            det.setTicket(ticket);
+                            detalleData.registrarDetalleTicket(det);
+
+                            // Marcar el asientos como ocupados
+                            if (det.getLugares() != null) {
+                                for (LugarAsiento lugar : det.getLugares()) {
+                                    lugarData.ocuparLugar(lugar.getIdLugar());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            ps.close();
+
+            return true;
+
+        } catch (SQLException e) {
+            System.out.println("Error al generar ticket: " + e.getMessage());
+            return false;
+        }
+
     }
 
     public boolean modificarTicket(TicketCompra ticket) {
@@ -75,10 +119,10 @@ public class TicketData {
         return ticket;
     }
 
-    public List<TicketCompra> listarTicketsPorFecha(LocalDate desde, LocalDate hasta) {
-    }
-
-    public List<TicketCompra> listarTicketPorPelicula(int idPelicula) {
-    }
+//    public List<TicketCompra> listarTicketsPorFecha(LocalDate desde, LocalDate hasta) {
+//    }
+//
+//    public List<TicketCompra> listarTicketPorPelicula(int idPelicula) {
+//    }
 
 }
