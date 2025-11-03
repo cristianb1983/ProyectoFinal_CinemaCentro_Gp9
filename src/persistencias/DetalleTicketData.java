@@ -18,10 +18,6 @@ public class DetalleTicketData {
     
     private Connection con;
 
-    public DetalleTicketData() {
-        con = Conexion.buscarConexion();
-    }  
-    
     Connection conex = Conexion.buscarConexion();
     public DetalleTicketData(Connection conex){
         this.conex = conex;
@@ -49,7 +45,7 @@ public class DetalleTicketData {
             //retornar la clave primaria
             String queryLugares = "INSERT INTO lugar_detalleticket(lugarId, detalleId) VALUES(?, ?)";
             PreparedStatement psLugares = conex.prepareStatement(queryLugares);
-            for (LugarAsiento aux : detalle.getLugares()) {
+            for (LugarAsiento aux : detalle.getLugares()){
                 //recorre lo que hay en la lista de Lugares de detalleTicket y va impactando contra la bd
                 psLugares.setInt(1, aux.getIdLugar());
                 psLugares.setInt(2, detalle.getIdDetalle());
@@ -69,7 +65,6 @@ public class DetalleTicketData {
     public void actualizarDetaleTicket(DetalleTicket detalle, List<Integer> Idlugares){
         String query = "UPDATE detalleticket SET idTicket = ?, idProyeccion = ?, cantidad = ?, subTotal = ? where idDetalle = ?";
         try {
-            //El prepare es quien enviara con la conec la query
             PreparedStatement ps = conex .prepareStatement(query);
             //Remplaso los comodines y ejecuto y actualizo
             ps.setInt(1, detalle.getTicket().getIdTicket());
@@ -99,9 +94,11 @@ public class DetalleTicketData {
        }
     }
      
+    //LEER COMENTARIO
     public void borrarDetalleTicket(int idDetalleBorrar, List<Integer> idLugaresBorrar){
         String query = "DELETE FROM detalleticket WHERE idDetalle = ?";
         String queryLugares = "DELETE FROM lugar_detalleticket WHERE lugaresId = ?";
+        //CONSULTA LUGARES DEBERIA BORRAR EN BASE AL IDDETALLE ASI NO LE PASAMOS UNA LISTA
         try {
             PreparedStatement psLugares = conex.prepareStatement(queryLugares);
             for(Integer aux : idLugaresBorrar){
@@ -176,7 +173,7 @@ public class DetalleTicketData {
         return detalle;
     }
    
-   public DetalleTicket buscarDetallePorComprador(int dniComprador){
+    public DetalleTicket buscarDetallePorComprador(int dniComprador){
         DetalleTicket detallesDni = null;
         String query = "SELECT detalleticket.*, idLugar, fila, numero, nroSala, titulo " +
                 "FROM detalleticket " +
@@ -230,5 +227,58 @@ public class DetalleTicketData {
             System.out.println(e.getMessage());
         }
         return detallesDni;
+    }
+    
+    public List<DetalleTicket> listaDetalles(){
+        //faltan cambios
+        List<DetalleTicket> listaDetalles = new ArrayList();
+        String query = "SELECT detalleticket.*, idLugar, fila, numero, nroSala, titulo " +
+                        "FROM detalleticket " +
+                        "JOIN lugar_detalleticket ON lugar_detalleticket.detalleId = detalleticket.idDetalle " +
+                        "JOIN lugar ON lugar.idLugar = lugar_detalleticket.lugarId " +
+                        "JOIN proyeccion ON proyeccion.idProyeccion = detalleticket.idProyeccion " +
+                        "JOIN pelicula ON pelicula.idPelicula = proyeccion.idPelicula "+
+                        "JOIN sala ON sala.idSala = proyeccion.idSala";
+        try{
+            PreparedStatement ps = conex.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                List<LugarAsiento> lugares = new ArrayList();
+                DetalleTicket detalle = null;
+                if(detalle == null){
+                    detalle = new DetalleTicket();
+                    detalle.setIdDetalle(rs.getInt("idDetalle"));
+                    TicketCompra ticket = new TicketCompra();
+                    ticket.setIdTicket(rs.getInt("idTicket"));
+                    detalle.setTicket(ticket);
+
+                    Proyeccion proyeccion = new Proyeccion();
+                    proyeccion.setIdProyeccion(rs.getInt("idProyeccion"));
+                    Sala sala = new Sala();
+                    sala.setNroSala(rs.getInt("nroSala"));
+                    Pelicula pelicula = new Pelicula();
+                    pelicula.setTitulo(rs.getString("titulo"));
+
+                    proyeccion.setSala(sala);
+                    proyeccion.setPelicula(pelicula);
+                    detalle.setProyeccion(proyeccion);
+
+                    detalle.setCantidad(rs.getInt("cantidad"));
+                    detalle.setSubtotal(rs.getDouble("subTotal"));
+                }
+                LugarAsiento lugar = new LugarAsiento();
+                lugar.setIdLugar(rs.getInt("idLugar"));
+                lugar.setFila(rs.getString("fila"));
+                lugar.setNumero(rs.getInt("numero"));
+                lugares.add(lugar);
+ 
+                detalle.setLugares(lugares);
+                listaDetalles.add(detalle);
+            }
+        }catch(SQLException e){
+            System.out.println("Error no se pudo obtener la lista");
+            System.out.println(e.getMessage());
+        }
+        return listaDetalles;
     }
 }
