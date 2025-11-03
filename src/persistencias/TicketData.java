@@ -11,8 +11,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TicketData {
 
@@ -27,7 +28,7 @@ public class TicketData {
     }
 
     public boolean generarTicket(TicketCompra ticket) {
-        String sql = "INSERT INTO ticketcompra (fechaCompra, fechaFuncion, monto, dniComprador, tipoCompra, codigoVenta)"
+        String sql = "INSERT INTO ticketcompra (fechaCompra, fechaFuncion, monto, dniComprador, tipoCompra, codigoVenta) "
                 + "VALUES (?, ?, ?, ?, ?, ?)";
 
         try {
@@ -74,7 +75,34 @@ public class TicketData {
     }
 
     public boolean modificarTicket(TicketCompra ticket) {
-        return false;
+
+        String sql = "UPTADATE ticketcompra SET fechaFuncion = ?, monto = ?, tipoCompra = ? "
+                + "WHERE idTicket = ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setDate(1, Date.valueOf(ticket.getFechaFuncion()));
+            ps.setDouble(2, ticket.getMonto());
+            ps.setString(3, ticket.getTipoCompra());
+            ps.setInt(4, ticket.getIdTicket());
+
+            ps.executeUpdate();
+            ps.close();
+
+            // Actualizar detalle de ticket
+            if (ticket.getDetalles() != null) {
+                for (DetalleTicket det : ticket.getDetalles()) {
+                    detalleData.actualizarDetaleTicket(det, null); // si no se cambian asientos
+                }
+            }
+
+            return true;
+
+        } catch (SQLException e) {
+            System.out.println("Error al modificar ticket: " + e.getMessage());
+            return false;
+        }
+
     }
 
     public boolean anularTicket(int idTicket) {
@@ -86,8 +114,8 @@ public class TicketData {
 
         String sql = "SELECT t.*, c.nombre, c.fechaNac, c.medioPago "
                 + "FROM ticketcompra t "
-                + "JOIN comprador c"
-                + "ON t.dniComprador = c.dni"
+                + "JOIN comprador c "
+                + "ON t.dniComprador = c.dni "
                 + "WHERE t.idTicket = ?";
 
         try {
@@ -124,5 +152,4 @@ public class TicketData {
 //
 //    public List<TicketCompra> listarTicketPorPelicula(int idPelicula) {
 //    }
-
 }
