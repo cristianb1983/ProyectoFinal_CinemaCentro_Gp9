@@ -73,6 +73,11 @@ public class VistaMenu extends javax.swing.JFrame {
         jMenu3.add(jMIcompra);
 
         jMenuItem3.setText("Detalles de compra");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem3);
 
         jMenuBar1.add(jMenu3);
@@ -223,6 +228,14 @@ public class VistaMenu extends javax.swing.JFrame {
         est.setVisible(true);
         escritorio.add(est);
     }//GEN-LAST:event_jMenuItem15ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaDetalleTicket detalles = new VistaDetalleTicket();
+        detalles.setVisible(true);
+        escritorio.add(detalles);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments

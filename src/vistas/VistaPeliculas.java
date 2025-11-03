@@ -96,6 +96,11 @@ public class VistaPeliculas extends javax.swing.JInternalFrame {
         });
 
         jBmodificar.setText("MODIFICAR");
+        jBmodificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBmodificarActionPerformed(evt);
+            }
+        });
 
         jBeliminar.setText("ELIMINAR");
 
@@ -206,14 +211,13 @@ public class VistaPeliculas extends javax.swing.JInternalFrame {
             String genero = jTgenero.getText();
             LocalDate estreno = jDestreno.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             
-            
-            boolean estado;
+            boolean enCartelera;
             if(jRBsi.isSelected()){
-                estado = true;
+                enCartelera = true;
             }else{
-                estado = false;
+                enCartelera = false;
             }
-            Pelicula pel = new Pelicula(titulo, director, actores, origen, genero,estreno,estado );
+            Pelicula pel = new Pelicula(titulo, director, actores, origen, genero,estreno,enCartelera );
             if(pelid.cargarPelicula(pel)) {
                 JOptionPane.showMessageDialog(this, "Pelicula guardada");
             }else{
@@ -224,6 +228,38 @@ public class VistaPeliculas extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Error de formato");
         }
     }//GEN-LAST:event_jBcargarActionPerformed
+
+    private void jBmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBmodificarActionPerformed
+         try {
+            if (jTtitulo.getText().trim().isEmpty() || jTdirector.getText().trim().isEmpty()|| jTactores.getText().trim().isEmpty()|| jTorigen.getText().trim().isEmpty()|| jTgenero.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No se puedo realizar la actulizacion. Los campos no pueden estar vacios");
+                return;
+            }
+
+            String titulo = jTtitulo.getText();
+            String director = jTdirector.getText();
+            String actores = jTactores.getText();
+            String origen = jTorigen.getText();
+            String genero = jTgenero.getText();
+            LocalDate estreno = jDestreno.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            boolean enCartelera = jRBsi.isSelected();
+            Pelicula peli = new Pelicula();
+            peli.setTitulo(titulo);
+            peli.setDirector(director);
+            peli.setActores(actores);
+            peli.setOrigen(origen);
+            peli.setGenero(genero);
+            peli.setEstreno(estreno);
+            peli.setEnCartelera(enCartelera);
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error.");
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(this, "Debe completar todos los campos");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al actualizar: " + e.getMessage());
+        }
+    }//GEN-LAST:event_jBmodificarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
