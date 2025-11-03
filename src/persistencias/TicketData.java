@@ -12,8 +12,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class TicketData {
 
@@ -71,7 +69,6 @@ public class TicketData {
             System.out.println("Error al generar ticket: " + e.getMessage());
             return false;
         }
-
     }
 
     public boolean modificarTicket(TicketCompra ticket) {
@@ -102,11 +99,40 @@ public class TicketData {
             System.out.println("Error al modificar ticket: " + e.getMessage());
             return false;
         }
-
     }
 
     public boolean anularTicket(int idTicket) {
-        return false;
+
+        // Obtenemos detalle para poder liberar
+        try {
+            TicketCompra ticket = buscarTicketPorId(idTicket);
+
+            if (ticket != null && ticket.getDetalles() != null) {
+                for (DetalleTicket det : ticket.getDetalles()) {
+                    if (det.getLugares() != null) {
+                        for (LugarAsiento lugar : det.getLugares()) {
+                            lugarData.liberarLugar(lugar.getIdLugar());
+                        }
+                    }
+                    detalleData.borrarDetalleTicket(det.getIdDetalle(), null);
+                }
+            }
+
+            //Borramos el ticket
+            String sql = "DELETE "
+                    + "FROM ticketcompra "
+                    + "WHERE idTicket = ?";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idTicket);
+            ps.executeUpdate();
+            ps.close();
+            return true;
+
+        } catch (SQLException e) {
+            System.out.println("Error al anular ticket: " + e.getMessage());
+            return false;
+        }
     }
 
     public TicketCompra buscarTicketPorId(int idTicket) {
