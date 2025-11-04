@@ -79,15 +79,14 @@ public class DetalleTicketData {
             ps.executeUpdate();
             ps.close();
 
-            String queryLugares = "UPDATE lugar_detalleticket SET lugarId = ?, detalleId = ? where lugaresId = ?";
+            String queryLugares = "UPDATE lugar_detalleticket SET lugarId = ? where detalleId = ?";
             PreparedStatement psLugares = conex.prepareStatement(queryLugares);
             for (int i = 0; i < detalle.getLugares().size(); i++) {
                 LugarAsiento aux = detalle.getLugares().get(i);
-                int idLugarDetalle = Idlugares.get(i); // va asignando los id pasados por parametro
-
-                psLugares.setInt(1, aux.getIdLugar());
+                // va asignando los nuevos ids de lugar pasados por parametro
+                int idLugarDetalle = Idlugares.get(i);
+                psLugares.setInt(1, idLugarDetalle);
                 psLugares.setInt(2, detalle.getIdDetalle());
-                psLugares.setInt(3, idLugarDetalle);
                 psLugares.executeUpdate();
             }
             psLugares.close();
@@ -98,17 +97,13 @@ public class DetalleTicketData {
         }
     }
 
-    //LEER COMENTARIO
-    public void borrarDetalleTicket(int idDetalleBorrar, List<Integer> idLugaresBorrar) {
+    public void borrarDetalleTicket(int idDetalleBorrar , List<Integer> idLugaresBorrar) {
         String query = "DELETE FROM detalleticket WHERE idDetalle = ?";
         String queryLugares = "DELETE FROM lugar_detalleticket WHERE lugaresId = ?";
-        //CONSULTA LUGARES DEBERIA BORRAR EN BASE AL IDDETALLE ASI NO LE PASAMOS UNA LISTA
         try {
             PreparedStatement psLugares = conex.prepareStatement(queryLugares);
-            for (Integer aux : idLugaresBorrar) {
-                psLugares.setInt(1, aux);
-                psLugares.executeUpdate();
-            }
+            psLugares.setInt(1, idDetalleBorrar);
+            psLugares.executeUpdate();
             psLugares.close();
 
             PreparedStatement ps = conex.prepareStatement(query);
@@ -121,6 +116,25 @@ public class DetalleTicketData {
         }
     }
 
+    public void borrarDetalleTicketPorId(int idDetalleBorrar) {
+        String query = "DELETE FROM detalleticket WHERE idDetalle = ?";
+        String queryLugares = "DELETE FROM lugar_detalleticket WHERE detalleId = ?";
+        try {
+            PreparedStatement psLugares = conex.prepareStatement(queryLugares);
+            psLugares.setInt(1, idDetalleBorrar);
+            psLugares.executeUpdate();
+            psLugares.close();
+
+            PreparedStatement ps = conex.prepareStatement(query);
+            ps.setInt(1, idDetalleBorrar);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException e) {
+            System.out.println("No se pudo borrar el DetalleTicket, compuebe el id");
+            System.out.println(e.getMessage());
+        }
+    }
+    
     public DetalleTicket buscarDetalleTicket(int idDetalle) {
         DetalleTicket detalle = null;
         String query = "SELECT detalleticket.*, idLugar, fila, numero, nroSala, titulo "
@@ -246,12 +260,16 @@ public class DetalleTicketData {
         try {
             PreparedStatement ps = conex.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
+            
+            int idAnterior = -1;
+            DetalleTicket detalle = null;
             while (rs.next()) {
-                List<LugarAsiento> lugares = new ArrayList();
-                DetalleTicket detalle = null;
-                if (detalle == null) {
+                int idActual = rs.getInt("idDetalle");
+                
+                if(idActual != idAnterior){
                     detalle = new DetalleTicket();
-                    detalle.setIdDetalle(rs.getInt("idDetalle"));
+                    
+                    detalle.setIdDetalle(idActual);
                     TicketCompra ticket = new TicketCompra();
                     ticket.setIdTicket(rs.getInt("idTicket"));
                     detalle.setTicket(ticket);
@@ -269,15 +287,17 @@ public class DetalleTicketData {
 
                     detalle.setCantidad(rs.getInt("cantidad"));
                     detalle.setSubtotal(rs.getDouble("subTotal"));
+                    
+                    detalle.setLugares(new ArrayList());
+                    listaDetalles.add(detalle);
+                    idAnterior = detalle.getIdDetalle();
                 }
+
                 LugarAsiento lugar = new LugarAsiento();
                 lugar.setIdLugar(rs.getInt("idLugar"));
                 lugar.setFila(rs.getString("fila"));
                 lugar.setNumero(rs.getInt("numero"));
-                lugares.add(lugar);
-
-                detalle.setLugares(lugares);
-                listaDetalles.add(detalle);
+                detalle.getLugares().add(lugar);
             }
         } catch (SQLException e) {
             System.out.println("Error no se pudo obtener la lista");

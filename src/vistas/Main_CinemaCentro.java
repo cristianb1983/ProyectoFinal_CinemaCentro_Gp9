@@ -1,9 +1,15 @@
 package vistas;
 
 import entidades.Comprador;
+import entidades.DetalleTicket;
 import entidades.Pelicula;
+import entidades.Proyeccion;
+import entidades.Sala;
+import entidades.TicketCompra;
 import java.sql.Connection;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import persistencias.CompradorData;
 import persistencias.Conexion;
 import persistencias.DetalleTicketData;
@@ -47,6 +53,36 @@ public static void main(String[] args) {
     DetalleTicketData detalleD = new DetalleTicketData(Conexion.buscarConexion());
 //    System.out.println(detalleD.buscarDetalleTicket(10));
 //    System.out.println(detalleD.buscarDetallePorComprador(2345668));
+//    detalleD.borrarDetalleTicketPorId(23);
+
+    //Prueba de actualizar
+    List<Integer> listaLugaresId = new ArrayList();
+    int idlugar1 = 59;
+    int idlugar2 = 60;
+    listaLugaresId.add(idlugar1);
+    listaLugaresId.add(idlugar2);
+//    TicketCompra ticket, Proyeccion proyeccion, int cantidad, double subtotal, List<LugarAsiento> lugares
+    
+    TicketCompra ticket = new TicketCompra();
+    ticket.setIdTicket(13);
+
+    Proyeccion proyeccion = new Proyeccion();
+    proyeccion.setIdProyeccion(68);
+
+    Sala sala = new Sala();
+    sala.setNroSala(2);
+    
+    Pelicula pelicula = new Pelicula();
+    pelicula.setTitulo("");
+
+    proyeccion.setSala(sala);
+    proyeccion.setPelicula(pelicula);
+    
+    
+    
+    DetalleTicket detalle = new DetalleTicket(ticket, proyeccion, 2, 2 * 900, null);
+    detalleD.actualizarDetaleTicket(detalle, listaLugaresId);
+    System.out.println(detalleD.listaDetalles());
    
     } 
     
