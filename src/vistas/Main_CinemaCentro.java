@@ -2,6 +2,7 @@ package vistas;
 
 import entidades.Comprador;
 import entidades.DetalleTicket;
+import entidades.LugarAsiento;
 import entidades.Pelicula;
 import entidades.Proyeccion;
 import entidades.Sala;
@@ -57,8 +58,8 @@ public static void main(String[] args) {
 
     //Prueba de actualizar
     List<Integer> listaLugaresId = new ArrayList();
-    int idlugar1 = 59;
-    int idlugar2 = 60;
+    int idlugar1 = 12;
+    int idlugar2 = 13;
     listaLugaresId.add(idlugar1);
     listaLugaresId.add(idlugar2);
 //    TicketCompra ticket, Proyeccion proyeccion, int cantidad, double subtotal, List<LugarAsiento> lugares
@@ -79,10 +80,15 @@ public static void main(String[] args) {
     proyeccion.setPelicula(pelicula);
     
     
+    LugarAsiento lugar1 = new LugarAsiento(59, "c", 1, "ocupado", proyeccion);
+    LugarAsiento lugar2 = new LugarAsiento(60, "c", 2, "ocupado", proyeccion);
+    List<LugarAsiento> lugaresDetalle = new ArrayList();
+    lugaresDetalle.add(lugar1);
+    lugaresDetalle.add(lugar2);
     
-    DetalleTicket detalle = new DetalleTicket(ticket, proyeccion, 2, 2 * 900, null);
-    detalleD.actualizarDetaleTicket(detalle, listaLugaresId);
-    System.out.println(detalleD.listaDetalles());
+    DetalleTicket detalle = new DetalleTicket(ticket, proyeccion, 2, 2 * 900, lugaresDetalle);
+    detalleD.actualizarDetaleTicketTest(detalle, listaLugaresId);
+    System.out.println(detalleD.buscarDetalleTicket(26));
    
     } 
     
