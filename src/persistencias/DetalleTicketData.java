@@ -66,6 +66,36 @@ public class DetalleTicketData {
     }
 
     //Falta probar
+    public void actualizarDetaleTicketTest(DetalleTicket detalle, List<Integer> lugaresId) {
+        String query = "UPDATE detalleticket SET idTicket = ?, idProyeccion = ?, cantidad = ?, subTotal = ? where idDetalle = ?";
+        try {
+            PreparedStatement ps = conex.prepareStatement(query);
+            //Remplaso los comodines y ejecuto y actualizo
+            ps.setInt(1, detalle.getTicket().getIdTicket());
+            ps.setInt(2, detalle.getProyeccion().getIdProyeccion());
+            ps.setInt(3, detalle.getCantidad());
+            ps.setDouble(4, detalle.getSubtotal());
+            ps.setInt(5, detalle.getIdDetalle());
+            ps.executeUpdate();
+            ps.close();
+
+            String queryLugares = "UPDATE lugar_detalleticket SET lugarId = ? where lugaresId = ?";
+            PreparedStatement psLugares = conex.prepareStatement(queryLugares);
+            for (int i = 0; i < detalle.getLugares().size(); i++) {
+                int lugaresIdActual = lugaresId.get(i);
+                // va asignando los nuevos ids de lugar pasados por parametro
+                int idLugarDetalle = detalle.getLugares().get(i).getIdLugar();
+                psLugares.setInt(1, idLugarDetalle);
+                psLugares.setInt(2, lugaresIdActual);
+                psLugares.executeUpdate();
+            }
+            psLugares.close();
+            System.out.println("DetalleTicket actualizado");
+        } catch (SQLException e) {
+            System.out.println("No se pudo actualizar");
+            System.out.println(e.getMessage());
+        }
+    }
     public void actualizarDetaleTicket(DetalleTicket detalle, List<Integer> Idlugares) {
         String query = "UPDATE detalleticket SET idTicket = ?, idProyeccion = ?, cantidad = ?, subTotal = ? where idDetalle = ?";
         try {
