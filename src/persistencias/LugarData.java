@@ -22,7 +22,7 @@ public class LugarData {
     }
 
     public boolean guardarLugar(LugarAsiento lugar) {
-        String sql = "INSERT INTO lugar (fila, numero, estado, idProyeccion)"
+        String sql = "INSERT INTO lugar (fila, numero, estado, idProyeccion) "
                 + "VALUES (?,?,?,?";
 
         try {
@@ -42,7 +42,7 @@ public class LugarData {
                 }
                 System.out.println("Lugar guardado correctamente. ID: " + lugar.getIdLugar());
                 return true;
-                
+
             } else {
                 System.out.println("No se pudo guardar el lugar. ");
                 return false;
@@ -55,8 +55,8 @@ public class LugarData {
     }
 
     public boolean eliminarLugar(int idLugar) {
-        String sql = "DELETE"
-                + "FROM lugar"
+        String sql = "DELETE "
+                + "FROM lugar "
                 + "WHERE idLugar = ?";
 
         try {
@@ -110,8 +110,8 @@ public class LugarData {
     }
 
     public boolean liberarLugar(int idLugar) {
-        String sql = "UPDATE lugar"
-                + "SET estado = 'DISPONIBLE'"
+        String sql = "UPDATE lugar "
+                + "SET estado = 'DISPONIBLE' "
                 + "WHERE idLugar = ?";
 
         try {
@@ -135,8 +135,8 @@ public class LugarData {
     }
 
     public boolean ocuparLugar(int idLugar) {
-        String sql = "UPDATE lugar"
-                + "SET estado = 'NO DISPONIBLE'"
+        String sql = "UPDATE lugar "
+                + "SET estado = 'NO DISPONIBLE' "
                 + "WHERE idLugar = ?";
 
         try {
@@ -162,9 +162,9 @@ public class LugarData {
     public List<LugarAsiento> obtenerLugaresDisponibles(Proyeccion proyeccion) {
         List<LugarAsiento> lista = new ArrayList<>();
 
-        String sql = "SELECT *"
-                + "FROM lugar"
-                + "WHERE idProyeccion =?"
+        String sql = "SELECT * "
+                + "FROM lugar "
+                + "WHERE idProyeccion =? "
                 + "AND estado = 'DISPONIBLE'";
 
         try {
@@ -195,8 +195,8 @@ public class LugarData {
     public LugarAsiento buscarLugarPorId(int idLugar, Proyeccion proyeccion) {
         LugarAsiento lugar = null;
 
-        String sql = "SELECT *"
-                + "FROM lugar"
+        String sql = "SELECT * "
+                + "FROM lugar "
                 + "WHERE idLugar = ?";
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {
@@ -224,8 +224,8 @@ public class LugarData {
     public List<LugarAsiento> obtenerLugarPorProyeccion(Proyeccion proy) {
         List<LugarAsiento> lista = new ArrayList<>();
 
-        String sql = "SELECT *"
-                + "FROM lugar"
+        String sql = "SELECT * "
+                + "FROM lugar "
                 + "WHERE idProyeccion = ?";
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {

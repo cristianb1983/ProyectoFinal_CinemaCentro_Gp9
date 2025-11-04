@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-10-2025 a las 00:20:32
+-- Tiempo de generación: 03-11-2025 a las 02:37:41
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -68,6 +68,18 @@ CREATE TABLE `lugar` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `lugar_detalleticket`
+--
+
+CREATE TABLE `lugar_detalleticket` (
+  `lugaresId` int(11) NOT NULL,
+  `lugarId` int(11) NOT NULL,
+  `detalleId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `pelicula`
 --
 
@@ -95,8 +107,8 @@ CREATE TABLE `proyeccion` (
   `idioma` varchar(50) NOT NULL,
   `es3D` tinyint(1) NOT NULL,
   `subtitulada` tinyint(1) NOT NULL,
-  `horaInicio` time NOT NULL,
-  `horaFin` time NOT NULL,
+  `horaInicio` varchar(11) NOT NULL,
+  `horaFin` varchar(11) NOT NULL,
   `precioLugar` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -156,6 +168,14 @@ ALTER TABLE `lugar`
   ADD KEY `idProyeccion` (`idProyeccion`);
 
 --
+-- Indices de la tabla `lugar_detalleticket`
+--
+ALTER TABLE `lugar_detalleticket`
+  ADD PRIMARY KEY (`lugaresId`),
+  ADD KEY `lugarId` (`lugarId`),
+  ADD KEY `detalleId` (`detalleId`);
+
+--
 -- Indices de la tabla `pelicula`
 --
 ALTER TABLE `pelicula`
@@ -192,37 +212,43 @@ ALTER TABLE `ticketcompra`
 -- AUTO_INCREMENT de la tabla `detalleticket`
 --
 ALTER TABLE `detalleticket`
-  MODIFY `idDetalle` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idDetalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `lugar`
 --
 ALTER TABLE `lugar`
-  MODIFY `idLugar` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idLugar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT de la tabla `lugar_detalleticket`
+--
+ALTER TABLE `lugar_detalleticket`
+  MODIFY `lugaresId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `pelicula`
 --
 ALTER TABLE `pelicula`
-  MODIFY `idPelicula` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idPelicula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `proyeccion`
 --
 ALTER TABLE `proyeccion`
-  MODIFY `idProyeccion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idProyeccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `sala`
 --
 ALTER TABLE `sala`
-  MODIFY `idSala` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idSala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `ticketcompra`
 --
 ALTER TABLE `ticketcompra`
-  MODIFY `idTicket` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idTicket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restricciones para tablas volcadas
@@ -240,6 +266,13 @@ ALTER TABLE `detalleticket`
 --
 ALTER TABLE `lugar`
   ADD CONSTRAINT `lugar_ibfk_1` FOREIGN KEY (`idProyeccion`) REFERENCES `proyeccion` (`idProyeccion`);
+
+--
+-- Filtros para la tabla `lugar_detalleticket`
+--
+ALTER TABLE `lugar_detalleticket`
+  ADD CONSTRAINT `lugar_detalleticket_ibfk_1` FOREIGN KEY (`lugarId`) REFERENCES `lugar` (`idLugar`),
+  ADD CONSTRAINT `lugar_detalleticket_ibfk_2` FOREIGN KEY (`detalleId`) REFERENCES `detalleticket` (`idDetalle`);
 
 --
 -- Filtros para la tabla `proyeccion`

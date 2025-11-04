@@ -20,7 +20,7 @@ public class DetalleTicket {
         this.proyeccion = proyeccion;
         this.cantidad = cantidad;
         this.subtotal = subtotal;
-        this.lugares = new ArrayList<>();;
+        this.lugares = new ArrayList<>();
     }
 
     public DetalleTicket(TicketCompra ticket, Proyeccion proyeccion, int cantidad, double subtotal, List<LugarAsiento> lugares) {
