@@ -9,9 +9,11 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+
 
 public class TicketData {
 
@@ -73,7 +75,7 @@ public class TicketData {
 
     public boolean modificarTicket(TicketCompra ticket) {
 
-        String sql = "UPTADATE ticketcompra SET fechaFuncion = ?, monto = ?, tipoCompra = ? "
+        String sql = "UPDATE ticketcompra SET fechaFuncion = ?, monto = ?, tipoCompra = ? "
                 + "WHERE idTicket = ?";
 
         try {
@@ -165,17 +167,79 @@ public class TicketData {
                 ticket.setTipoCompra(rs.getString("tipoCompra"));
                 ticket.setCodigoVenta(rs.getString("codigoVenta"));
 
+                //Cargar detalles
+                List<DetalleTicket> detalles = detalleData.buscarDetallePorComprador(comprador.getDniComprador());
+                ticket.setDetalles(detalles);
+
+                ps.close();
+
             }
-        } catch (SQLException ex) {
-            System.out.println("Error al buscar ticket: " + ex.getMessage());
+        } catch (SQLException e) {
+            System.out.println("Error al buscar ticket: " + e.getMessage());
         }
 
         return ticket;
     }
 
-//    public List<TicketCompra> listarTicketsPorFecha(LocalDate desde, LocalDate hasta) {
-//    }
-//
-//    public List<TicketCompra> listarTicketPorPelicula(int idPelicula) {
-//    }
+    public List<TicketCompra> listarTicketsPorFecha(LocalDate desde, LocalDate hasta) {
+        List<TicketCompra> tickets = new ArrayList<>();
+
+        String sql = "SELECT idTicket "
+                + "FROM ticketcompra "
+                + "WHERE fechaCompra BETWEEN ? AND ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setDate(1, Date.valueOf(desde));
+            ps.setDate(2, Date.valueOf(hasta));
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                TicketCompra ticket = buscarTicketPorId(rs.getInt("idTicket"));
+
+                if (ticket != null) {
+                    tickets.add(ticket);
+                }
+            }
+
+            ps.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error al listar ticket por fecha: " + e.getMessage());
+        }
+
+        return tickets;
+    }
+
+    public List<TicketCompra> listarTicketPorPelicula(int idPelicula) {
+        List<TicketCompra> tickets = new ArrayList<>();
+
+        String sql = "SELECT DISTINCT dt.idTicket "
+                + "FROM detalleticket dt "
+                + "JOIN proyeccion p "
+                + "ON dt.idProyeccion = p.idProyeccion "
+                + "WHERE p.idPelicula = ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idPelicula);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                TicketCompra ticket = buscarTicketPorId(rs.getInt("idTicket"));
+
+                if (ticket != null) {
+                    tickets.add(ticket);
+                }
+            }
+
+            ps.close();
+        } catch (SQLException e) {
+            System.out.println("Error al listar ticket por pelicula: " + e.getMessage());
+        }
+
+        return tickets;
+    }
 }
