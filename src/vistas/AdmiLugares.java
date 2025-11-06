@@ -8,6 +8,7 @@ package vistas;
 
 import entidades.LugarAsiento;
 import entidades.Proyeccion;
+import javax.swing.JOptionPane;
 import persistencias.LugarData;
 
 /**
@@ -20,6 +21,8 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
     LugarData lugarD = new LugarData();
     public AdmiLugares() {
         initComponents();
+        cargarOpciones();
+        cargarEstado();
     }
 
     /** This method is called from within the constructor to
@@ -42,13 +45,13 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
         jtfFila = new javax.swing.JTextField();
         jtfColumna = new javax.swing.JTextField();
         jtfIdProyeccion = new javax.swing.JTextField();
-        jrbDesocupado = new javax.swing.JRadioButton();
-        jrbOcupado = new javax.swing.JRadioButton();
-        jrbDeshabilitado = new javax.swing.JRadioButton();
+        jcbEstado = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jcbOpciones = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jlTitulo = new javax.swing.JLabel();
         jbGuardar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jbBuscar = new javax.swing.JButton();
         jbActualizar = new javax.swing.JButton();
         jbLimpiar = new javax.swing.JButton();
 
@@ -78,46 +81,51 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
         jlIdProyeccion.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         jlIdProyeccion.setText("IdProyeccion");
 
-        jrbDesocupado.setText("Desocupado");
+        jLabel1.setText("Opciones");
 
-        jrbOcupado.setText("Ocupado");
-
-        jrbDeshabilitado.setText("Deshabilitado");
+        jcbOpciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbOpcionesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpDatosLayout = new javax.swing.GroupLayout(jpDatos);
         jpDatos.setLayout(jpDatosLayout);
         jpDatosLayout.setHorizontalGroup(
             jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpDatosLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
+                .addContainerGap(32, Short.MAX_VALUE)
                 .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlFila)
-                    .addComponent(jlIdLugar)
-                    .addComponent(jlColumna)
-                    .addComponent(jlEstado)
-                    .addComponent(jlIdProyeccion))
-                .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDatosLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jtfFila, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1)
                     .addGroup(jpDatosLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlFila)
+                            .addComponent(jlIdLugar)
+                            .addComponent(jlColumna)
+                            .addComponent(jlEstado)
+                            .addComponent(jlIdProyeccion))
+                        .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDatosLayout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(jtfFila, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jpDatosLayout.createSequentialGroup()
-                                .addComponent(jrbOcupado)
                                 .addGap(18, 18, 18)
-                                .addComponent(jrbDesocupado)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jrbDeshabilitado))
-                            .addComponent(jtfColumna, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfIdLugar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfIdProyeccion))))
+                                .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jtfColumna, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                                    .addComponent(jtfIdProyeccion, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                                    .addComponent(jcbEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jtfIdLugar, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                                    .addComponent(jcbOpciones, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         jpDatosLayout.setVerticalGroup(
             jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpDatosLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDatosLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(jcbOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jpDatosLayout.createSequentialGroup()
                         .addComponent(jtfIdLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -131,23 +139,17 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
                 .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jpDatosLayout.createSequentialGroup()
                         .addComponent(jtfColumna, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jrbOcupado)
-                            .addComponent(jrbDesocupado)
-                            .addComponent(jrbDeshabilitado)))
+                        .addGap(30, 30, 30)
+                        .addComponent(jcbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpDatosLayout.createSequentialGroup()
                         .addComponent(jlColumna)
                         .addGap(39, 39, 39)
                         .addComponent(jlEstado)))
-                .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpDatosLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jlIdProyeccion))
-                    .addGroup(jpDatosLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jtfIdProyeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jlIdProyeccion)
+                    .addComponent(jtfIdProyeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33))
         );
 
         jlTitulo.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
@@ -180,12 +182,12 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 204));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbBuscar.setBackground(new java.awt.Color(0, 0, 204));
+        jbBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        jbBuscar.setText("Buscar");
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbBuscarActionPerformed(evt);
             }
         });
 
@@ -212,12 +214,12 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jbGuardar)
                         .addGap(27, 27, 27)
-                        .addComponent(jButton1)
+                        .addComponent(jbBuscar)
                         .addGap(27, 27, 27)
                         .addComponent(jbActualizar)
                         .addGap(27, 27, 27)
@@ -225,19 +227,19 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
                         .addGap(27, 27, 27)
                         .addComponent(jbLimpiar))
                     .addComponent(jpDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(59, 59, 59))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(182, 182, 182))
+                .addGap(185, 185, 185))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(jpDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jpDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -245,86 +247,165 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
                         .addComponent(jbActualizar)
                         .addComponent(jbLimpiar)
                         .addComponent(jbBorrar))
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                    .addComponent(jbBuscar))
+                .addGap(20, 20, 20))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-        String fila = jtfFila.getText();
-        int columna = Integer.parseInt(jtfColumna.getText());
-        String estado;
-        int idProyeccion = Integer.parseInt(jtfIdProyeccion.getText());
-        if(jrbOcupado.isSelected()){
-            estado = "Ocupado";
-        }else if(jrbDesocupado.isSelected()){
-            estado = "Desocupado";
-        }else {
-            estado = "Deshabilitado";
+        //Validacion de campos vacios
+        if(jtfFila.getText().trim().isEmpty() || jtfColumna.getText().trim().isEmpty()
+           || jtfIdProyeccion.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Los campos no pueden estar vacios");
+            return;
         }
         
-        LugarAsiento lugar = new LugarAsiento();
-        lugar.setFila(fila);
-        lugar.setNumero(columna);
-        lugar.setEstado(estado);
-        
-        Proyeccion proy = new Proyeccion();
-        proy.setIdProyeccion(idProyeccion);
-        
-        lugar.setProyeccion(proy);
-        lugarD.guardarLugar(lugar);
+        try {
+            String fila = jtfFila.getText();
+            int columna = Integer.parseInt(jtfColumna.getText());
+            String estado = (String)jcbEstado.getSelectedItem();
+            int idProyeccion = Integer.parseInt(jtfIdProyeccion.getText());
+
+            LugarAsiento lugar = new LugarAsiento();
+            lugar.setFila(fila);
+            lugar.setNumero(columna);
+            lugar.setEstado(estado);
+
+            Proyeccion proy = new Proyeccion();
+            proy.setIdProyeccion(idProyeccion);
+
+            lugar.setProyeccion(proy);
+            lugarD.guardarLugar(lugar);
+        }catch(NumberFormatException e){
+             JOptionPane.showMessageDialog(this, "Error de formato" + e.getMessage());
+        }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarActionPerformed
-        int idLugar = Integer.parseInt(jtfIdLugar.getText());
-        String fila = jtfFila.getText();
-        int columna = Integer.parseInt(jtfColumna.getText());
-        String estado;
-        int idProyeccion = Integer.parseInt(jtfIdProyeccion.getText());
-        if(jrbOcupado.isSelected()){
-            estado = "Ocupado";
-        }else if(jrbDesocupado.isSelected()){
-            estado = "Desocupado";
-        }else {
-            estado = "Deshabilitado";
+        //Validacion de campos vacios
+        if(jtfIdLugar.getText().trim().isEmpty() || jtfFila.getText().trim().isEmpty()
+           || jtfColumna.getText().trim().isEmpty() || jtfIdProyeccion.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Los campos no pueden estar vacios");
+            return;
         }
         
-        Proyeccion proy = new Proyeccion();
-        proy.setIdProyeccion(idProyeccion);
-        
-        LugarAsiento lugar = new LugarAsiento(idLugar, fila, columna, estado, proy);
-        lugarD.actualizarLugar(lugar);
+        try{
+            int idLugar = Integer.parseInt(jtfIdLugar.getText());
+            String fila = jtfFila.getText();
+            int columna = Integer.parseInt(jtfColumna.getText());
+            String estado = (String)jcbEstado.getSelectedItem();
+            int idProyeccion = Integer.parseInt(jtfIdProyeccion.getText());
+
+            Proyeccion proy = new Proyeccion();
+            proy.setIdProyeccion(idProyeccion);
+
+            LugarAsiento lugar = new LugarAsiento(idLugar, fila, columna, estado, proy);
+            lugarD.actualizarLugar(lugar);
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Error de formato" + e.getMessage());
+        }
     }//GEN-LAST:event_jbActualizarActionPerformed
 
     private void jbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBorrarActionPerformed
-        int idLugar = Integer.parseInt(jtfIdLugar.getText());
-        lugarD.eliminarLugar(idLugar);
+        //Validacion de campos vacios
+        if(jtfIdLugar.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "El campos no puede estar vacio");
+            return;
+        }
+        
+        try{
+            int idLugar = Integer.parseInt(jtfIdLugar.getText());
+            lugarD.eliminarLugar(idLugar);
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Error de formato" + e.getMessage());
+        }
     }//GEN-LAST:event_jbBorrarActionPerformed
 
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
         jtfIdLugar.setText("");
         jtfFila.setText("");
         jtfColumna.setText("");
-        jrbOcupado.setSelected(false);
-        jrbDesocupado.setSelected(false);
-        jrbDeshabilitado.setSelected(false);
         jtfIdProyeccion.setText("");
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
-
+    private void jcbOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbOpcionesActionPerformed
+        String opciones = (String)jcbOpciones.getSelectedItem();
+        switch(opciones){
+            case "Guardar":
+                jtfIdLugar.setEnabled(false);
+                jtfFila.setEnabled(true);
+                jtfColumna.setEnabled(true);
+                jcbEstado.setEnabled(true);
+                jtfIdProyeccion.setEnabled(true);
+                jbGuardar.setEnabled(true);
+                jbBuscar.setEnabled(false);
+                jbActualizar.setEnabled(false);
+                jbBorrar.setEnabled(false);
+                break;
+            case "Buscar":
+                jtfIdLugar.setEnabled(true);
+                jtfFila.setEnabled(false);
+                jtfColumna.setEnabled(false);
+                jcbEstado.setEnabled(false);
+                jtfIdProyeccion.setEnabled(false);
+                jbGuardar.setEnabled(false);
+                jbBuscar.setEnabled(true);
+                jbActualizar.setEnabled(false);
+                jbBorrar.setEnabled(false);
+                break;
+            case "Actualizar":
+                jtfIdLugar.setEnabled(true);
+                jtfFila.setEnabled(true);
+                jtfColumna.setEnabled(true);
+                jcbEstado.setEnabled(true);
+                jtfIdProyeccion.setEnabled(true);
+                jbGuardar.setEnabled(false);
+                jbBuscar.setEnabled(false);
+                jbActualizar.setEnabled(true);
+                jbBorrar.setEnabled(false);                
+                break;
+            case "Borrar":
+                jtfIdLugar.setEnabled(true);
+                jtfFila.setEnabled(false);
+                jtfColumna.setEnabled(false);
+                jcbEstado.setEnabled(false);
+                jtfIdProyeccion.setEnabled(false);
+                jbGuardar.setEnabled(false);
+                jbBuscar.setEnabled(false);
+                jbActualizar.setEnabled(false);
+                jbBorrar.setEnabled(true);
+                break;
+        }
+    }//GEN-LAST:event_jcbOpcionesActionPerformed
+    
+    private void cargarOpciones(){
+        jcbOpciones.addItem("Guardar");
+        jcbOpciones.addItem("Buscar");
+        jcbOpciones.addItem("Actualizar");
+        jcbOpciones.addItem("Borrar");
+    }
+    
+    private void cargarEstado(){
+        jcbEstado.addItem("Ocupado");
+        jcbEstado.addItem("Libre");
+        jcbEstado.addItem("Deshabilitado");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbActualizar;
     private javax.swing.JButton jbBorrar;
+    private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbLimpiar;
+    private javax.swing.JComboBox<String> jcbEstado;
+    private javax.swing.JComboBox<String> jcbOpciones;
     private javax.swing.JLabel jlColumna;
     private javax.swing.JLabel jlEstado;
     private javax.swing.JLabel jlFila;
@@ -332,9 +413,6 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlIdProyeccion;
     private javax.swing.JLabel jlTitulo;
     private javax.swing.JPanel jpDatos;
-    private javax.swing.JRadioButton jrbDeshabilitado;
-    private javax.swing.JRadioButton jrbDesocupado;
-    private javax.swing.JRadioButton jrbOcupado;
     private javax.swing.JTextField jtfColumna;
     private javax.swing.JTextField jtfFila;
     private javax.swing.JTextField jtfIdLugar;
