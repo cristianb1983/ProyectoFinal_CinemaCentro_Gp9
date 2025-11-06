@@ -10,10 +10,11 @@ import java.sql.Statement;
 
 public class CompradorData {
     private Comprador comprador;
-    
-    public CompradorData(Connection con) {
+    private final Connection conex; 
+    public CompradorData() {
+        conex = Conexion.buscarConexion();
     }
-    Connection conex = Conexion.buscarConexion();
+//    Connection conex = Conexion.buscarConexion();
     public boolean RegistrarComprador(Comprador com) {
         String query = "INSERT INTO comprador (dni, nombre, fechaNac, password, medioPago) VALUES(?, ?, ?, ?, ?)";
         try {

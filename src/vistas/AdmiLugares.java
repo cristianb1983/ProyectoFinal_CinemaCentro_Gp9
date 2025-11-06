@@ -6,6 +6,10 @@
 
 package vistas;
 
+import entidades.LugarAsiento;
+import entidades.Proyeccion;
+import persistencias.LugarData;
+
 /**
  *
  * @author pc
@@ -13,6 +17,7 @@ package vistas;
 public class AdmiLugares extends javax.swing.JInternalFrame {
 
     /** Creates new form AdmiLugares */
+    LugarData lugarD = new LugarData();
     public AdmiLugares() {
         initComponents();
     }
@@ -26,20 +31,20 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton2 = new javax.swing.JButton();
+        jbBorrar = new javax.swing.JButton();
         jpDatos = new javax.swing.JPanel();
         jlIdLugar = new javax.swing.JLabel();
         jlFila = new javax.swing.JLabel();
         jlColumna = new javax.swing.JLabel();
         jlEstado = new javax.swing.JLabel();
-        jlMedioPago = new javax.swing.JLabel();
-        jtfDni = new javax.swing.JTextField();
-        jtfNombre = new javax.swing.JTextField();
-        jtfFechaNacimiento = new javax.swing.JTextField();
-        jtfMedioPago = new javax.swing.JTextField();
-        jrbNoSubtitulada = new javax.swing.JRadioButton();
-        jrbSISubtitulada = new javax.swing.JRadioButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        jlIdProyeccion = new javax.swing.JLabel();
+        jtfIdLugar = new javax.swing.JTextField();
+        jtfFila = new javax.swing.JTextField();
+        jtfColumna = new javax.swing.JTextField();
+        jtfIdProyeccion = new javax.swing.JTextField();
+        jrbDesocupado = new javax.swing.JRadioButton();
+        jrbOcupado = new javax.swing.JRadioButton();
+        jrbDeshabilitado = new javax.swing.JRadioButton();
         jPanel1 = new javax.swing.JPanel();
         jlTitulo = new javax.swing.JLabel();
         jbGuardar = new javax.swing.JButton();
@@ -47,9 +52,14 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
         jbActualizar = new javax.swing.JButton();
         jbLimpiar = new javax.swing.JButton();
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 204));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Borrar");
+        jbBorrar.setBackground(new java.awt.Color(0, 0, 204));
+        jbBorrar.setForeground(new java.awt.Color(255, 255, 255));
+        jbBorrar.setText("Borrar");
+        jbBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBorrarActionPerformed(evt);
+            }
+        });
 
         jpDatos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 51, 255)));
 
@@ -65,14 +75,14 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
         jlEstado.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         jlEstado.setText("Estado");
 
-        jlMedioPago.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jlMedioPago.setText("Medio de pago:");
+        jlIdProyeccion.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        jlIdProyeccion.setText("IdProyeccion");
 
-        jrbNoSubtitulada.setText("Desocupado");
+        jrbDesocupado.setText("Desocupado");
 
-        jrbSISubtitulada.setText("Ocupado");
+        jrbOcupado.setText("Ocupado");
 
-        jRadioButton1.setText("Deshabilitado");
+        jrbDeshabilitado.setText("Deshabilitado");
 
         javax.swing.GroupLayout jpDatosLayout = new javax.swing.GroupLayout(jpDatos);
         jpDatos.setLayout(jpDatosLayout);
@@ -85,23 +95,23 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
                     .addComponent(jlIdLugar)
                     .addComponent(jlColumna)
                     .addComponent(jlEstado)
-                    .addComponent(jlMedioPago))
+                    .addComponent(jlIdProyeccion))
                 .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDatosLayout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtfFila, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpDatosLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jpDatosLayout.createSequentialGroup()
-                                .addComponent(jrbSISubtitulada)
+                                .addComponent(jrbOcupado)
                                 .addGap(18, 18, 18)
-                                .addComponent(jrbNoSubtitulada)
+                                .addComponent(jrbDesocupado)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton1))
-                            .addComponent(jtfFechaNacimiento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfDni, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfMedioPago))))
+                                .addComponent(jrbDeshabilitado))
+                            .addComponent(jtfColumna, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfIdLugar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfIdProyeccion))))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         jpDatosLayout.setVerticalGroup(
@@ -110,9 +120,9 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
                 .addGap(30, 30, 30)
                 .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jpDatosLayout.createSequentialGroup()
-                        .addComponent(jtfDni, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfIdLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
-                        .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtfFila, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpDatosLayout.createSequentialGroup()
                         .addComponent(jlIdLugar)
                         .addGap(39, 39, 39)
@@ -120,12 +130,12 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
                 .addGap(30, 30, 30)
                 .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jpDatosLayout.createSequentialGroup()
-                        .addComponent(jtfFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfColumna, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
                         .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jrbSISubtitulada)
-                            .addComponent(jrbNoSubtitulada)
-                            .addComponent(jRadioButton1)))
+                            .addComponent(jrbOcupado)
+                            .addComponent(jrbDesocupado)
+                            .addComponent(jrbDeshabilitado)))
                     .addGroup(jpDatosLayout.createSequentialGroup()
                         .addComponent(jlColumna)
                         .addGap(39, 39, 39)
@@ -133,10 +143,10 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
                 .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpDatosLayout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addComponent(jlMedioPago))
+                        .addComponent(jlIdProyeccion))
                     .addGroup(jpDatosLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jtfMedioPago, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jtfIdProyeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -164,18 +174,38 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
         jbGuardar.setBackground(new java.awt.Color(0, 0, 204));
         jbGuardar.setForeground(new java.awt.Color(255, 255, 255));
         jbGuardar.setText("Guardar");
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(0, 0, 204));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jbActualizar.setBackground(new java.awt.Color(0, 0, 204));
         jbActualizar.setForeground(new java.awt.Color(255, 255, 255));
         jbActualizar.setText("Actualizar");
+        jbActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbActualizarActionPerformed(evt);
+            }
+        });
 
         jbLimpiar.setBackground(new java.awt.Color(0, 0, 153));
         jbLimpiar.setForeground(new java.awt.Color(255, 255, 255));
         jbLimpiar.setText("Limpiar");
+        jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbLimpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -191,7 +221,7 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
                         .addGap(27, 27, 27)
                         .addComponent(jbActualizar)
                         .addGap(27, 27, 27)
-                        .addComponent(jButton2)
+                        .addComponent(jbBorrar)
                         .addGap(27, 27, 27)
                         .addComponent(jbLimpiar))
                     .addComponent(jpDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -214,7 +244,7 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
                         .addComponent(jbGuardar)
                         .addComponent(jbActualizar)
                         .addComponent(jbLimpiar)
-                        .addComponent(jButton2))
+                        .addComponent(jbBorrar))
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
@@ -222,28 +252,93 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        String fila = jtfFila.getText();
+        int columna = Integer.parseInt(jtfColumna.getText());
+        String estado;
+        int idProyeccion = Integer.parseInt(jtfIdProyeccion.getText());
+        if(jrbOcupado.isSelected()){
+            estado = "Ocupado";
+        }else if(jrbDesocupado.isSelected()){
+            estado = "Desocupado";
+        }else {
+            estado = "Deshabilitado";
+        }
+        
+        LugarAsiento lugar = new LugarAsiento();
+        lugar.setFila(fila);
+        lugar.setNumero(columna);
+        lugar.setEstado(estado);
+        
+        Proyeccion proy = new Proyeccion();
+        proy.setIdProyeccion(idProyeccion);
+        
+        lugar.setProyeccion(proy);
+        lugarD.guardarLugar(lugar);
+    }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jbActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarActionPerformed
+        int idLugar = Integer.parseInt(jtfIdLugar.getText());
+        String fila = jtfFila.getText();
+        int columna = Integer.parseInt(jtfColumna.getText());
+        String estado;
+        int idProyeccion = Integer.parseInt(jtfIdProyeccion.getText());
+        if(jrbOcupado.isSelected()){
+            estado = "Ocupado";
+        }else if(jrbDesocupado.isSelected()){
+            estado = "Desocupado";
+        }else {
+            estado = "Deshabilitado";
+        }
+        
+        Proyeccion proy = new Proyeccion();
+        proy.setIdProyeccion(idProyeccion);
+        
+        LugarAsiento lugar = new LugarAsiento(idLugar, fila, columna, estado, proy);
+        lugarD.actualizarLugar(lugar);
+    }//GEN-LAST:event_jbActualizarActionPerformed
+
+    private void jbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBorrarActionPerformed
+        int idLugar = Integer.parseInt(jtfIdLugar.getText());
+        lugarD.eliminarLugar(idLugar);
+    }//GEN-LAST:event_jbBorrarActionPerformed
+
+    private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
+        jtfIdLugar.setText("");
+        jtfFila.setText("");
+        jtfColumna.setText("");
+        jrbOcupado.setSelected(false);
+        jrbDesocupado.setSelected(false);
+        jrbDeshabilitado.setSelected(false);
+        jtfIdProyeccion.setText("");
+    }//GEN-LAST:event_jbLimpiarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JButton jbActualizar;
+    private javax.swing.JButton jbBorrar;
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbLimpiar;
     private javax.swing.JLabel jlColumna;
     private javax.swing.JLabel jlEstado;
     private javax.swing.JLabel jlFila;
     private javax.swing.JLabel jlIdLugar;
-    private javax.swing.JLabel jlMedioPago;
+    private javax.swing.JLabel jlIdProyeccion;
     private javax.swing.JLabel jlTitulo;
     private javax.swing.JPanel jpDatos;
-    private javax.swing.JRadioButton jrbNoSubtitulada;
-    private javax.swing.JRadioButton jrbSISubtitulada;
-    private javax.swing.JTextField jtfDni;
-    private javax.swing.JTextField jtfFechaNacimiento;
-    private javax.swing.JTextField jtfMedioPago;
-    private javax.swing.JTextField jtfNombre;
+    private javax.swing.JRadioButton jrbDeshabilitado;
+    private javax.swing.JRadioButton jrbDesocupado;
+    private javax.swing.JRadioButton jrbOcupado;
+    private javax.swing.JTextField jtfColumna;
+    private javax.swing.JTextField jtfFila;
+    private javax.swing.JTextField jtfIdLugar;
+    private javax.swing.JTextField jtfIdProyeccion;
     // End of variables declaration//GEN-END:variables
 
 }

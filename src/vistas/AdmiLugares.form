@@ -29,7 +29,7 @@
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="jbActualizar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jbBorrar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="jbLimpiar" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -57,7 +57,7 @@
                       <Component id="jbGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jbActualizar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jbLimpiar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jbBorrar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jButton1" max="32767" attributes="0"/>
               </Group>
@@ -67,7 +67,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="jbBorrar">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="0" red="0" type="rgb"/>
@@ -77,6 +77,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Borrar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbBorrarActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="jpDatos">
       <Properties>
@@ -99,26 +102,26 @@
                       <Component id="jlIdLugar" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jlColumna" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jlEstado" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jlMedioPago" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlIdProyeccion" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                          <Component id="jtfNombre" min="-2" pref="324" max="-2" attributes="0"/>
+                          <Component id="jtfFila" min="-2" pref="324" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="jrbSISubtitulada" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jrbOcupado" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jrbNoSubtitulada" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jrbDesocupado" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jrbDeshabilitado" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jtfFechaNacimiento" alignment="1" min="-2" pref="324" max="-2" attributes="0"/>
-                              <Component id="jtfDni" alignment="1" min="-2" pref="324" max="-2" attributes="0"/>
-                              <Component id="jtfMedioPago" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jtfColumna" alignment="1" min="-2" pref="324" max="-2" attributes="0"/>
+                              <Component id="jtfIdLugar" alignment="1" min="-2" pref="324" max="-2" attributes="0"/>
+                              <Component id="jtfIdProyeccion" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -132,9 +135,9 @@
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="jtfDni" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="jtfIdLugar" min="-2" pref="30" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="jtfNombre" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="jtfFila" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jlIdLugar" min="-2" max="-2" attributes="0"/>
@@ -145,12 +148,12 @@
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jtfFechaNacimiento" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="jtfColumna" min="-2" pref="30" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jrbSISubtitulada" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jrbNoSubtitulada" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jRadioButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jrbOcupado" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jrbDesocupado" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jrbDeshabilitado" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
@@ -162,11 +165,11 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                          <Component id="jlMedioPago" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlIdProyeccion" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jtfMedioPago" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="jtfIdProyeccion" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="30" max="32767" attributes="0"/>
@@ -207,33 +210,33 @@
             <Property name="text" type="java.lang.String" value="Estado"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jlMedioPago">
+        <Component class="javax.swing.JLabel" name="jlIdProyeccion">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="16" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Medio de pago:"/>
+            <Property name="text" type="java.lang.String" value="IdProyeccion"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtfDni">
+        <Component class="javax.swing.JTextField" name="jtfIdLugar">
         </Component>
-        <Component class="javax.swing.JTextField" name="jtfNombre">
+        <Component class="javax.swing.JTextField" name="jtfFila">
         </Component>
-        <Component class="javax.swing.JTextField" name="jtfFechaNacimiento">
+        <Component class="javax.swing.JTextField" name="jtfColumna">
         </Component>
-        <Component class="javax.swing.JTextField" name="jtfMedioPago">
+        <Component class="javax.swing.JTextField" name="jtfIdProyeccion">
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jrbNoSubtitulada">
+        <Component class="javax.swing.JRadioButton" name="jrbDesocupado">
           <Properties>
             <Property name="text" type="java.lang.String" value="Desocupado"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jrbSISubtitulada">
+        <Component class="javax.swing.JRadioButton" name="jrbOcupado">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ocupado"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButton1">
+        <Component class="javax.swing.JRadioButton" name="jrbDeshabilitado">
           <Properties>
             <Property name="text" type="java.lang.String" value="Deshabilitado"/>
           </Properties>
@@ -286,6 +289,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Guardar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbGuardarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
@@ -297,6 +303,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Buscar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbActualizar">
       <Properties>
@@ -308,6 +317,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Actualizar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbActualizarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbLimpiar">
       <Properties>
@@ -319,6 +331,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Limpiar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbLimpiarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
