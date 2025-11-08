@@ -5,8 +5,13 @@
  */
 package vistas;
 
+import entidades.TicketCompra;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import persistencias.TicketData;
 
 /**
  *
@@ -18,11 +23,13 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
     private DefaultTableModel modeloTicketsPorPeliculas = new DefaultTableModel();
     private DefaultTableModel modeloCompradoresPorFecha = new DefaultTableModel();
 
+    private TicketData ticketD = new TicketData();
     public VistaEstadisticas() {
         initComponents();
         tablaTicketsPorFecha();
         tablaTicketsPorPelicula();
         tablaCompradoresPorFecha();
+        cargarComboPeliculas();
 
     }
 
@@ -73,16 +80,18 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
         jTPestadistica = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jdcPorFecha = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTtiketsPorFecha = new javax.swing.JTable();
+        jbLimpiarFechas = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jcbPeliculas = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTticketsPorPelicula = new javax.swing.JTable();
+        jbLimpiar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
@@ -97,6 +106,12 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
         setTitle("ESTADISTICAS");
 
         jLabel1.setText("INGRESE LA FECHA: ");
+
+        jdcPorFecha.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jdcPorFechaPropertyChange(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -115,24 +130,35 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
         ));
         jScrollPane3.setViewportView(jTtiketsPorFecha);
 
+        jbLimpiarFechas.setText("Limpiar");
+        jbLimpiarFechas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbLimpiarFechasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(115, 115, 115)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jdcPorFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(237, 237, 237)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(jbLimpiarFechas)))
+                        .addGap(0, 267, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(237, 237, 237)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(273, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,19 +166,25 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
                 .addGap(53, 53, 53)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
+                    .addComponent(jdcPorFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
                 .addGap(34, 34, 34)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addComponent(jbLimpiarFechas)
+                .addContainerGap())
         );
 
         jTPestadistica.addTab("TICKETS EMITIDOS POR FECHA", jPanel1);
 
         jLabel5.setText("SELECCIONE LA PELICULA: ");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbPeliculas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbPeliculasActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -171,24 +203,35 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
         ));
         jScrollPane2.setViewportView(jTticketsPorPelicula);
 
+        jbLimpiar.setText("Limpiar");
+        jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbLimpiarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 152, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(122, 122, 122)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jcbPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(181, 181, 181)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(jbLimpiar)))
+                        .addGap(0, 152, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(181, 181, 181)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,12 +239,14 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
                 .addGap(38, 38, 38)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addComponent(jbLimpiar)
+                .addContainerGap())
         );
 
         jTPestadistica.addTab("TICKETS EMITIDOS POR PELICULA", jPanel2);
@@ -280,10 +325,70 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jdcPorFechaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jdcPorFechaPropertyChange
+        cargarTablaPorFecha();
+    }//GEN-LAST:event_jdcPorFechaPropertyChange
 
+    private void jcbPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbPeliculasActionPerformed
+        cargarTablaPorPeliculas();
+    }//GEN-LAST:event_jcbPeliculasActionPerformed
+
+    private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
+        modeloTicketsPorPeliculas.setRowCount(0);
+    }//GEN-LAST:event_jbLimpiarActionPerformed
+
+    private void jbLimpiarFechasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarFechasActionPerformed
+        modeloTicketsPorFecha.setRowCount(0);
+    }//GEN-LAST:event_jbLimpiarFechasActionPerformed
+
+    public void cargarTablaPorFecha(){
+        List<TicketCompra> tickets = new ArrayList();
+        try {
+            LocalDate fecha = jdcPorFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate fecha2 = fecha.plusDays(1);
+            tickets = ticketD.listarTicketsPorFecha(fecha, fecha2);
+            for (TicketCompra aux : tickets) {
+                modeloTicketsPorFecha.addRow(new Object[] {
+                    aux.getFechaCompra(),
+                    aux.getFechaFuncion(),
+                    aux.getComprador().getDniComprador(),
+                    aux.getTipoCompra(),
+                    aux.getCodigoVenta(),
+                    aux.getMonto()
+                });              
+            }
+        }catch(NullPointerException e){
+            System.out.println("debe seleccionar una fecha");
+        }
+    }
+    
+    public void cargarTablaPorPeliculas(){
+        String peliString = (String) jcbPeliculas.getSelectedItem();
+        String[] partesPeli = peliString.split(",");
+        int idPelicula = Integer.parseInt(partesPeli[0]);
+        List<TicketCompra> tickets = ticketD.listarTicketPorPelicula(idPelicula);
+        
+        for(TicketCompra aux : tickets){
+            modeloTicketsPorPeliculas.addRow(new Object[] {
+                aux.getFechaCompra(),
+                aux.getFechaFuncion(),
+                aux.getComprador().getDniComprador(),
+                aux.getTipoCompra(),
+                aux.getCodigoVenta(),
+                aux.getMonto()
+            });
+        } 
+    }
+    
+    private void cargarComboPeliculas(){
+        jcbPeliculas.addItem("12, Alien: Planeta Tierra");
+        jcbPeliculas.addItem("13, Demon Slayer: Castillo Infinito");
+        jcbPeliculas.addItem("14, Los 4 Fantásticos: Primeros Pasos");
+        jcbPeliculas.addItem("15, Ballerina");
+        jcbPeliculas.addItem("16, Las Guerreras K-Pop");
+        jcbPeliculas.addItem("17, El Teléfono Negro");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -301,5 +406,9 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTcompradoresPorFecha;
     private javax.swing.JTable jTticketsPorPelicula;
     private javax.swing.JTable jTtiketsPorFecha;
+    private javax.swing.JButton jbLimpiar;
+    private javax.swing.JButton jbLimpiarFechas;
+    private javax.swing.JComboBox<String> jcbPeliculas;
+    private com.toedter.calendar.JDateChooser jdcPorFecha;
     // End of variables declaration//GEN-END:variables
 }

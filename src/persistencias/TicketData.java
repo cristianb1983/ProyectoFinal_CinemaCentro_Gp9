@@ -140,7 +140,7 @@ public class TicketData {
     public TicketCompra buscarTicketPorId(int idTicket) {
         TicketCompra ticket = null;
 
-        String sql = "SELECT t.*, c.nombre, c.fechaNac, c.medioPago "
+        String sql = "SELECT t.*, c.nombre, c.fechaNac, c.medioPago, c.dni "
                 + "FROM ticketcompra t "
                 + "JOIN comprador c "
                 + "ON t.dniComprador = c.dni "
