@@ -92,5 +92,21 @@ public class CompradorData {
             e.getMessage();
         }    
     }
+    public boolean existeDni(int dni){
+        boolean existe = false;
+         String query = "SELECT * FROM comprador WHERE dni = ?";
+         try {
+        PreparedStatement ps = conex.prepareStatement(query);
+        ps.setInt(1, dni);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            existe = true; // Si encuentra un registro, el DNI existe
+        }
+       
+    } catch (SQLException e) {
+        System.out.println("Error no se pudo acceder a la base de datos");
+    }
+    return existe;
+    }
     
 }

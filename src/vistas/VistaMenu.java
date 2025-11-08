@@ -27,6 +27,7 @@ public class VistaMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
@@ -34,6 +35,8 @@ public class VistaMenu extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMIcompra = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMprueba = new javax.swing.JMenuItem();
+        jMIregistro = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
@@ -49,6 +52,23 @@ public class VistaMenu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CinemaCentro");
         setAutoRequestFocus(false);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 1443, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 736, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         jMenu2.setText("Peliculas");
 
@@ -80,6 +100,23 @@ public class VistaMenu extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem3);
 
+        jMprueba.setText("compra prueba");
+        jMprueba.setAutoscrolls(true);
+        jMprueba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMpruebaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMprueba);
+
+        jMIregistro.setText("REGISTRATE !!!");
+        jMIregistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIregistroActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMIregistro);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Consultas");
@@ -108,6 +145,11 @@ public class VistaMenu extends javax.swing.JFrame {
         jMenu1.add(jMIgestionSalas);
 
         jMIgestionTickets.setText("Tickets");
+        jMIgestionTickets.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIgestionTicketsActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMIgestionTickets);
 
         jMenuItem11.setBackground(new java.awt.Color(0, 51, 0));
@@ -155,11 +197,11 @@ public class VistaMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 1269, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 748, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -237,9 +279,31 @@ public class VistaMenu extends javax.swing.JFrame {
         escritorio.add(detalles);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jMpruebaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMpruebaActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaCompra comp = new VistaCompra();
+        comp.setVisible(true);
+        escritorio.add(comp); 
+    }//GEN-LAST:event_jMpruebaActionPerformed
+
+    private void jMIgestionTicketsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIgestionTicketsActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        GestionTikets gestionTicket = new GestionTikets();
+        gestionTicket.setVisible(true);
+        escritorio.add(gestionTicket); 
+    }//GEN-LAST:event_jMIgestionTicketsActionPerformed
+
+    private void jMIregistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIregistroActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaRegistro reg = new VistaRegistro();
+        reg.setVisible(true);
+        escritorio.add(reg);
+    }//GEN-LAST:event_jMIregistroActionPerformed
+
+   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -279,6 +343,7 @@ public class VistaMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMIgestionPeliculas;
     private javax.swing.JMenuItem jMIgestionSalas;
     private javax.swing.JMenuItem jMIgestionTickets;
+    private javax.swing.JMenuItem jMIregistro;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -291,5 +356,7 @@ public class VistaMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem jMprueba;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

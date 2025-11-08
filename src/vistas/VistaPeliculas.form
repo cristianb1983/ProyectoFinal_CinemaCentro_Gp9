@@ -29,46 +29,60 @@
               <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jBcargar" min="-2" pref="111" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="387" max="-2" attributes="0"/>
-                      <Component id="jBeliminar" min="-2" pref="111" max="-2" attributes="0"/>
+                      <Component id="jLpelicula" min="-2" pref="83" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jLabel1" min="-2" pref="307" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jLenCartelera" min="-2" pref="107" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      <Component id="jRBsi" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="jRBno" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jLdirector" alignment="0" pref="75" max="32767" attributes="0"/>
-                              <Component id="jLtitulo" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="jLactores" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jLgenero" alignment="0" pref="83" max="32767" attributes="0"/>
-                              <Component id="jLorigen" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="jLestreno" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
-                          <Component id="jLenCartelera" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jTdirector" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTactores" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTorigen" max="32767" attributes="0"/>
-                          <Component id="jTgenero" pref="409" max="32767" attributes="0"/>
-                          <Component id="jTtitulo" max="32767" attributes="0"/>
+                          <Component id="jLabel1" min="-2" pref="307" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                              <Component id="jRBsi" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jRBno" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="jLdirector" alignment="0" pref="75" max="32767" attributes="0"/>
+                                      <Component id="jLtitulo" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="jLactores" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="jLgenero" alignment="0" pref="83" max="32767" attributes="0"/>
+                                      <Component id="jLorigen" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="jLestreno" alignment="1" min="-2" pref="83" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                                      <Component id="jBmodificar" min="-2" pref="126" max="-2" attributes="0"/>
+                                      <EmptySpace pref="118" max="32767" attributes="0"/>
+                                      <Component id="jBeliminar" min="-2" pref="111" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jTdirector" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jTactores" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jTorigen" max="32767" attributes="0"/>
+                                          <Component id="jTgenero" pref="409" max="32767" attributes="0"/>
+                                          <Component id="jTtitulo" max="32767" attributes="0"/>
+                                          <Component id="jDestreno" alignment="0" min="-2" pref="238" max="-2" attributes="0"/>
+                                          <Component id="jTFidPelicula" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Component id="jBmodificar" min="-2" pref="126" max="-2" attributes="0"/>
-                              <Component id="jDestreno" min="-2" pref="238" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jBcargar" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="73" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -77,51 +91,54 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="39" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLtitulo" min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="jTtitulo" pref="37" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLdirector" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                          <Component id="jTdirector" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLactores" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                          <Component id="jTactores" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLorigen" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="jTorigen" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLgenero" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="jTgenero" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jLestreno" min="-2" pref="37" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="jDestreno" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="42" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jLpelicula" max="32767" attributes="0"/>
+                  <Component id="jTFidPelicula" pref="34" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLtitulo" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                  <Component id="jTtitulo" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLdirector" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="jTdirector" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLactores" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="jTactores" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLorigen" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="jTorigen" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLgenero" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="jTgenero" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jDestreno" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLestreno" min="-2" pref="37" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLenCartelera" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
                   <Component id="jRBsi" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jRBno" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jBcargar" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
+                  <Component id="jBmodificar" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
                   <Component id="jBeliminar" alignment="3" min="-2" pref="52" max="-2" attributes="0"/>
-                  <Component id="jBmodificar" min="-2" pref="51" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="39" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -215,6 +232,13 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="ELIMINAR"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLpelicula">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="ID PELICULA:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTFidPelicula">
     </Component>
   </SubComponents>
 </Form>
