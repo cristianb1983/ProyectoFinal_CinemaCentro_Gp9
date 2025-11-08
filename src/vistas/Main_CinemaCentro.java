@@ -30,7 +30,7 @@ public static void main(String[] args) {
 //    Comprador com2 = new Comprador(23456234, "Ayelen", LocalDate.now(), "987hyu", "Efectivo");
 //    Comprador com3 = new Comprador(25678245, "Julian", LocalDate.now(), "35fhj", "Efectivo");
 //    Comprador com4 = new Comprador(32567842, "Cristian", LocalDate.now(), "tfj234", "Efectivo");
-    CompradorData compradorD = new CompradorData(Conexion.buscarConexion());
+//    CompradorData compradorD = new CompradorData(Conexion.buscarConexion());
 //    compradorD.RegistrarComprador(com2);
     
     //Buscar funciona

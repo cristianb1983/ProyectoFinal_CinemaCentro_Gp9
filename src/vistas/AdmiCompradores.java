@@ -5,6 +5,13 @@
  */
 package vistas;
 
+import entidades.Comprador;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import javax.swing.JOptionPane;
+import persistencias.CompradorData;
+
 /**
  *
  * @author pc
@@ -14,8 +21,10 @@ public class AdmiCompradores extends javax.swing.JInternalFrame {
     /**
      * Creates new form AdmiCompradores
      */
+    CompradorData compradorD = new CompradorData();
     public AdmiCompradores() {
         initComponents();
+        cargarCombo();
     }
 
     /**
@@ -35,16 +44,18 @@ public class AdmiCompradores extends javax.swing.JInternalFrame {
         jlMedioPago = new javax.swing.JLabel();
         jtfDni = new javax.swing.JTextField();
         jtfNombre = new javax.swing.JTextField();
-        jtfFechaNacimiento = new javax.swing.JTextField();
         jtfPassword = new javax.swing.JTextField();
         jtfMedioPago = new javax.swing.JTextField();
+        jdcFechaNac = new com.toedter.calendar.JDateChooser();
+        jcOpciones = new javax.swing.JComboBox<>();
+        jlOpcion = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jlTitulo = new javax.swing.JLabel();
         jbGuardar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jbBuscar = new javax.swing.JButton();
         jbActualizar = new javax.swing.JButton();
         jbLimpiar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jbBorrar = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -71,35 +82,50 @@ public class AdmiCompradores extends javax.swing.JInternalFrame {
             }
         });
 
+        jcOpciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcOpcionesActionPerformed(evt);
+            }
+        });
+
+        jlOpcion.setText("Elija una opcion");
+
         javax.swing.GroupLayout jpDatosLayout = new javax.swing.GroupLayout(jpDatos);
         jpDatos.setLayout(jpDatosLayout);
         jpDatosLayout.setHorizontalGroup(
             jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpDatosLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDatosLayout.createSequentialGroup()
+                .addContainerGap(58, Short.MAX_VALUE)
                 .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jlNombre)
                     .addComponent(jlDni)
                     .addComponent(jlNac)
                     .addComponent(jlPass)
-                    .addComponent(jlMedioPago))
+                    .addComponent(jlMedioPago)
+                    .addComponent(jlOpcion))
                 .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpDatosLayout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jtfDni, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jtfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jtfFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jtfNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jtfDni, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                                    .addComponent(jtfPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                                    .addComponent(jcOpciones, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jtfNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jdcFechaNac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jpDatosLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jtfMedioPago, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addGap(58, 58, 58))
         );
         jpDatosLayout.setVerticalGroup(
             jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpDatosLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDatosLayout.createSequentialGroup()
+                .addContainerGap(46, Short.MAX_VALUE)
+                .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jcOpciones, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlOpcion, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(30, 30, 30)
                 .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jpDatosLayout.createSequentialGroup()
@@ -110,22 +136,22 @@ public class AdmiCompradores extends javax.swing.JInternalFrame {
                         .addComponent(jlDni)
                         .addGap(39, 39, 39)
                         .addComponent(jlNombre)))
+                .addGap(31, 31, 31)
+                .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jdcFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlNac))
                 .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jpDatosLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jtfFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(jtfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jtfMedioPago, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpDatosLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jlNac)
                         .addGap(39, 39, 39)
                         .addComponent(jlPass)
                         .addGap(39, 39, 39)
-                        .addComponent(jlMedioPago)))
-                .addContainerGap(72, Short.MAX_VALUE))
+                        .addComponent(jlMedioPago))
+                    .addGroup(jpDatosLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jtfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jtfMedioPago, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(43, 43, 43))
         );
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
@@ -155,36 +181,58 @@ public class AdmiCompradores extends javax.swing.JInternalFrame {
         jbGuardar.setBackground(new java.awt.Color(0, 0, 204));
         jbGuardar.setForeground(new java.awt.Color(255, 255, 255));
         jbGuardar.setText("Guardar");
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 204));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Buscar");
+        jbBuscar.setBackground(new java.awt.Color(0, 0, 204));
+        jbBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        jbBuscar.setText("Buscar");
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
+            }
+        });
 
         jbActualizar.setBackground(new java.awt.Color(0, 0, 204));
         jbActualizar.setForeground(new java.awt.Color(255, 255, 255));
         jbActualizar.setText("Actualizar");
+        jbActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbActualizarActionPerformed(evt);
+            }
+        });
 
         jbLimpiar.setBackground(new java.awt.Color(0, 0, 153));
         jbLimpiar.setForeground(new java.awt.Color(255, 255, 255));
         jbLimpiar.setText("Limpiar");
+        jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbLimpiarActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 204));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Borrar");
+        jbBorrar.setBackground(new java.awt.Color(0, 0, 204));
+        jbBorrar.setForeground(new java.awt.Color(255, 255, 255));
+        jbBorrar.setText("Borrar");
+        jbBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBorrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(119, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(160, 160, 160))
             .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jbGuardar)
+<<<<<<< HEAD
                         .addGap(26, 26, 26)
                         .addComponent(jButton1)
                         .addGap(29, 29, 29)
@@ -192,15 +240,29 @@ public class AdmiCompradores extends javax.swing.JInternalFrame {
                         .addGap(27, 27, 27)
                         .addComponent(jButton2)
                         .addGap(26, 26, 26)
+=======
+                        .addGap(27, 27, 27)
+                        .addComponent(jbBuscar)
+                        .addGap(27, 27, 27)
+                        .addComponent(jbActualizar)
+                        .addGap(27, 27, 27)
+                        .addComponent(jbBorrar)
+                        .addGap(27, 27, 27)
+>>>>>>> 1cb3eb1fe7ee0573fd12bf70e16868e33c0bb462
                         .addComponent(jbLimpiar))
                     .addComponent(jpDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(127, 127, 127))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
                 .addGap(39, 39, 39)
                 .addComponent(jpDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
@@ -211,6 +273,19 @@ public class AdmiCompradores extends javax.swing.JInternalFrame {
                     .addComponent(jButton2)
                     .addComponent(jbLimpiar))
                 .addContainerGap(33, Short.MAX_VALUE))
+=======
+                .addGap(18, 18, 18)
+                .addComponent(jpDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jbGuardar)
+                        .addComponent(jbActualizar)
+                        .addComponent(jbLimpiar)
+                        .addComponent(jbBorrar))
+                    .addComponent(jbBuscar))
+                .addGap(25, 25, 25))
+>>>>>>> 1cb3eb1fe7ee0573fd12bf70e16868e33c0bb462
         );
 
         pack();
@@ -220,23 +295,171 @@ public class AdmiCompradores extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfPasswordActionPerformed
 
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        //Validacion de campos vacios
+        if(jtfDni.getText().trim().isEmpty() || jtfNombre.getText().trim().isEmpty()
+            || jdcFechaNac.getDate() == null || jtfPassword.getText().trim().isEmpty() ||
+            jtfMedioPago.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Los campos no pueden estar vacios");
+            return;
+        }
+        
+        try {
+            int dni = Integer.parseInt(jtfDni.getText());
+            String nombre = jtfNombre.getText();
+            LocalDate fechaNac = jdcFechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            String password = jtfPassword.getText();
+            String medioPago = jtfMedioPago.getText();
 
+            Comprador comprador = new Comprador(dni, nombre, fechaNac, password, medioPago);
+            compradorD.RegistrarComprador(comprador);
+            JOptionPane.showMessageDialog(this, "Comprador Guardado");
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Error de formato");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Error");
+        }
+    }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+        //Validacion de campos vacios
+        if(jtfDni.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "El campo no puede estar vacio");
+            return;
+        }
+        
+        try {
+            int dniComprador = Integer.parseInt(jtfDni.getText());
+            compradorD.buscarComprador(dniComprador);
+            JOptionPane.showMessageDialog(this, "Comprador Buscado");
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Error de formato");
+        }
+    }//GEN-LAST:event_jbBuscarActionPerformed
+
+    private void jbActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarActionPerformed
+        //Validacion de campos vacios
+        if(jtfDni.getText().trim().isEmpty() || jtfNombre.getText().trim().isEmpty()
+            || jdcFechaNac.getDate() == null || jtfPassword.getText().trim().isEmpty() ||
+            jtfMedioPago.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Los campos no pueden estar vacios");
+            return;
+        }
+        
+        try {
+            int dniComprador = Integer.parseInt(jtfDni.getText());
+            String nombre = jtfNombre.getText();
+            LocalDate fechaNac = jdcFechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            String password = jtfPassword.getText();
+            String medioPago = jtfMedioPago.getText();
+
+            Comprador comprador = new Comprador(dniComprador, nombre, fechaNac, password, medioPago);
+
+            compradorD.actualizarComprador(comprador);
+            JOptionPane.showMessageDialog(this, "Comprador Actualizado");
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Error de formato" + e.getMessage());
+        }
+    }//GEN-LAST:event_jbActualizarActionPerformed
+
+    private void jbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBorrarActionPerformed
+        //Validacion de campos vacios
+        if(jtfDni.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "El campo no puede estar vacio");
+            return;
+        }
+        try{
+            int dniComprador = Integer.parseInt(jtfDni.getText());     
+            compradorD.bajaFisica(dniComprador);
+            JOptionPane.showMessageDialog(this, "Comprador Borrado");
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Error de formato" + e.getMessage());
+        }    
+    }//GEN-LAST:event_jbBorrarActionPerformed
+
+    private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
+        jtfDni.setText("");
+        jtfNombre.setText("");
+        jdcFechaNac.setDate(null);
+        jtfPassword.setText("");
+        jtfMedioPago.setText("");
+    }//GEN-LAST:event_jbLimpiarActionPerformed
+
+    private void jcOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcOpcionesActionPerformed
+        String opciones = (String)jcOpciones.getSelectedItem();
+        switch(opciones){
+            case "Guardar":
+                jtfDni.setEnabled(true);
+                jtfNombre.setEnabled(true);
+                jdcFechaNac.setEnabled(true);
+                jtfPassword.setEnabled(true);
+                jtfMedioPago.setEnabled(true);
+                jbGuardar.setEnabled(true);
+                jbBuscar.setEnabled(false);
+                jbActualizar.setEnabled(false);
+                jbBorrar.setEnabled(false);
+                break;
+            case "Buscar":
+                jtfDni.setEnabled(true);
+                jtfNombre.setEnabled(false);
+                jdcFechaNac.setEnabled(false);
+                jtfPassword.setEnabled(false);
+                jtfMedioPago.setEnabled(false);
+                jbGuardar.setEnabled(false);
+                jbBuscar.setEnabled(true);
+                jbActualizar.setEnabled(false);
+                jbBorrar.setEnabled(false);
+                break;
+            case "Actualizar":
+                jtfDni.setEnabled(true);
+                jtfNombre.setEnabled(true);
+                jdcFechaNac.setEnabled(true);
+                jtfPassword.setEnabled(true);
+                jtfMedioPago.setEnabled(true);
+                jbGuardar.setEnabled(false);
+                jbBuscar.setEnabled(false);
+                jbActualizar.setEnabled(true);
+                jbBorrar.setEnabled(false);                
+                break;
+            case "Borrar":
+                jtfDni.setEnabled(true);
+                jtfNombre.setEnabled(false);
+                jdcFechaNac.setEnabled(false);
+                jtfPassword.setEnabled(false);
+                jtfMedioPago.setEnabled(false);
+                jbGuardar.setEnabled(false);
+                jbBuscar.setEnabled(false);
+                jbActualizar.setEnabled(false);
+                jbBorrar.setEnabled(true);
+                break;
+        }
+    }//GEN-LAST:event_jcOpcionesActionPerformed
+    
+    public void cargarCombo(){
+        jcOpciones.addItem("Guardar");
+        jcOpciones.addItem("Buscar");
+        jcOpciones.addItem("Actualizar");
+        jcOpciones.addItem("Borrar");
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbActualizar;
+    private javax.swing.JButton jbBorrar;
+    private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbLimpiar;
+    private javax.swing.JComboBox<String> jcOpciones;
+    private com.toedter.calendar.JDateChooser jdcFechaNac;
     private javax.swing.JLabel jlDni;
     private javax.swing.JLabel jlMedioPago;
     private javax.swing.JLabel jlNac;
     private javax.swing.JLabel jlNombre;
+    private javax.swing.JLabel jlOpcion;
     private javax.swing.JLabel jlPass;
     private javax.swing.JLabel jlTitulo;
     private javax.swing.JPanel jpDatos;
     private javax.swing.JTextField jtfDni;
-    private javax.swing.JTextField jtfFechaNacimiento;
     private javax.swing.JTextField jtfMedioPago;
     private javax.swing.JTextField jtfNombre;
     private javax.swing.JTextField jtfPassword;
