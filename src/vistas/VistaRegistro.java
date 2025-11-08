@@ -45,9 +45,12 @@ public class VistaRegistro extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("FORMULARIO DE REGISTRO");
 
-        jbActualizar.setBackground(new java.awt.Color(0, 0, 204));
-        jbActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        jbActualizar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jbActualizar.setForeground(new java.awt.Color(51, 51, 51));
+        jbActualizar.setIcon(new javax.swing.ImageIcon("C:\\Users\\crb_p\\OneDrive\\Documentos\\practicos java\\ProyectoFinal_CinemaCentro_Gp9\\src\\iconos\\thumb_up_hand_icon_231638.png")); // NOI18N
         jbActualizar.setText("ENVIAR");
+        jbActualizar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jbActualizar.setIconTextGap(24);
 
         jpDatos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 51, 255)));
 
@@ -130,12 +133,13 @@ public class VistaRegistro extends javax.swing.JInternalFrame {
                         .addGap(57, 57, 57)
                         .addComponent(jpDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(162, 162, 162)
-                        .addComponent(jbActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(108, 108, 108)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(55, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jbActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(195, 195, 195))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,8 +149,8 @@ public class VistaRegistro extends javax.swing.JInternalFrame {
                 .addGap(43, 43, 43)
                 .addComponent(jpDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addComponent(jbActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addComponent(jbActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();

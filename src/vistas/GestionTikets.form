@@ -27,36 +27,29 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jLabel1" min="-2" pref="291" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="181" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel3" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTFidCompra" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
-                          <Component id="jTFdni" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jBeliminar" alignment="0" min="-2" pref="169" max="-2" attributes="0"/>
-                          <Component id="jBbuscar" min="-2" pref="169" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
-              <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jLabel1" min="-2" pref="291" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="255" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="0" pref="28" max="32767" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="767" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jLabel3" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jTFidCompra" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
+                  <Component id="jTFdni" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jBeliminar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -65,19 +58,25 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="43" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel2" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                  <Component id="jTFidCompra" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                  <Component id="jBbuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel2" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="jTFidCompra" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel3" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="jTFdni" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="jBeliminar" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel3" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                  <Component id="jTFdni" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                  <Component id="jBeliminar" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="36" max="32767" attributes="0"/>
+              <EmptySpace pref="42" max="32767" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="193" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
           </Group>
@@ -98,14 +97,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jTFidCompra">
     </Component>
-    <Component class="javax.swing.JButton" name="jBbuscar">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Dialog" size="18" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="MODIFICAR"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="text" type="java.lang.String" value="BUSCAR POR ID DE COMPRA:"/>
@@ -121,7 +112,11 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="18" style="1"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="C:\Users\crb_p\OneDrive\Documentos\practicos java\ProyectoFinal_CinemaCentro_Gp9\src\iconos\trash_can_rubish_paper_bin_icon_231400.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="ELIMINAR"/>
+        <Property name="iconTextGap" type="int" value="22"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">

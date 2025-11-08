@@ -26,32 +26,34 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="18" max="32767" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="416" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" pref="104" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
-                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel7" max="32767" attributes="0"/>
-                          <Component id="jLabel6" max="32767" attributes="0"/>
-                          <Component id="jLabel5" max="32767" attributes="0"/>
-                          <Component id="jLabel4" max="32767" attributes="0"/>
-                          <Component id="jLabel3" max="32767" attributes="0"/>
-                          <Component id="jLabel2" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jLabel7" max="32767" attributes="0"/>
+                                  <Component id="jLabel6" max="32767" attributes="0"/>
+                                  <Component id="jLabel5" max="32767" attributes="0"/>
+                                  <Component id="jLabel4" max="32767" attributes="0"/>
+                                  <Component id="jLabel3" max="32767" attributes="0"/>
+                                  <Component id="jLabel2" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                              <Component id="jButton2" min="-2" pref="176" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                              <Component id="jButton3" min="-2" pref="163" max="-2" attributes="0"/>
+                          </Group>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
@@ -66,8 +68,12 @@
                           <Component id="jSpinner1" min="-2" pref="56" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jLabel1" min="-2" pref="416" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="30" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -109,11 +115,11 @@
               </Group>
               <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton1" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                  <Component id="jButton3" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="jButton1" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
+                  <Component id="jButton2" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
+                  <Component id="jButton3" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="58" max="32767" attributes="0"/>
+              <EmptySpace pref="33" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -209,17 +215,38 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="14" style="1"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="C:\Users\crb_p\OneDrive\Documentos\practicos java\ProyectoFinal_CinemaCentro_Gp9\src\iconos\tick_ok_correct_icon_231639.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="CARGAR"/>
+        <Property name="iconTextGap" type="int" value="18"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="14" style="1"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="C:\Users\crb_p\OneDrive\Documentos\practicos java\ProyectoFinal_CinemaCentro_Gp9\src\iconos\pen_pencil_write_edit_icon_231611 (1).png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="MODIFICAR"/>
+        <Property name="iconTextGap" type="int" value="18"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="14" style="1"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="C:\Users\crb_p\OneDrive\Documentos\practicos java\ProyectoFinal_CinemaCentro_Gp9\src\iconos\trash_can_rubish_paper_bin_icon_231400.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="ELIMINAR"/>
+        <Property name="iconTextGap" type="int" value="18"/>
       </Properties>
     </Component>
   </SubComponents>

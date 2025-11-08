@@ -84,7 +84,9 @@ public class VistaDetalleTicket extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTdetalleCompra);
 
         jBbuscar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jBbuscar.setIcon(new javax.swing.ImageIcon("C:\\Users\\crb_p\\OneDrive\\Documentos\\practicos java\\ProyectoFinal_CinemaCentro_Gp9\\src\\iconos\\zoom_magnyfying_glass_search_icon_231650.png")); // NOI18N
         jBbuscar.setText("BUSCAR");
+        jBbuscar.setIconTextGap(28);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,7 +102,7 @@ public class VistaDetalleTicket extends javax.swing.JInternalFrame {
                     .addComponent(jTFdni, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTFidCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(97, 97, 97))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(40, Short.MAX_VALUE)

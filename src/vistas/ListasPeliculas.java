@@ -83,6 +83,7 @@ public class ListasPeliculas extends javax.swing.JInternalFrame {
         jLabel1.setText("PELICULAS");
 
         jRBcartelera.setText("EN CARTELERA");
+        jRBcartelera.setIcon(new javax.swing.ImageIcon("C:\\Users\\crb_p\\OneDrive\\Documentos\\practicos java\\ProyectoFinal_CinemaCentro_Gp9\\src\\iconos\\video_camera_play_icon_231646.png")); // NOI18N
         jRBcartelera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBcarteleraActionPerformed(evt);
@@ -90,6 +91,7 @@ public class ListasPeliculas extends javax.swing.JInternalFrame {
         });
 
         jRBestrenos.setText("PROXIMOS ESTRENOS");
+        jRBestrenos.setIcon(new javax.swing.ImageIcon("C:\\Users\\crb_p\\OneDrive\\Documentos\\practicos java\\ProyectoFinal_CinemaCentro_Gp9\\src\\iconos\\video_camera_play_icon_231646.png")); // NOI18N
         jRBestrenos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBestrenosActionPerformed(evt);
@@ -144,7 +146,7 @@ public class ListasPeliculas extends javax.swing.JInternalFrame {
                     .addComponent(jRBestrenos))
                 .addGap(39, 39, 39)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

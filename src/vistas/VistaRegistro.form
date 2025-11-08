@@ -33,15 +33,16 @@
                       <Component id="jpDatos" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
-                      <Component id="jbActualizar" min="-2" pref="253" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" pref="365" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="55" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="jbActualizar" min="-2" pref="184" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="195" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -53,8 +54,8 @@
               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
               <Component id="jpDatos" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-              <Component id="jbActualizar" min="-2" pref="43" max="-2" attributes="0"/>
-              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <Component id="jbActualizar" min="-2" pref="54" max="-2" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -62,13 +63,18 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="jbActualizar">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cc" green="0" red="0" type="rgb"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="18" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+          <Color blue="33" green="33" red="33" type="rgb"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="C:\Users\crb_p\OneDrive\Documentos\practicos java\ProyectoFinal_CinemaCentro_Gp9\src\iconos\thumb_up_hand_icon_231638.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="ENVIAR"/>
+        <Property name="horizontalTextPosition" type="int" value="4"/>
+        <Property name="iconTextGap" type="int" value="24"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="jpDatos">

@@ -38,7 +38,7 @@
                   <Component id="jTFidCompra" min="-2" pref="156" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="jBbuscar" min="-2" pref="169" max="-2" attributes="0"/>
+              <Component id="jBbuscar" min="-2" pref="205" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
@@ -136,7 +136,11 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="18" style="1"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="C:\Users\crb_p\OneDrive\Documentos\practicos java\ProyectoFinal_CinemaCentro_Gp9\src\iconos\zoom_magnyfying_glass_search_icon_231650.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="BUSCAR"/>
+        <Property name="iconTextGap" type="int" value="28"/>
       </Properties>
     </Component>
   </SubComponents>
