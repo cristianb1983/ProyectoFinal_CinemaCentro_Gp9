@@ -27,8 +27,7 @@ public class VistaCompra extends javax.swing.JInternalFrame {
 
     }
 
-    Connection con = Conexion.buscarConexion();
-    CompradorData compradores = new CompradorData(con);
+    CompradorData compradores = new CompradorData();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
