@@ -36,6 +36,12 @@ public class VistaDetalleTicket extends javax.swing.JInternalFrame {
         jTFidCompra = new javax.swing.JTextField();
         jBbuscar = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("DETALLES DE TICKETS");
+
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("DETALLES DE LA COMPRA");

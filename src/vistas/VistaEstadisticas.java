@@ -90,6 +90,12 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTcompradoresPorFecha = new javax.swing.JTable();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("ESTADISTICAS");
+
         jLabel1.setText("INGRESE LA FECHA: ");
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N

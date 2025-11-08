@@ -62,6 +62,7 @@ public class VistaPeliculas extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("ADMINISTRACION - GESTION DE PELICULAS");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setText("GESTION DE PELICULAS");

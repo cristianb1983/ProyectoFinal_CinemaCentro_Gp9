@@ -57,7 +57,10 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         jbGuardar = new javax.swing.JButton();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setResizable(true);
+        setTitle("ADMINISTRACION - CARGA DE PROYECCIONES");
 
         jButton1.setText("Buscar");
 
