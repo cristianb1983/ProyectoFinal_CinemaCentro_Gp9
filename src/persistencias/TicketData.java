@@ -157,6 +157,7 @@ public class TicketData {
                 comprador.setDniComprador(rs.getLong("dni"));
                 comprador.setNombre(rs.getString("nombre"));
                 comprador.setMedioDePago(rs.getString("medioPago"));
+                comprador.setFechaNacimiento(rs.getDate("fechaNac").toLocalDate());
 
                 ticket = new TicketCompra();
                 ticket.setIdTicket(rs.getInt("idTicket"));
@@ -238,6 +239,35 @@ public class TicketData {
             ps.close();
         } catch (SQLException e) {
             System.out.println("Error al listar ticket por pelicula: " + e.getMessage());
+        }
+
+        return tickets;
+    }
+    
+    public List<TicketCompra> listarTicketsPorFechaAsistida(LocalDate fechaFuncion) {
+        List<TicketCompra> tickets = new ArrayList<>();
+
+        String sql = "SELECT idTicket "
+                + "FROM ticketcompra "
+                + "WHERE fechaFuncion = ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setDate(1, Date.valueOf(fechaFuncion));
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                TicketCompra ticket = buscarTicketPorId(rs.getInt("idTicket"));
+
+                if (ticket != null) {
+                    tickets.add(ticket);
+                }
+            }
+
+            ps.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error al listar ticket por fecha: " + e.getMessage());
         }
 
         return tickets;

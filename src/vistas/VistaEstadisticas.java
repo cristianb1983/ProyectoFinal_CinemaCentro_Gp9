@@ -94,7 +94,7 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
         jbLimpiar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jdcCompradores = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTcompradoresPorFecha = new javax.swing.JTable();
@@ -253,6 +253,12 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
 
         jLabel3.setText("SELECCIONE LA FECHA: ");
 
+        jdcCompradores.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jdcCompradoresPropertyChange(evt);
+            }
+        });
+
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("LISTA DE COMPRADORES");
@@ -280,7 +286,7 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
                         .addGap(94, 94, 94)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(67, 67, 67)
-                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jdcCompradores, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 773, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -295,7 +301,7 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
                 .addGap(32, 32, 32)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
+                    .addComponent(jdcCompradores, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
                 .addGap(27, 27, 27)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
@@ -341,6 +347,28 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
         modeloTicketsPorFecha.setRowCount(0);
     }//GEN-LAST:event_jbLimpiarFechasActionPerformed
 
+    private void jdcCompradoresPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jdcCompradoresPropertyChange
+        cargarTablaPorCompradores();
+    }//GEN-LAST:event_jdcCompradoresPropertyChange
+
+    public void cargarTablaPorCompradores(){
+        List<TicketCompra> tickets = new ArrayList();
+        try{
+            LocalDate fechaFuncion = jdcCompradores.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            tickets = ticketD.listarTicketsPorFechaAsistida(fechaFuncion);
+            for(TicketCompra aux : tickets){
+                modeloCompradoresPorFecha.addRow(new Object []{
+                    aux.getComprador().getDniComprador(),
+                    aux.getComprador().getNombre(),
+                    aux.getComprador().getFechaNacimiento(),
+                    aux.getComprador().getMedioDePago()
+                });
+            }
+        }catch(NullPointerException e){
+            System.out.println("Control de error de compradores para la primera vez al iniciar la ventana");
+        }
+    }
+            
     public void cargarTablaPorFecha(){
         List<TicketCompra> tickets = new ArrayList();
         try {
@@ -389,7 +417,6 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
         jcbPeliculas.addItem("17, El Teléfono Negro");
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -409,6 +436,7 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbLimpiar;
     private javax.swing.JButton jbLimpiarFechas;
     private javax.swing.JComboBox<String> jcbPeliculas;
+    private com.toedter.calendar.JDateChooser jdcCompradores;
     private com.toedter.calendar.JDateChooser jdcPorFecha;
     // End of variables declaration//GEN-END:variables
 }
