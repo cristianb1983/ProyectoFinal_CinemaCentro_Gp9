@@ -13,6 +13,7 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import org.mariadb.jdbc.Statement;
 
 
 public class TicketData {
@@ -116,7 +117,7 @@ public class TicketData {
                             lugarData.liberarLugar(lugar.getIdLugar());
                         }
                     }
-                    detalleData.borrarDetalleTicket(det.getIdDetalle(), null);
+                    detalleData.borrarDetalleTicketPorId(det.getIdDetalle());
                 }
             }
 
@@ -270,6 +271,35 @@ public class TicketData {
             System.out.println("Error al listar ticket por fecha: " + e.getMessage());
         }
 
+        return tickets;
+    }
+    
+    public List<TicketCompra> listarTicketsPorDni(int dniComprador){
+        List<TicketCompra> tickets = new ArrayList();
+        String query = "SELECT * FROM ticketcompra WHERE dniComprador = ?;";
+        try{
+            PreparedStatement ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, dniComprador);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                TicketCompra ticket = new TicketCompra();
+                ticket.setIdTicket(rs.getInt("idTicket"));
+                ticket.setFechaCompra(rs.getTimestamp("fechaCompra").toLocalDateTime());
+                ticket.setFechaFuncion(rs.getDate("fechafuncion").toLocalDate());
+                ticket.setMonto(rs.getDouble("monto"));
+                
+                Comprador comprador = new Comprador();
+                comprador.setDniComprador(rs.getInt("dniComprador"));
+                ticket.setComprador(comprador);
+                
+                ticket.setTipoCompra(rs.getString("tipoCompra"));
+                ticket.setCodigoVenta(rs.getString("codigoVenta"));
+                tickets.add(ticket);
+            }
+        }catch(SQLException e){
+            System.out.println("No se pudo encontrar el ticket, revise el dni ingresado");
+        }
         return tickets;
     }
 }
