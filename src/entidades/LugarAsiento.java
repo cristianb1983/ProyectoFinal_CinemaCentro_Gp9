@@ -77,7 +77,8 @@ public class LugarAsiento {
 
     @Override
     public String toString() {
-        return "LugarAsiento{" + "idLugar=" + idLugar + ", fila=" + fila + ", numero=" + numero + ", estado=" + estado + ", idProyeccion=" + proyeccion + '}';
+//        return "LugarAsiento{" + "idLugar=" + idLugar + ", fila=" + fila + ", numero=" + numero + ", estado=" + estado + ", idProyeccion=" + proyeccion + '}';
+        return fila + "-" + numero;
     }
 
 }

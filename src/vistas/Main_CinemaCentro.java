@@ -51,7 +51,7 @@ public static void main(String[] args) {
     
     
     //Prueba buscarDetalleTicket
-    DetalleTicketData detalleD = new DetalleTicketData(Conexion.buscarConexion());
+    DetalleTicketData detalleD = new DetalleTicketData();
 //    System.out.println(detalleD.buscarDetalleTicket(10));
 //    System.out.println(detalleD.buscarDetallePorComprador(2345668));
 //    detalleD.borrarDetalleTicketPorId(23);
@@ -80,15 +80,16 @@ public static void main(String[] args) {
     proyeccion.setPelicula(pelicula);
     
     
-    LugarAsiento lugar1 = new LugarAsiento(59, "c", 1, "ocupado", proyeccion);
-    LugarAsiento lugar2 = new LugarAsiento(60, "c", 2, "ocupado", proyeccion);
-    List<LugarAsiento> lugaresDetalle = new ArrayList();
-    lugaresDetalle.add(lugar1);
-    lugaresDetalle.add(lugar2);
-    
-    DetalleTicket detalle = new DetalleTicket(ticket, proyeccion, 2, 2 * 900, lugaresDetalle);
-    detalleD.actualizarDetaleTicketTest(detalle, listaLugaresId);
-    System.out.println(detalleD.buscarDetalleTicket(26));
+//    LugarAsiento lugar1 = new LugarAsiento(59, "c", 1, "ocupado", proyeccion);
+//    LugarAsiento lugar2 = new LugarAsiento(60, "c", 2, "ocupado", proyeccion);
+//    List<LugarAsiento> lugaresDetalle = new ArrayList();
+//    lugaresDetalle.add(lugar1);
+//    lugaresDetalle.add(lugar2);
+//    
+//    DetalleTicket detalle = new DetalleTicket(ticket, proyeccion, 2, 2 * 900, lugaresDetalle);
+//    detalleD.actualizarDetaleTicketTest(detalle, listaLugaresId);
+//    System.out.println(detalleD.buscarDetalleTicket(26));
+//    System.out.println(detalleD.buscarDetallePorComprador(33456789));
    
     } 
     

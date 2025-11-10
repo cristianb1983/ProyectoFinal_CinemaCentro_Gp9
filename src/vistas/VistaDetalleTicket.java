@@ -5,8 +5,11 @@
  */
 package vistas;
 
+import entidades.DetalleTicket;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import persistencias.DetalleTicketData;
 
 /**
  *
@@ -14,8 +17,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VistaDetalleTicket extends javax.swing.JInternalFrame {
 
-     private DefaultTableModel modeloTabla = new DefaultTableModel();
-     
+    private DefaultTableModel modeloTabla = new DefaultTableModel();
+    DetalleTicketData detalleD = new DetalleTicketData();
     public VistaDetalleTicket() {
         initComponents();
         tablaCabecera();
@@ -32,8 +35,10 @@ public class VistaDetalleTicket extends javax.swing.JInternalFrame {
 
     private void tablaCabecera() {
         ArrayList<Object> filaCabercera = new ArrayList<>();
+        modeloTabla.addColumn("Id Ticket");
         modeloTabla.addColumn("Id Detalle");
-        modeloTabla.addColumn("Funcion");
+        modeloTabla.addColumn("Pelicula");
+        modeloTabla.addColumn("Sala");
         modeloTabla.addColumn("Lugar");
         modeloTabla.addColumn("Cantidad de Tickets");
         modeloTabla.addColumn("Subtotal");
@@ -52,8 +57,8 @@ public class VistaDetalleTicket extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTdetalleCompra = new javax.swing.JTable();
-        jTFdni = new javax.swing.JTextField();
-        jTFidCompra = new javax.swing.JTextField();
+        jtfDni = new javax.swing.JTextField();
+        jtfIdCompra = new javax.swing.JTextField();
         jBbuscar = new javax.swing.JButton();
 
         setClosable(true);
@@ -83,10 +88,20 @@ public class VistaDetalleTicket extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTdetalleCompra);
 
+        jtfIdCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfIdCompraActionPerformed(evt);
+            }
+        });
+
         jBbuscar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jBbuscar.setIcon(new javax.swing.ImageIcon("C:\\Users\\crb_p\\OneDrive\\Documentos\\practicos java\\ProyectoFinal_CinemaCentro_Gp9\\src\\iconos\\zoom_magnyfying_glass_search_icon_231650.png")); // NOI18N
         jBbuscar.setText("BUSCAR");
         jBbuscar.setIconTextGap(28);
+        jBbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBbuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,8 +114,8 @@ public class VistaDetalleTicket extends javax.swing.JInternalFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTFdni, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTFidCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfDni, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfIdCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(97, 97, 97))
@@ -124,11 +139,11 @@ public class VistaDetalleTicket extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTFidCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jtfIdCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTFdni, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jtfDni, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(jBbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -140,6 +155,44 @@ public class VistaDetalleTicket extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jtfIdCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfIdCompraActionPerformed
+
+    }//GEN-LAST:event_jtfIdCompraActionPerformed
+
+    private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
+        if(!jtfIdCompra.getText().trim().isEmpty()){
+            int idTicket = Integer.parseInt(jtfIdCompra.getText());
+            List<DetalleTicket> detalles = detalleD.listarDetallePorIdTicket(idTicket);
+
+            for(DetalleTicket aux : detalles){
+                modeloTabla.addRow(new Object[] {
+                    aux.getTicket().getIdTicket(),
+                    aux.getIdDetalle(),
+                    aux.getProyeccion().getPelicula().getTitulo(),
+                    aux.getProyeccion().getSala().getNroSala(),
+                    aux.getLugares(),
+                    aux.getCantidad(),
+                    aux.getSubtotal()
+                });
+            }
+        }else if(!jtfDni.getText().trim().isEmpty()){
+            int Dni = Integer.parseInt(jtfDni.getText());
+            List<DetalleTicket> detallesPorDni = detalleD.buscarDetallePorComprador(Dni);
+            
+            for(DetalleTicket aux : detallesPorDni){
+                modeloTabla.addRow(new Object[] {
+                    aux.getTicket().getIdTicket(),
+                    aux.getIdDetalle(),
+                    aux.getProyeccion().getPelicula().getTitulo(),
+                    aux.getProyeccion().getSala().getNroSala(),
+                    aux.getLugares(),
+                    aux.getCantidad(),
+                    aux.getSubtotal()
+                });
+            }
+        }
+    }//GEN-LAST:event_jBbuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBbuscar;
@@ -147,8 +200,8 @@ public class VistaDetalleTicket extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTFdni;
-    private javax.swing.JTextField jTFidCompra;
     private javax.swing.JTable jTdetalleCompra;
+    private javax.swing.JTextField jtfDni;
+    private javax.swing.JTextField jtfIdCompra;
     // End of variables declaration//GEN-END:variables
 }
