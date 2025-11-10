@@ -160,6 +160,7 @@ public class VistaDetalleTicket extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtfIdCompraActionPerformed
 
     private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
+        modeloTabla.setRowCount(0);
         if(!jtfIdCompra.getText().trim().isEmpty()){
             int idTicket = Integer.parseInt(jtfIdCompra.getText());
             List<DetalleTicket> detalles = detalleD.listarDetallePorIdTicket(idTicket);
