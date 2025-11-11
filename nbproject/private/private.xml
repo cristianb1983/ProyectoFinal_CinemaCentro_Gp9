@@ -3,17 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/vistas/GestionSalas.java</file>
-            <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/vistas/VistaRegistro.java</file>
+            <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/vistas/VistaCompra.java</file>
             <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/vistas/VistaMenu.java</file>
+            <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/entidades/DetalleTicket.java</file>
             <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/vistas/AdmiCompradores.java</file>
+            <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/vistas/AdmiProyecciones.java</file>
+            <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/vistas/VistaDetalleTicket.java</file>
             <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/vistas/GestionCompraDeTickets.java</file>
-=======
-            <file>file:/C:/Users/pc/Documents/GitHub/ProyectoFinal_CinemaCentro_Gp9/src/entidades/LugarAsiento.java</file>
-            <file>file:/C:/Users/pc/Documents/GitHub/ProyectoFinal_CinemaCentro_Gp9/src/persistencias/LugarData.java</file>
-            <file>file:/C:/Users/pc/Documents/GitHub/ProyectoFinal_CinemaCentro_Gp9/src/vistas/AdmiLugares.java</file>
->>>>>>> 1cb3eb1fe7ee0573fd12bf70e16868e33c0bb462
         </group>
     </open-files>
 </project-private>
