@@ -42,7 +42,6 @@ public class VistaMenu extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMIcartelera = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMIcompra = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMprueba = new javax.swing.JMenuItem();
         jMIregistro = new javax.swing.JMenuItem();
@@ -86,14 +85,6 @@ public class VistaMenu extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Compra Online");
-
-        jMIcompra.setText("Comprar entradas");
-        jMIcompra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMIcompraActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMIcompra);
 
         jMenuItem3.setText("Detalles de compra");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -255,14 +246,6 @@ public class VistaMenu extends javax.swing.JFrame {
         escritorio.add(vistapelis);
     }//GEN-LAST:event_jMIgestionPeliculasActionPerformed
 
-    private void jMIcompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIcompraActionPerformed
-        escritorio.removeAll();
-        escritorio.repaint();
-        GestionCompraDeTickets compra = new GestionCompraDeTickets();
-        compra.setVisible(true);
-        escritorio.add(compra);
-    }//GEN-LAST:event_jMIcompraActionPerformed
-
     private void jMIgestionSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIgestionSalasActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
@@ -347,7 +330,6 @@ public class VistaMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenuItem jMIcartelera;
-    private javax.swing.JMenuItem jMIcompra;
     private javax.swing.JMenuItem jMIgestionPeliculas;
     private javax.swing.JMenuItem jMIgestionSalas;
     private javax.swing.JMenuItem jMIgestionTickets;

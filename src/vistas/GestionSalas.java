@@ -78,17 +78,17 @@ public class GestionSalas extends javax.swing.JInternalFrame {
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\crb_p\\OneDrive\\Documentos\\practicos java\\ProyectoFinal_CinemaCentro_Gp9\\src\\iconos\\tick_ok_correct_icon_231639.png")); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/new_file_add_paper_icon_231603.png"))); // NOI18N
         jButton1.setText("CARGAR");
         jButton1.setIconTextGap(18);
 
         jButton2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\crb_p\\OneDrive\\Documentos\\practicos java\\ProyectoFinal_CinemaCentro_Gp9\\src\\iconos\\pen_pencil_write_edit_icon_231611 (1).png")); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/pen_pencil_write_edit_icon_231611 (1).png"))); // NOI18N
         jButton2.setText("MODIFICAR");
         jButton2.setIconTextGap(18);
 
         jButton3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\crb_p\\OneDrive\\Documentos\\practicos java\\ProyectoFinal_CinemaCentro_Gp9\\src\\iconos\\trash_can_rubish_paper_bin_icon_231400.png")); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/trash_can_rubish_paper_bin_icon_231400.png"))); // NOI18N
         jButton3.setText("ELIMINAR");
         jButton3.setIconTextGap(18);
 

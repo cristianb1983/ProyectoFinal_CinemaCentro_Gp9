@@ -62,7 +62,7 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         setTitle("ADMINISTRACION - CARGA DE PROYECCIONES");
 
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\crb_p\\OneDrive\\Documentos\\practicos java\\ProyectoFinal_CinemaCentro_Gp9\\src\\iconos\\zoom_magnyfying_glass_search_icon_231650.png")); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/zoom_magnyfying_glass_search_icon_231650.png"))); // NOI18N
         jButton1.setText("Buscar");
 
         jbActualizar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -70,11 +70,11 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         jbActualizar.setText("Actualizar");
 
         jbLimpiar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jbLimpiar.setIcon(new javax.swing.ImageIcon("C:\\Users\\crb_p\\OneDrive\\Documentos\\practicos java\\ProyectoFinal_CinemaCentro_Gp9\\src\\iconos\\brush_paint_icon_231542.png")); // NOI18N
+        jbLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/brush_paint_icon_231542.png"))); // NOI18N
         jbLimpiar.setText("Limpiar");
 
         jButton2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\crb_p\\OneDrive\\Documentos\\practicos java\\ProyectoFinal_CinemaCentro_Gp9\\src\\iconos\\trash_can_rubish_paper_bin_icon_231400.png")); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/trash_can_rubish_paper_bin_icon_231400.png"))); // NOI18N
         jButton2.setText("Borrar");
 
         jpDatos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 51, 255)));
@@ -234,7 +234,7 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         );
 
         jbGuardar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jbGuardar.setIcon(new javax.swing.ImageIcon("C:\\Users\\crb_p\\OneDrive\\Documentos\\practicos java\\ProyectoFinal_CinemaCentro_Gp9\\src\\iconos\\new_file_add_paper_icon_231603.png")); // NOI18N
+        jbGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/new_file_add_paper_icon_231603.png"))); // NOI18N
         jbGuardar.setText("Guardar");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N

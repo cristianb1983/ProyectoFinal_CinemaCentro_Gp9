@@ -67,10 +67,10 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
             }
         });
 
-        jbBuscar.setIcon(new javax.swing.ImageIcon("C:\\Users\\crb_p\\OneDrive\\Documentos\\practicos java\\ProyectoFinal_CinemaCentro_Gp9\\src\\iconos\\zoom_magnyfying_glass_search_icon_231650.png")); // NOI18N
+        jbBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/zoom_magnyfying_glass_search_icon_231650.png"))); // NOI18N
         jbBuscar.setText("Buscar");
 
-        jbActualizar.setIcon(new javax.swing.ImageIcon("C:\\Users\\crb_p\\OneDrive\\Documentos\\practicos java\\ProyectoFinal_CinemaCentro_Gp9\\src\\iconos\\pen_pencil_write_edit_icon_231611 (1).png")); // NOI18N
+        jbActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/pen_pencil_write_edit_icon_231611 (1).png"))); // NOI18N
         jbActualizar.setText("Actualizar");
         jbActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,7 +78,7 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
             }
         });
 
-        jbBorrar.setIcon(new javax.swing.ImageIcon("C:\\Users\\crb_p\\OneDrive\\Documentos\\practicos java\\ProyectoFinal_CinemaCentro_Gp9\\src\\iconos\\trash_can_rubish_paper_bin_icon_231400.png")); // NOI18N
+        jbBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/trash_can_rubish_paper_bin_icon_231400.png"))); // NOI18N
         jbBorrar.setText("Borrar");
         jbBorrar.setIconTextGap(16);
         jbBorrar.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +87,7 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
             }
         });
 
-        Limpiar.setIcon(new javax.swing.ImageIcon("C:\\Users\\crb_p\\OneDrive\\Documentos\\practicos java\\ProyectoFinal_CinemaCentro_Gp9\\src\\iconos\\brush_paint_icon_231542.png")); // NOI18N
+        Limpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/brush_paint_icon_231542.png"))); // NOI18N
         Limpiar.setText("Limpiar");
         Limpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

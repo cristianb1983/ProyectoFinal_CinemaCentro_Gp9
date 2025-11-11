@@ -199,6 +199,7 @@ public class AdmiCompradores extends javax.swing.JInternalFrame {
                 .addGap(17, 17, 17))
         );
 
+        jbGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/new_file_add_paper_icon_231603.png"))); // NOI18N
         jbGuardar.setText("Guardar");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,6 +207,7 @@ public class AdmiCompradores extends javax.swing.JInternalFrame {
             }
         });
 
+        jbBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/zoom_magnyfying_glass_search_icon_231650.png"))); // NOI18N
         jbBuscar.setText("Buscar");
         jbBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -213,6 +215,7 @@ public class AdmiCompradores extends javax.swing.JInternalFrame {
             }
         });
 
+        jbActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/pen_pencil_write_edit_icon_231611 (1).png"))); // NOI18N
         jbActualizar.setText("Actualizar");
         jbActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -220,6 +223,7 @@ public class AdmiCompradores extends javax.swing.JInternalFrame {
             }
         });
 
+        jbBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/trash_can_rubish_paper_bin_icon_231400.png"))); // NOI18N
         jbBorrar.setText("Borrar");
         jbBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -227,6 +231,7 @@ public class AdmiCompradores extends javax.swing.JInternalFrame {
             }
         });
 
+        Limpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/brush_paint_icon_231542.png"))); // NOI18N
         Limpiar.setText("Limpiar");
         Limpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -245,35 +250,36 @@ public class AdmiCompradores extends javax.swing.JInternalFrame {
                         .addComponent(jlTitulo))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jbGuardar)
-                                .addGap(90, 90, 90)
+                                .addGap(28, 28, 28)
                                 .addComponent(jbBuscar)
-                                .addGap(90, 90, 90)
+                                .addGap(28, 28, 28)
                                 .addComponent(jbActualizar)
-                                .addGap(90, 90, 90)
-                                .addComponent(jbBorrar)
-                                .addGap(90, 90, 90)
-                                .addComponent(Limpiar))
+                                .addGap(28, 28, 28)
+                                .addComponent(jbBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)
+                                .addComponent(Limpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jpDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jlTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(jpDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbGuardar)
-                    .addComponent(jbBuscar)
-                    .addComponent(jbActualizar)
-                    .addComponent(jbBorrar)
-                    .addComponent(Limpiar))
-                .addGap(30, 30, 30))
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22))
         );
 
         pack();

@@ -82,7 +82,7 @@
           <Font name="Dialog" size="14" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\crb_p\OneDrive\Documentos\practicos java\ProyectoFinal_CinemaCentro_Gp9\src\iconos\zoom_magnyfying_glass_search_icon_231650.png"/>
+          <Image iconType="3" name="/iconos/zoom_magnyfying_glass_search_icon_231650.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Buscar"/>
       </Properties>
@@ -104,7 +104,7 @@
           <Font name="Dialog" size="14" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\crb_p\OneDrive\Documentos\practicos java\ProyectoFinal_CinemaCentro_Gp9\src\iconos\brush_paint_icon_231542.png"/>
+          <Image iconType="3" name="/iconos/brush_paint_icon_231542.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Limpiar"/>
       </Properties>
@@ -115,7 +115,7 @@
           <Font name="Dialog" size="14" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\crb_p\OneDrive\Documentos\practicos java\ProyectoFinal_CinemaCentro_Gp9\src\iconos\trash_can_rubish_paper_bin_icon_231400.png"/>
+          <Image iconType="3" name="/iconos/trash_can_rubish_paper_bin_icon_231400.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Borrar"/>
       </Properties>
@@ -395,7 +395,7 @@
           <Font name="Dialog" size="14" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\crb_p\OneDrive\Documentos\practicos java\ProyectoFinal_CinemaCentro_Gp9\src\iconos\new_file_add_paper_icon_231603.png"/>
+          <Image iconType="3" name="/iconos/new_file_add_paper_icon_231603.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Guardar"/>
       </Properties>
