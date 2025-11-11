@@ -11,7 +11,7 @@ import java.util.List;
 
 public class TicketCompra {
 
-    private int idTicket;
+    private int idTicket = -1;
     private LocalDateTime fechaCompra;
     private LocalDate fechaFuncion;
     private Comprador comprador;
@@ -108,7 +108,32 @@ public class TicketCompra {
 
     public void setDetalles(List<DetalleTicket> detalles) {
         this.detalles = detalles;
-        this.monto = calcularMonto(); 
+        this.monto = calcularMonto();
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 13 * hash + this.idTicket;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final TicketCompra other = (TicketCompra) obj;
+        if (this.idTicket != other.idTicket) {
+            return false;
+        }
+        return true;
     }
 
     @Override

@@ -76,6 +76,31 @@ public class LugarAsiento {
     }
 
     @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 19 * hash + this.idLugar;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final LugarAsiento other = (LugarAsiento) obj;
+        if (this.idLugar != other.idLugar) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
     public String toString() {
 //        return "LugarAsiento{" + "idLugar=" + idLugar + ", fila=" + fila + ", numero=" + numero + ", estado=" + estado + ", idProyeccion=" + proyeccion + '}';
         return fila + "-" + numero;

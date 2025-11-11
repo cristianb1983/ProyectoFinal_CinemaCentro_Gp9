@@ -1,9 +1,9 @@
 package entidades;
 
-
 public class Sala {
-    private int idSala = -1;    
-    private int NroSala;
+
+    private int idSala = -1;
+    private int nroSala;
     private boolean apta3D;
     private int capacidad;
     private boolean estado;
@@ -11,8 +11,8 @@ public class Sala {
     public Sala() {
     }
 
-    public Sala(int NroSala, boolean apta3D, int capacidad, boolean estado) {
-        this.NroSala = NroSala;
+    public Sala(int nroSala, boolean apta3D, int capacidad, boolean estado) {
+        this.nroSala = nroSala;
         this.apta3D = apta3D;
         this.capacidad = capacidad;
         this.estado = estado;
@@ -27,11 +27,11 @@ public class Sala {
     }
 
     public int getNroSala() {
-        return NroSala;
+        return nroSala;
     }
 
     public void setNroSala(int NroSala) {
-        this.NroSala = NroSala;
+        this.nroSala = NroSala;
     }
 
     public boolean isApta3D() {
@@ -58,13 +58,34 @@ public class Sala {
         this.estado = estado;
     }
 
-    
-    
     @Override
-    public String toString() {
-        return "Sala{" + "NroSala=" + NroSala + ", capacidad=" + capacidad + ", estado=" + estado + '}';
+    public int hashCode() {
+        int hash = 5;
+        hash = 37 * hash + this.idSala;
+        return hash;
     }
 
-    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Sala other = (Sala) obj;
+        if (this.idSala != other.idSala) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Sala{" + "NroSala=" + nroSala + ", capacidad=" + capacidad + ", estado=" + estado + '}';
+    }
 
 }

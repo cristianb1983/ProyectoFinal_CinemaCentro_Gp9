@@ -71,6 +71,32 @@ public class Comprador {
     }
 
     @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 23 * hash + (int) (this.dniComprador ^ (this.dniComprador >>> 32));
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Comprador other = (Comprador) obj;
+        if (this.dniComprador != other.dniComprador) {
+            return false;
+        }
+        return true;
+    }
+   
+    
+    @Override
     public String toString() {
         return "Comprador{" + "dni=" + dniComprador + ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", password=" + password + ", medioDePago=" + medioDePago + '}';
     }

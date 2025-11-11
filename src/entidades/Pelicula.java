@@ -3,16 +3,16 @@ package entidades;
 import java.time.LocalDate;
 import static java.time.temporal.TemporalQueries.localDate;
 
-
 public class Pelicula {
-private int idPelicula = -1;    
-private String titulo;
-private String director;
-private String actores;
-private String origen;
-private String genero;
-private LocalDate estreno;
-private boolean enCartelera;
+
+    private int idPelicula = -1;
+    private String titulo;
+    private String director;
+    private String actores;
+    private String origen;
+    private String genero;
+    private LocalDate estreno;
+    private boolean enCartelera;
 
     public Pelicula() {
     }
@@ -27,11 +27,6 @@ private boolean enCartelera;
         this.enCartelera = enCartelera;
     }
 
-   
-
-  
-
-  
     public String getTitulo() {
         return titulo;
     }
@@ -97,10 +92,33 @@ private boolean enCartelera;
     }
 
     @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 37 * hash + this.idPelicula;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pelicula other = (Pelicula) obj;
+        if (this.idPelicula != other.idPelicula) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
     public String toString() {
         return "Pelicula{" + "idPelicula=" + idPelicula + ", titulo=" + titulo + ", director=" + director + ", actores=" + actores + ", origen=" + origen + ", genero=" + genero + ", estreno=" + estreno + ", enCartelera=" + enCartelera + '}';
     }
-    
-   
 
 }

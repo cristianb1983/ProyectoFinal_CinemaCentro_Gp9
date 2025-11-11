@@ -115,6 +115,31 @@ public class DetalleTicket {
     }
 
     @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + this.idDetalle;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DetalleTicket other = (DetalleTicket) obj;
+        if (this.idDetalle != other.idDetalle) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
     public String toString() {
         return "Detalle Ticket: " + idDetalle + "\n"
                 + "Ticket: " + ticket.getIdTicket() + "\n"
