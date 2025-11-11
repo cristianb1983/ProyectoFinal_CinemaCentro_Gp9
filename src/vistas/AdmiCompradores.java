@@ -317,17 +317,19 @@ public class AdmiCompradores extends javax.swing.JInternalFrame {
         }
         try {
             int dni = Integer.parseInt(jtfDni.getText());
-        Comprador comprador = new Comprador();
-        comprador = compradorD.buscarComprador(dni);
-        modeloTabla.addRow(new Object[] {
-            comprador.getDniComprador(),
-            comprador.getNombre(),
-            comprador.getFechaNacimiento(),
-            comprador.getPassword(),
-            comprador.getMedioDePago()
+            Comprador comprador = new Comprador();
+            comprador = compradorD.buscarComprador(dni);
+            modeloTabla.addRow(new Object[] {
+                comprador.getDniComprador(),
+                comprador.getNombre(),
+                comprador.getFechaNacimiento(),
+                comprador.getPassword(),
+                comprador.getMedioDePago()
         });
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(this, "Error de formato");
+        }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(this, "El comprador no existe");
         }
     }//GEN-LAST:event_jbBuscarActionPerformed
 
@@ -353,6 +355,8 @@ public class AdmiCompradores extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Comprador Actualizado");
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(this, "Error de formato" + e.getMessage());
+        }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(this, "El comprador no existe");
         }
     }//GEN-LAST:event_jbActualizarActionPerformed
 
@@ -368,6 +372,8 @@ public class AdmiCompradores extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Comprador Borrado");
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(this, "Error de formato" + e.getMessage());
+        }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(this, "El comprador no existe");
         }    
     }//GEN-LAST:event_jbBorrarActionPerformed
 

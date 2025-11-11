@@ -409,12 +409,12 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
     }
     
     private void cargarComboPeliculas(){
-        jcbPeliculas.addItem("12, Alien: Planeta Tierra");
-        jcbPeliculas.addItem("13, Demon Slayer: Castillo Infinito");
-        jcbPeliculas.addItem("14, Los 4 Fantásticos: Primeros Pasos");
-        jcbPeliculas.addItem("15, Ballerina");
-        jcbPeliculas.addItem("16, Las Guerreras K-Pop");
-        jcbPeliculas.addItem("17, El Teléfono Negro");
+        jcbPeliculas.addItem("1, Duna: Parte Dos");
+        jcbPeliculas.addItem("2, Inside Out 2");
+        jcbPeliculas.addItem("3, Joker: Folie à Deux");
+        jcbPeliculas.addItem("4, Venom: The Last Dance");
+        jcbPeliculas.addItem("5, La Sociedad de la Nieve");
+        jcbPeliculas.addItem("6, Wicked");
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
