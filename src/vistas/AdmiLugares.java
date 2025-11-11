@@ -58,7 +58,7 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 30)); // NOI18N
         jLabel1.setText("Administracion Lugares");
 
-        jbGuardar.setIcon(new javax.swing.ImageIcon("C:\\Users\\crb_p\\OneDrive\\Documentos\\practicos java\\ProyectoFinal_CinemaCentro_Gp9\\src\\iconos\\new_file_add_paper_icon_231603.png")); // NOI18N
+        jbGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/new_file_add_paper_icon_231603.png"))); // NOI18N
         jbGuardar.setText("Guardar");
         jbGuardar.setIconTextGap(10);
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
