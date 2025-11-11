@@ -6,6 +6,7 @@
 package entidades;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 
 /**
@@ -13,6 +14,7 @@ import java.util.ArrayList;
  * @author Usuario
  */
 public class Comprador {
+
     private long dniComprador;
     private String nombre;
     private LocalDate fechaNacimiento;
@@ -28,6 +30,14 @@ public class Comprador {
         this.fechaNacimiento = fechaNacimiento;
         this.password = password;
         this.medioDePago = medioDePago;
+    }
+
+    public int calcularEdad() {
+        if (fechaNacimiento == null) {
+            return 0;
+        }
+
+        return Period.between(fechaNacimiento, LocalDate.now()).getYears();
     }
 
     public long getDniComprador() {
@@ -94,13 +104,10 @@ public class Comprador {
         }
         return true;
     }
-   
-    
+
     @Override
     public String toString() {
         return "Comprador{" + "dni=" + dniComprador + ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", password=" + password + ", medioDePago=" + medioDePago + '}';
     }
-    
-    
-    
+
 }

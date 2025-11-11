@@ -142,7 +142,7 @@ public class DetalleTicket {
     @Override
     public String toString() {
         return "Detalle Ticket: " + idDetalle + "\n"
-                + "Ticket: " + ticket.getIdTicket() + "\n"
+                + "Ticket: " +  (ticket != null ? ticket.getIdTicket() : "N/A") + "\n"
                 + "Proyeccion: " + proyeccion.getIdProyeccion() + "\n"
                 + "NroSala: " + proyeccion.getSala().getNroSala() + "\n"
                 + "Pelicula: " + proyeccion.getPelicula().getTitulo() + "\n"
