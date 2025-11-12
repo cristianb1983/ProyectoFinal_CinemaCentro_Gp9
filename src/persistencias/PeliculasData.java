@@ -123,6 +123,7 @@ public class PeliculasData {
             while (rs.next()) {
                 p = new Pelicula();
                 p.setIdPelicula(rs.getInt("idPelicula"));
+                p.setTitulo(rs.getString("titulo"));
                 p.setDirector(rs.getString("director"));
                 p.setActores(rs.getString("actores"));
                 p.setOrigen(rs.getString("origen"));
@@ -149,6 +150,7 @@ public class PeliculasData {
             while (rs.next()) {
                 p = new Pelicula();
                 p.setIdPelicula(rs.getInt("idPelicula"));
+                p.setTitulo(rs.getString("titulo"));
                 p.setDirector(rs.getString("director"));
                 p.setActores(rs.getString("actores"));
                 p.setOrigen(rs.getString("origen"));
