@@ -169,14 +169,12 @@ public class ListasPeliculas extends javax.swing.JInternalFrame {
        List<Pelicula> listaPelisCarterlera = peliData.listarPeliculasenCartelera();
         for (Pelicula peli : listaPelisCarterlera) {
             modeloTabla.addRow(new Object[]{
-            peli.getIdPelicula(),
             peli.getTitulo(),
             peli.getDirector(),
             peli.getActores(),
             peli.getOrigen(),
             peli.getGenero(),
             peli.getEstreno(),
-            peli.isEnCartelera()
             });
         }
     }
@@ -186,14 +184,12 @@ public class ListasPeliculas extends javax.swing.JInternalFrame {
        List<Pelicula> listaEstrenos = peliData.estrenos();
         for (Pelicula peliEstreno : listaEstrenos) {
             modeloTabla.addRow(new Object[]{
-            peliEstreno.getIdPelicula(),
             peliEstreno.getTitulo(),
             peliEstreno.getDirector(),
             peliEstreno.getActores(),
             peliEstreno.getOrigen(),
             peliEstreno.getGenero(),
             peliEstreno.getEstreno(),
-            peliEstreno.isEnCartelera()
             });
         }
     }
