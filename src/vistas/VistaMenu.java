@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 
 /**
  *
@@ -23,6 +24,7 @@ public class VistaMenu extends javax.swing.JFrame {
         initComponents();
         this.setLayout(new BorderLayout());
         this.add(escritorio, BorderLayout.CENTER);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
     }
 
