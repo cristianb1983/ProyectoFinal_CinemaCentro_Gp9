@@ -250,5 +250,29 @@ public class LugarData {
 
         return lista;
     }
-
+    
+    public LugarAsiento buscarLugar(int idLugar) {
+        LugarAsiento lugar = null;
+        String sql = "SELECT * "
+                + "FROM lugar "
+                + "WHERE idLugar = ?";
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, idLugar);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    Proyeccion proy = new Proyeccion();
+                    proy.setIdProyeccion(rs.getInt("idProyeccion"));
+                    lugar = new LugarAsiento(
+                            rs.getInt("idLugar"),
+                            rs.getString("fila"),
+                            rs.getInt("numero"),
+                            rs.getString("estado"),
+                            proy);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al buscar lugar: " + e.getMessage());
+        }
+        return lugar;
+    }
 }
