@@ -42,14 +42,13 @@ public class ListasPeliculas extends javax.swing.JInternalFrame {
 
     private void tablaCabecera() {
         ArrayList<Object> filaCabercera = new ArrayList<>();
-        modeloTabla.addColumn("Id Pelicula");
+        
         modeloTabla.addColumn("Titulo");
         modeloTabla.addColumn("Director");
         modeloTabla.addColumn("Actores");
         modeloTabla.addColumn("Origen");
         modeloTabla.addColumn("Genero");
         modeloTabla.addColumn("Estreno");
-        modeloTabla.addColumn("En Cartelera");
         for (Object it : filaCabercera) {
             modeloTabla.addColumn(it);
         }
@@ -83,7 +82,7 @@ public class ListasPeliculas extends javax.swing.JInternalFrame {
         jLabel1.setText("PELICULAS");
 
         jRBcartelera.setText("EN CARTELERA");
-        jRBcartelera.setIcon(new javax.swing.ImageIcon("C:\\Users\\crb_p\\OneDrive\\Documentos\\practicos java\\ProyectoFinal_CinemaCentro_Gp9\\src\\iconos\\video_camera_play_icon_231646.png")); // NOI18N
+        jRBcartelera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/video_camera_play_icon_231646.png"))); // NOI18N
         jRBcartelera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBcarteleraActionPerformed(evt);
@@ -91,7 +90,7 @@ public class ListasPeliculas extends javax.swing.JInternalFrame {
         });
 
         jRBestrenos.setText("PROXIMOS ESTRENOS");
-        jRBestrenos.setIcon(new javax.swing.ImageIcon("C:\\Users\\crb_p\\OneDrive\\Documentos\\practicos java\\ProyectoFinal_CinemaCentro_Gp9\\src\\iconos\\video_camera_play_icon_231646.png")); // NOI18N
+        jRBestrenos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/video_camera_play_icon_231646.png"))); // NOI18N
         jRBestrenos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBestrenosActionPerformed(evt);

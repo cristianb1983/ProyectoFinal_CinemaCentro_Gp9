@@ -42,11 +42,9 @@ public class VistaMenu extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMIcartelera = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMprueba = new javax.swing.JMenuItem();
         jMIregistro = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        jMprueba = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMIgestionPeliculas = new javax.swing.JMenuItem();
         jMIgestionSalas = new javax.swing.JMenuItem();
@@ -86,23 +84,6 @@ public class VistaMenu extends javax.swing.JFrame {
 
         jMenu3.setText("Compra Online");
 
-        jMenuItem3.setText("Detalles de compra");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItem3);
-
-        jMprueba.setText("compra prueba");
-        jMprueba.setAutoscrolls(true);
-        jMprueba.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMpruebaActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMprueba);
-
         jMIregistro.setText("REGISTRATE !!!");
         jMIregistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,14 +92,24 @@ public class VistaMenu extends javax.swing.JFrame {
         });
         jMenu3.add(jMIregistro);
 
+        jMprueba.setText("comprar entradas");
+        jMprueba.setAutoscrolls(true);
+        jMprueba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMpruebaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMprueba);
+
+        jMenuItem3.setText("Detalles de compra");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem3);
+
         jMenuBar1.add(jMenu3);
-
-        jMenu4.setText("Consultas");
-
-        jMenuItem9.setText("Disponibilidad");
-        jMenu4.add(jMenuItem9);
-
-        jMenuBar1.add(jMenu4);
 
         jMenu1.setText("Administracion");
 
@@ -337,7 +328,6 @@ public class VistaMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem11;
@@ -345,7 +335,6 @@ public class VistaMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuItem jMprueba;
     // End of variables declaration//GEN-END:variables
 }

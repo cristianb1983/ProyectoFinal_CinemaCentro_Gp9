@@ -95,6 +95,7 @@ public class VistaDetalleTicket extends javax.swing.JInternalFrame {
         });
 
         jBbuscar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jBbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/zoom_magnyfying_glass_search_icon_231650.png"))); // NOI18N
         jBbuscar.setText("BUSCAR");
         jBbuscar.setIconTextGap(28);
         jBbuscar.addActionListener(new java.awt.event.ActionListener() {

@@ -91,13 +91,14 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTticketsPorPelicula = new javax.swing.JTable();
-        jbLimpiar = new javax.swing.JButton();
+        jbLimpiarFechas1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jdcCompradores = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTcompradoresPorFecha = new javax.swing.JTable();
+        jbLimpiarFechas2 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -130,6 +131,8 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
         ));
         jScrollPane3.setViewportView(jTtiketsPorFecha);
 
+        jbLimpiarFechas.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jbLimpiarFechas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/brush_paint_icon_231542.png"))); // NOI18N
         jbLimpiarFechas.setText("Limpiar");
         jbLimpiarFechas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,12 +156,13 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
                                 .addComponent(jdcPorFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(237, 237, 237)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(jbLimpiarFechas)))
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 267, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(294, 294, 294)
+                .addComponent(jbLimpiarFechas, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,9 +175,9 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addComponent(jbLimpiarFechas)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(jbLimpiarFechas, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         jTPestadistica.addTab("TICKETS EMITIDOS POR FECHA", jPanel1);
@@ -203,10 +207,12 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
         ));
         jScrollPane2.setViewportView(jTticketsPorPelicula);
 
-        jbLimpiar.setText("Limpiar");
-        jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
+        jbLimpiarFechas1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jbLimpiarFechas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/brush_paint_icon_231542.png"))); // NOI18N
+        jbLimpiarFechas1.setText("Limpiar");
+        jbLimpiarFechas1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbLimpiarActionPerformed(evt);
+                jbLimpiarFechas1ActionPerformed(evt);
             }
         });
 
@@ -226,12 +232,13 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
                                 .addComponent(jcbPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(181, 181, 181)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(jbLimpiar)))
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 152, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(288, 288, 288)
+                .addComponent(jbLimpiarFechas1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,9 +251,9 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addComponent(jbLimpiar)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(jbLimpiarFechas1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
 
         jTPestadistica.addTab("TICKETS EMITIDOS POR PELICULA", jPanel2);
@@ -276,6 +283,15 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTcompradoresPorFecha);
 
+        jbLimpiarFechas2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jbLimpiarFechas2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/brush_paint_icon_231542.png"))); // NOI18N
+        jbLimpiarFechas2.setText("Limpiar");
+        jbLimpiarFechas2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbLimpiarFechas2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -288,12 +304,15 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
                         .addGap(67, 67, 67)
                         .addComponent(jdcCompradores, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
+                        .addGap(210, 210, 210)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 773, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(210, 210, 210)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                        .addGap(293, 293, 293)
+                        .addComponent(jbLimpiarFechas2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,9 +323,11 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
                     .addComponent(jdcCompradores, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
                 .addGap(27, 27, 27)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jbLimpiarFechas2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jTPestadistica.addTab("COMPRADORES POR FECHA", jPanel3);
@@ -339,10 +360,6 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
         cargarTablaPorPeliculas();
     }//GEN-LAST:event_jcbPeliculasActionPerformed
 
-    private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
-        modeloTicketsPorPeliculas.setRowCount(0);
-    }//GEN-LAST:event_jbLimpiarActionPerformed
-
     private void jbLimpiarFechasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarFechasActionPerformed
         modeloTicketsPorFecha.setRowCount(0);
     }//GEN-LAST:event_jbLimpiarFechasActionPerformed
@@ -350,6 +367,14 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
     private void jdcCompradoresPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jdcCompradoresPropertyChange
         cargarTablaPorCompradores();
     }//GEN-LAST:event_jdcCompradoresPropertyChange
+
+    private void jbLimpiarFechas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarFechas1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbLimpiarFechas1ActionPerformed
+
+    private void jbLimpiarFechas2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarFechas2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbLimpiarFechas2ActionPerformed
 
     public void cargarTablaPorCompradores(){
         List<TicketCompra> tickets = new ArrayList();
@@ -433,8 +458,9 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTcompradoresPorFecha;
     private javax.swing.JTable jTticketsPorPelicula;
     private javax.swing.JTable jTtiketsPorFecha;
-    private javax.swing.JButton jbLimpiar;
     private javax.swing.JButton jbLimpiarFechas;
+    private javax.swing.JButton jbLimpiarFechas1;
+    private javax.swing.JButton jbLimpiarFechas2;
     private javax.swing.JComboBox<String> jcbPeliculas;
     private com.toedter.calendar.JDateChooser jdcCompradores;
     private com.toedter.calendar.JDateChooser jdcPorFecha;

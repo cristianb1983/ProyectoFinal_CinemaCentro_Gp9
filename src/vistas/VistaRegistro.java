@@ -47,7 +47,7 @@ public class VistaRegistro extends javax.swing.JInternalFrame {
 
         jbActualizar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jbActualizar.setForeground(new java.awt.Color(51, 51, 51));
-        jbActualizar.setIcon(new javax.swing.ImageIcon("C:\\Users\\crb_p\\OneDrive\\Documentos\\practicos java\\ProyectoFinal_CinemaCentro_Gp9\\src\\iconos\\thumb_up_hand_icon_231638.png")); // NOI18N
+        jbActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/tick_ok_correct_icon_231639.png"))); // NOI18N
         jbActualizar.setText("ENVIAR");
         jbActualizar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jbActualizar.setIconTextGap(24);
