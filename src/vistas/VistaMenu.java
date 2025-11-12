@@ -5,6 +5,7 @@
  */
 package vistas;
 
+import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -20,6 +21,9 @@ public class VistaMenu extends javax.swing.JFrame {
      */
     public VistaMenu() {
         initComponents();
+        this.setLayout(new BorderLayout());
+        this.add(escritorio, BorderLayout.CENTER);
+
     }
 
     /**
@@ -35,7 +39,10 @@ public class VistaMenu extends javax.swing.JFrame {
         Image image = icon.getImage();
         escritorio = new javax.swing.JDesktopPane(){
             public void paintComponent(Graphics g){
-                g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+                super.paintComponent(g);
+                if(image != null){
+                    g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+                }
             }
         };
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -63,11 +70,11 @@ public class VistaMenu extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1402, Short.MAX_VALUE)
+            .addGap(0, 1414, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 742, Short.MAX_VALUE)
+            .addGap(0, 748, Short.MAX_VALUE)
         );
 
         jMenu2.setText("Peliculas");
@@ -182,16 +189,11 @@ public class VistaMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(escritorio)
-                .addContainerGap())
+            .addComponent(escritorio)
         );
 
         pack();
