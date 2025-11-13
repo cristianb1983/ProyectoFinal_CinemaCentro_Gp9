@@ -5,6 +5,10 @@
  */
 package vistas;
 
+import entidades.Sala;
+import javax.swing.JOptionPane;
+import persistencias.SalaData;
+
 /**
  *
  * @author crb_p
@@ -14,8 +18,11 @@ public class GestionSalas extends javax.swing.JInternalFrame {
     /**
      * Creates new form GestionSalas
      */
+    SalaData salaD = new SalaData();
     public GestionSalas() {
         initComponents();
+        cargarComboOpcion();
+        cargarComboEstado();
     }
 
     /**
@@ -27,24 +34,24 @@ public class GestionSalas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jLGestionDeSalas = new javax.swing.JLabel();
+        jbCargar = new javax.swing.JButton();
+        jbModificar = new javax.swing.JButton();
+        jbEliminar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField2 = new javax.swing.JTextField();
+        jlIdSala = new javax.swing.JLabel();
+        jlNumDeSala = new javax.swing.JLabel();
+        jlCapacidad = new javax.swing.JLabel();
+        jlSala3D = new javax.swing.JLabel();
+        jlEstado = new javax.swing.JLabel();
+        jComboBoxEstado = new javax.swing.JComboBox<>();
+        jRadioButtonSi = new javax.swing.JRadioButton();
+        jRadioButtonNo = new javax.swing.JRadioButton();
+        jtfIdSala = new javax.swing.JTextField();
+        jlElijaOpcion = new javax.swing.JLabel();
+        jComboBoxOpciones = new javax.swing.JComboBox<>();
+        jtfCapacidad = new javax.swing.JTextField();
+        jtfNSala = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -52,57 +59,86 @@ public class GestionSalas extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("ADMINISTRACION - GESTION DE SALAS");
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Gestion de Salas");
+        jLGestionDeSalas.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLGestionDeSalas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLGestionDeSalas.setText("Gestion de Salas");
 
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/new_file_add_paper_icon_231603.png"))); // NOI18N
-        jButton1.setText("CARGAR");
-        jButton1.setIconTextGap(18);
-
-        jButton2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/pen_pencil_write_edit_icon_231611 (1).png"))); // NOI18N
-        jButton2.setText("MODIFICAR");
-        jButton2.setIconTextGap(18);
-
-        jButton3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/trash_can_rubish_paper_bin_icon_231400.png"))); // NOI18N
-        jButton3.setText("ELIMINAR");
-        jButton3.setIconTextGap(18);
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel8.setText("id sala: ");
-
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel2.setText("N° de sala:");
-
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel6.setText("Capacidad:");
-
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel5.setText("Sala 3D:  ");
-
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel7.setText("Estado:");
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jRadioButton1.setText("SI");
-
-        jRadioButton2.setText("NO");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        jbCargar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jbCargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/new_file_add_paper_icon_231603.png"))); // NOI18N
+        jbCargar.setText("CARGAR");
+        jbCargar.setIconTextGap(18);
+        jbCargar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                jbCargarActionPerformed(evt);
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel3.setText("elija una opcion :");
+        jbModificar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jbModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/pen_pencil_write_edit_icon_231611 (1).png"))); // NOI18N
+        jbModificar.setText("MODIFICAR");
+        jbModificar.setIconTextGap(18);
+        jbModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbModificarActionPerformed(evt);
+            }
+        });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jbEliminar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jbEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/trash_can_rubish_paper_bin_icon_231400.png"))); // NOI18N
+        jbEliminar.setText("ELIMINAR");
+        jbEliminar.setIconTextGap(18);
+        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEliminarActionPerformed(evt);
+            }
+        });
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jlIdSala.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jlIdSala.setText("id sala: ");
+
+        jlNumDeSala.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jlNumDeSala.setText("N° de sala:");
+
+        jlCapacidad.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jlCapacidad.setText("Capacidad:");
+
+        jlSala3D.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jlSala3D.setText("Sala 3D:  ");
+
+        jlEstado.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jlEstado.setText("Estado:");
+
+        jRadioButtonSi.setText("SI");
+        jRadioButtonSi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonSiActionPerformed(evt);
+            }
+        });
+
+        jRadioButtonNo.setText("NO");
+        jRadioButtonNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonNoActionPerformed(evt);
+            }
+        });
+
+        jlElijaOpcion.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jlElijaOpcion.setText("elija una opcion :");
+
+        jComboBoxOpciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxOpcionesActionPerformed(evt);
+            }
+        });
+
+        jtfNSala.setToolTipText("");
+        jtfNSala.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfNSalaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -112,23 +148,24 @@ public class GestionSalas extends javax.swing.JInternalFrame {
                 .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jlCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlSala3D, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlNumDeSala, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlIdSala, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlElijaOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
-                        .addGap(23, 23, 23)
-                        .addComponent(jRadioButton2))
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, 0, 207, Short.MAX_VALUE)
-                    .addComponent(jTextField1)
-                    .addComponent(jTextField2)
-                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jRadioButtonSi)
+                            .addGap(23, 23, 23)
+                            .addComponent(jRadioButtonNo))
+                        .addComponent(jComboBoxOpciones, 0, 207, Short.MAX_VALUE)
+                        .addComponent(jtfIdSala)
+                        .addComponent(jtfCapacidad)
+                        .addComponent(jComboBoxEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jtfNSala, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(58, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -136,29 +173,31 @@ public class GestionSalas extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(36, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlElijaOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlIdSala, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfIdSala, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jlNumDeSala, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jtfNSala)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlSala3D, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRadioButtonSi)
+                    .addComponent(jRadioButtonNo))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(jlCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32))
         );
 
@@ -168,15 +207,15 @@ public class GestionSalas extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addComponent(jButton1)
+                .addComponent(jbCargar)
                 .addGap(56, 56, 56)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLGestionDeSalas, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(143, 143, 143))
             .addGroup(layout.createSequentialGroup()
                 .addGap(106, 106, 106)
@@ -187,43 +226,186 @@ public class GestionSalas extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLGestionDeSalas, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    private void jRadioButtonNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonNoActionPerformed
+        jRadioButtonSi.setSelected(false);
+        jRadioButtonSi.setEnabled(false);
+    }//GEN-LAST:event_jRadioButtonNoActionPerformed
 
+    private void jComboBoxOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxOpcionesActionPerformed
+       String opciones = (String)jComboBoxOpciones.getSelectedItem();
+        switch (opciones) {
+            case "Guardar":
+                jtfIdSala.setEnabled(true);
+                jtfNSala.setEnabled(true);
+                jRadioButtonSi.setEnabled(true);
+                jRadioButtonNo.setEnabled(true);
+                jtfCapacidad.setEnabled(true);
+                jComboBoxEstado.setEnabled(true);
+                jbCargar.setEnabled(true);
+                jbModificar.setEnabled(false);
+                jbEliminar.setEnabled(false);
+                break;
+            case "Modificar":
+                jtfIdSala.setEnabled(true);
+                jtfNSala.setEnabled(true);
+                jRadioButtonSi.setEnabled(true);
+                jRadioButtonNo.setEnabled(true);
+                jtfCapacidad.setEnabled(true);
+                jComboBoxEstado.setEnabled(true);
+                jbCargar.setEnabled(false);
+                jbModificar.setEnabled(true);
+                jbEliminar.setEnabled(false);
+                break;
+            case "Eliminar":
+                jtfIdSala.setEnabled(true);
+                jtfNSala.setEnabled(true);
+                jRadioButtonSi.setEnabled(true);
+                jRadioButtonNo.setEnabled(true);
+                jtfCapacidad.setEnabled(true);
+                jComboBoxEstado.setEnabled(true);
+                jbCargar.setEnabled(false);
+                jbModificar.setEnabled(false);
+                jbEliminar.setEnabled(true);
+                break;
+        }
+    }//GEN-LAST:event_jComboBoxOpcionesActionPerformed
+
+    private void jRadioButtonSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSiActionPerformed
+        jRadioButtonNo.setSelected(false);
+        jRadioButtonNo.setEnabled(false);
+    }//GEN-LAST:event_jRadioButtonSiActionPerformed
+
+    private void jbCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCargarActionPerformed
+        //Validacion de campos vacios
+        boolean seleccion; 
+        if(jtfIdSala.getText().trim().isEmpty() || jtfNSala.getText().trim().isEmpty()||
+           jtfCapacidad.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Los campos no pueden estar vacios");
+            return;
+        }
+            
+        if (jRadioButtonNo.isSelected()) {
+            seleccion = false;
+        }else{
+            seleccion = true;
+        }
+    
+        
+        try {
+            int IdSala = Integer.parseInt(jtfIdSala.getText());
+            int nroSala = Integer.parseInt(jtfNSala.getText());
+            int capacidad = Integer.parseInt(jtfCapacidad.getText());
+            Boolean estado = (Boolean)jComboBoxEstado.getSelectedItem();
+
+            
+            Sala sala = new Sala(nroSala, seleccion, capacidad, estado);
+            salaD.crearSala(sala);
+            JOptionPane.showMessageDialog(this, "Sala Guardada");
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Error de formato");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Error");
+        }
+    }//GEN-LAST:event_jbCargarActionPerformed
+
+    private void jtfNSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNSalaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfNSalaActionPerformed
+
+    private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
+        //Validacion de campos vacios
+        boolean seleccion; 
+        if(jtfIdSala.getText().trim().isEmpty() || jtfNSala.getText().trim().isEmpty()||
+           jtfCapacidad.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Los campos no pueden estar vacios");
+            return;
+        }
+            
+        if (jRadioButtonNo.isSelected()) {
+            seleccion = false;
+        }else{
+            seleccion = true;
+        }
+    
+        
+        try {
+            int IdSala = Integer.parseInt(jtfIdSala.getText());
+            int nroSala = Integer.parseInt(jtfNSala.getText());
+            int capacidad = Integer.parseInt(jtfCapacidad.getText());
+            Boolean estado = (Boolean)jComboBoxEstado.getSelectedItem();
+
+            
+            Sala sala = new Sala(nroSala, seleccion, capacidad, estado);
+            salaD.actualizarSala(sala);
+            JOptionPane.showMessageDialog(this, "Sala Modificada");
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Error de formato");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Error");
+        }
+    }//GEN-LAST:event_jbModificarActionPerformed
+
+    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
+         //Validacion de campos vacios
+        if(jtfIdSala.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "El campo no puede estar vacio");
+            return;
+        }
+        try{
+            int IdSala = Integer.parseInt(jtfIdSala.getText());     
+            salaD.bajaFisicaSala(IdSala);
+            JOptionPane.showMessageDialog(this, "Sala Borrada");
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Error de formato" + e.getMessage());
+        }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(this, "El comprador no existe");
+        }    
+    }//GEN-LAST:event_jbEliminarActionPerformed
+
+    public void cargarComboOpcion(){
+        jComboBoxOpciones.addItem("Guardar");
+        jComboBoxOpciones.addItem("Modificar");
+        jComboBoxOpciones.addItem("Eliminar");
+    }
+    
+    public void cargarComboEstado(){
+        jComboBoxEstado.addItem("Libre");
+        jComboBoxEstado.addItem("Reservada");
+        jComboBoxEstado.addItem("En reparacion");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JComboBox<String> jComboBoxEstado;
+    private javax.swing.JComboBox<String> jComboBoxOpciones;
+    private javax.swing.JLabel jLGestionDeSalas;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JRadioButton jRadioButtonNo;
+    private javax.swing.JRadioButton jRadioButtonSi;
+    private javax.swing.JButton jbCargar;
+    private javax.swing.JButton jbEliminar;
+    private javax.swing.JButton jbModificar;
+    private javax.swing.JLabel jlCapacidad;
+    private javax.swing.JLabel jlElijaOpcion;
+    private javax.swing.JLabel jlEstado;
+    private javax.swing.JLabel jlIdSala;
+    private javax.swing.JLabel jlNumDeSala;
+    private javax.swing.JLabel jlSala3D;
+    private javax.swing.JTextField jtfCapacidad;
+    private javax.swing.JTextField jtfIdSala;
+    private javax.swing.JTextField jtfNSala;
     // End of variables declaration//GEN-END:variables
 }
