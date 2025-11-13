@@ -340,7 +340,7 @@ public class DetalleTicketData {
     public List<DetalleTicket> listarDetallePorIdTicket(int idTicket) {
         //faltan cambios
         List<DetalleTicket> listaDetalles = new ArrayList();
-        String query = "SELECT detalleticket.*, idLugar, fila, numero, nroSala, titulo "
+        String query = "SELECT detalleticket.*, idLugar, fila, numero, nroSala, titulo, horaInicio, HoraFin "
                 + "FROM detalleticket "
                 + "JOIN lugar_detalleticket ON lugar_detalleticket.detalleId = detalleticket.idDetalle "
                 + "JOIN lugar ON lugar.idLugar = lugar_detalleticket.lugarId "
@@ -368,6 +368,8 @@ public class DetalleTicketData {
 
                     Proyeccion proyeccion = new Proyeccion();
                     proyeccion.setIdProyeccion(rs.getInt("idProyeccion"));
+                    proyeccion.setHoraInicio(rs.getTime("horaInicio").toLocalTime());
+                    proyeccion.setHoraFin(rs.getTime("horaFin").toLocalTime());
                     Sala sala = new Sala();
                     sala.setNroSala(rs.getInt("nroSala"));
                     Pelicula pelicula = new Pelicula();
@@ -395,6 +397,7 @@ public class DetalleTicketData {
             System.out.println("Error no se pudo obtener la lista");
             System.out.println(e.getMessage());
         }
+        
         return listaDetalles;
     }
     

@@ -8,6 +8,7 @@ package vistas;
 import entidades.DetalleTicket;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import persistencias.DetalleTicketData;
 
@@ -23,6 +24,7 @@ public class VistaDetalleTicket extends javax.swing.JInternalFrame {
         initComponents();
         tablaCabecera();
         borrarFilasDeTabla();
+        cargarCombo();
     }
 
    private void borrarFilasDeTabla() {
@@ -35,12 +37,12 @@ public class VistaDetalleTicket extends javax.swing.JInternalFrame {
 
     private void tablaCabecera() {
         ArrayList<Object> filaCabercera = new ArrayList<>();
-        modeloTabla.addColumn("Id Ticket");
-        modeloTabla.addColumn("Id Detalle");
         modeloTabla.addColumn("Pelicula");
         modeloTabla.addColumn("Sala");
         modeloTabla.addColumn("Lugar");
         modeloTabla.addColumn("Cantidad de Tickets");
+        modeloTabla.addColumn("Hora de inicio");
+        modeloTabla.addColumn("Hora de fin");
         modeloTabla.addColumn("Subtotal");
         for (Object it : filaCabercera) {
             modeloTabla.addColumn(it);
@@ -60,6 +62,8 @@ public class VistaDetalleTicket extends javax.swing.JInternalFrame {
         jtfDni = new javax.swing.JTextField();
         jtfIdCompra = new javax.swing.JTextField();
         jBbuscar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jcbOpciones = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
@@ -88,6 +92,9 @@ public class VistaDetalleTicket extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTdetalleCompra);
 
+        jtfDni.setEnabled(false);
+
+        jtfIdCompra.setEnabled(false);
         jtfIdCompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfIdCompraActionPerformed(evt);
@@ -104,38 +111,50 @@ public class VistaDetalleTicket extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel4.setText("Elija una opcion");
+
+        jcbOpciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbOpcionesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(115, 115, 115)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtfDni, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfIdCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
+                .addContainerGap(234, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(215, 215, 215))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(215, 215, 215))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33))))
+                    .addComponent(jLabel4)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                            .addComponent(jcbOpciones, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtfDni, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfIdCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(250, 250, 250)
+                        .addComponent(jBbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(40, 40, 40)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addComponent(jcbOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -148,9 +167,9 @@ public class VistaDetalleTicket extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(jBbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(64, 64, 64)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
 
         pack();
@@ -162,47 +181,89 @@ public class VistaDetalleTicket extends javax.swing.JInternalFrame {
 
     private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
         modeloTabla.setRowCount(0);
-        if(!jtfIdCompra.getText().trim().isEmpty()){
-            int idTicket = Integer.parseInt(jtfIdCompra.getText());
-            List<DetalleTicket> detalles = detalleD.listarDetallePorIdTicket(idTicket);
-
-            for(DetalleTicket aux : detalles){
-                modeloTabla.addRow(new Object[] {
-                    aux.getTicket().getIdTicket(),
-                    aux.getIdDetalle(),
-                    aux.getProyeccion().getPelicula().getTitulo(),
-                    aux.getProyeccion().getSala().getNroSala(),
-                    aux.getLugares(),
-                    aux.getCantidad(),
-                    aux.getSubtotal()
-                });
+        String opciones = (String) jcbOpciones.getSelectedItem();
+        try {
+            switch(opciones){
+                case "Buscar por id de compra":
+                    if(!jtfIdCompra.getText().trim().isEmpty()){
+                        int idTicket = Integer.parseInt(jtfIdCompra.getText());
+                        List<DetalleTicket> detalles = detalleD.listarDetallePorIdTicket(idTicket);
+                        if(!detalles.isEmpty()){
+                            for(DetalleTicket aux : detalles){
+                                modeloTabla.addRow(new Object[] {
+                                    aux.getProyeccion().getPelicula().getTitulo(),
+                                    aux.getProyeccion().getSala().getNroSala(),
+                                    aux.getLugares(),
+                                    aux.getCantidad(),
+                                    aux.getProyeccion().getHoraInicio(),
+                                    aux.getProyeccion().getHoraFin(),
+                                    aux.getSubtotal()
+                                });
+                            } 
+                        }else {
+                            JOptionPane.showMessageDialog(this, "El id " + idTicket + " de compra no existe");
+                        }
+                    }else {
+                        JOptionPane.showMessageDialog(this, "Debe llenar el campo");
+                    }    
+                    break;
+                case "Buscar por dni":
+                    if(!jtfDni.getText().trim().isEmpty()){
+                        int dni = Integer.parseInt(jtfDni.getText());
+                        List<DetalleTicket> detallesPorDni = detalleD.buscarDetallePorComprador(dni);
+                        if(!detallesPorDni.isEmpty()){
+                            for(DetalleTicket aux : detallesPorDni){
+                                modeloTabla.addRow(new Object[] {
+                                    aux.getProyeccion().getPelicula().getTitulo(),
+                                    aux.getProyeccion().getSala().getNroSala(),
+                                    aux.getLugares(),
+                                    aux.getCantidad(),
+                                    aux.getProyeccion().getHoraInicio(),
+                                    aux.getProyeccion().getHoraFin(),
+                                    aux.getSubtotal()
+                                });
+                            }    
+                        }else {
+                            JOptionPane.showMessageDialog(this, "El dni " + dni + " no existe");
+                        }
+                    }else {
+                        JOptionPane.showMessageDialog(this, "Debe llenar el campo");
+                    }    
+                    break;
             }
-        }else if(!jtfDni.getText().trim().isEmpty()){
-            int Dni = Integer.parseInt(jtfDni.getText());
-            List<DetalleTicket> detallesPorDni = detalleD.buscarDetallePorComprador(Dni);
-            
-            for(DetalleTicket aux : detallesPorDni){
-                modeloTabla.addRow(new Object[] {
-                    aux.getTicket().getIdTicket(),
-                    aux.getIdDetalle(),
-                    aux.getProyeccion().getPelicula().getTitulo(),
-                    aux.getProyeccion().getSala().getNroSala(),
-                    aux.getLugares(),
-                    aux.getCantidad(),
-                    aux.getSubtotal()
-                });
-            }
-        }
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Error de formato");
+        }    
     }//GEN-LAST:event_jBbuscarActionPerformed
 
+    private void jcbOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbOpcionesActionPerformed
+        String opciones = (String) jcbOpciones.getSelectedItem();
+        switch(opciones){
+            case "Buscar por id de compra":
+                jtfIdCompra.setEnabled(true);
+                jtfDni.setEnabled(false);
+                break;
+            case "Buscar por dni":
+                jtfIdCompra.setEnabled(false);
+                jtfDni.setEnabled(true);
+                break;
+        }
+    }//GEN-LAST:event_jcbOpcionesActionPerformed
+    
+    private void cargarCombo(){
+        jcbOpciones.addItem("Buscar por id de compra");
+        jcbOpciones.addItem("Buscar por dni");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBbuscar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTdetalleCompra;
+    private javax.swing.JComboBox<String> jcbOpciones;
     private javax.swing.JTextField jtfDni;
     private javax.swing.JTextField jtfIdCompra;
     // End of variables declaration//GEN-END:variables

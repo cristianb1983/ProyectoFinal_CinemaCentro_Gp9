@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import persistencias.TicketData;
 
@@ -369,14 +370,18 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
         try{
             LocalDate fechaFuncion = jdcCompradores.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             tickets = ticketD.listarTicketsPorFechaAsistida(fechaFuncion);
-            for(TicketCompra aux : tickets){
-                modeloCompradoresPorFecha.addRow(new Object []{
-                    aux.getComprador().getDniComprador(),
-                    aux.getComprador().getNombre(),
-                    aux.getComprador().getFechaNacimiento(),
-                    aux.getComprador().getMedioDePago()
-                });
-            }
+            if(!tickets.isEmpty()){
+                for(TicketCompra aux : tickets){
+                    modeloCompradoresPorFecha.addRow(new Object []{
+                        aux.getComprador().getDniComprador(),
+                        aux.getComprador().getNombre(),
+                        aux.getComprador().getFechaNacimiento(),
+                        aux.getComprador().getMedioDePago()
+                    });
+                }
+            }else {
+                JOptionPane.showMessageDialog(this, "No hubo compradores en esa fecha");
+            } 
         }catch(NullPointerException e){
             System.out.println("Control de error de compradores para la primera vez al iniciar la ventana");
         }
@@ -388,16 +393,20 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
             LocalDate fecha = jdcPorFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             LocalDate fecha2 = fecha.plusDays(1);
             tickets = ticketD.listarTicketsPorFecha(fecha, fecha2);
-            for (TicketCompra aux : tickets) {
-                modeloTicketsPorFecha.addRow(new Object[] {
-                    aux.getFechaCompra(),
-                    aux.getFechaFuncion(),
-                    aux.getComprador().getDniComprador(),
-                    aux.getTipoCompra(),
-                    aux.getCodigoVenta(),
-                    aux.getMonto()
-                });              
-            }
+            if(!tickets.isEmpty()){
+                for (TicketCompra aux : tickets) {
+                    modeloTicketsPorFecha.addRow(new Object[] {
+                        aux.getFechaCompra(),
+                        aux.getFechaFuncion(),
+                        aux.getComprador().getDniComprador(),
+                        aux.getTipoCompra(),
+                        aux.getCodigoVenta(),
+                        aux.getMonto()
+                    });              
+                }
+            }else {
+                JOptionPane.showMessageDialog(this, "No hay tickets emitidos en esa fecha");
+            }           
         }catch(NullPointerException e){
             System.out.println("debe seleccionar una fecha");
         }
