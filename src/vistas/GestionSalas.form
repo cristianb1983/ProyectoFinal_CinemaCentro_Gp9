@@ -211,7 +211,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="id sala: "/>
+            <Property name="text" type="java.lang.String" value="Id Sala: "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jlNumDeSala">
@@ -279,7 +279,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="elija una opcion :"/>
+            <Property name="text" type="java.lang.String" value="Elija una opcion :"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBoxOpciones">

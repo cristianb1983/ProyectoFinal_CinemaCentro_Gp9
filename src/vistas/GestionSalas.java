@@ -96,7 +96,7 @@ public class GestionSalas extends javax.swing.JInternalFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jlIdSala.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jlIdSala.setText("id sala: ");
+        jlIdSala.setText("Id Sala: ");
 
         jlNumDeSala.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jlNumDeSala.setText("N° de sala:");
@@ -125,7 +125,7 @@ public class GestionSalas extends javax.swing.JInternalFrame {
         });
 
         jlElijaOpcion.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jlElijaOpcion.setText("elija una opcion :");
+        jlElijaOpcion.setText("Elija una opcion :");
 
         jComboBoxOpciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
