@@ -8,6 +8,7 @@ package vistas;
 import entidades.TicketCompra;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import persistencias.TicketData;
 
@@ -55,10 +56,8 @@ public class GestionTikets extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jtfDni = new javax.swing.JTextField();
         jtfIdCompra = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jbEliminar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtTickets = new javax.swing.JTable();
@@ -75,12 +74,6 @@ public class GestionTikets extends javax.swing.JInternalFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Gestion de Tickets");
 
-        jtfDni.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfDniActionPerformed(evt);
-            }
-        });
-
         jtfIdCompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfIdCompraActionPerformed(evt);
@@ -88,8 +81,6 @@ public class GestionTikets extends javax.swing.JInternalFrame {
         });
 
         jLabel2.setText("BUSCAR POR ID DE COMPRA:");
-
-        jLabel3.setText("BUSCAR POR DNI :");
 
         jbEliminar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jbEliminar.setText("ELIMINAR");
@@ -144,18 +135,11 @@ public class GestionTikets extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel4)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(28, 28, 28)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jtfDni, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jtfIdCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jbEliminar)))))))
+                                .addComponent(jtfIdCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jbEliminar)))))
                 .addGap(40, 40, 40))
         );
         layout.setVerticalGroup(
@@ -165,78 +149,75 @@ public class GestionTikets extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfIdCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfDni, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jbEliminar)))
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbEliminar)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfIdCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jbLimpiar)
-                .addGap(13, 13, 13))
+                .addGap(30, 30, 30))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jtfIdCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfIdCompraActionPerformed
-        int idTicket = Integer.parseInt(jtfIdCompra.getText());
-        TicketCompra ticket;
-        ticket = ticketD.buscarTicketPorId(idTicket);
-        modeloTabla.addRow(new Object [] {
-            ticket.getIdTicket(),
-            ticket.getFechaCompra(),
-            ticket.getFechaFuncion(),
-            ticket.getComprador().getDniComprador(),
-            ticket.getTipoCompra(),
-            ticket.getCodigoVenta(),
-            ticket.getMonto()
-        });    
+        if(jtfIdCompra.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Debe ingresar el id del ticket");
+            return;
+        }
+        try {
+            int idTicket = Integer.parseInt(jtfIdCompra.getText());
+            TicketCompra ticket = ticketD.buscarTicketPorId(idTicket);
+            modeloTabla.addRow(new Object [] {
+                ticket.getIdTicket(),
+                ticket.getFechaCompra(),
+                ticket.getFechaFuncion(),
+                ticket.getComprador().getDniComprador(),
+                ticket.getTipoCompra(),
+                ticket.getCodigoVenta(),
+                ticket.getMonto()
+            });
+        }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(this, "El id ingresado no existe");
+        }
     }//GEN-LAST:event_jtfIdCompraActionPerformed
-
-    private void jtfDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfDniActionPerformed
-        int dniComprador = Integer.parseInt(jtfDni.getText());
-        List<TicketCompra> tickets = new ArrayList();
-        tickets = ticketD.listarTicketsPorDni(dniComprador);
-        for(TicketCompra aux : tickets)
-        modeloTabla.addRow(new Object [] {
-            aux.getIdTicket(),
-            aux.getFechaCompra(),
-            aux.getFechaFuncion(),
-            aux.getComprador().getDniComprador(),
-            aux.getTipoCompra(),
-            aux.getCodigoVenta(),
-            aux.getMonto()
-        });
-    }//GEN-LAST:event_jtfDniActionPerformed
 
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
         modeloTabla.setRowCount(0);
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        // TODO add your handling code here:
+        if(jtfIdCompra.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Debe ingresar un id");
+            return;
+        }
+        try {
+            int idTicket = Integer.parseInt(jtfIdCompra.getText());
+            if(ticketD.anularTicket(idTicket)){
+                JOptionPane.showMessageDialog(this, "Ticket eliminado");
+            }else {
+                JOptionPane.showMessageDialog(this, "Ticket no encontrado");
+            }
+        }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(this, "No se pudo eliminar");
+        } catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Debe ingresar un numero");
+        }
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbLimpiar;
     private javax.swing.JTable jtTickets;
-    private javax.swing.JTextField jtfDni;
     private javax.swing.JTextField jtfIdCompra;
     // End of variables declaration//GEN-END:variables
 }

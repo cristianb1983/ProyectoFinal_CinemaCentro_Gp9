@@ -34,42 +34,30 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
     }
 
     private void tablaTicketsPorFecha() {
-        ArrayList<Object> filaCabercera = new ArrayList<>();
         modeloTicketsPorFecha.addColumn("Fecha de Compra");
         modeloTicketsPorFecha.addColumn("Fecha de la Funcion");
         modeloTicketsPorFecha.addColumn("Comprador");
         modeloTicketsPorFecha.addColumn("Tipo de Compra");
         modeloTicketsPorFecha.addColumn("Codigo de Venta");
         modeloTicketsPorFecha.addColumn("Monto Total");
-        for (Object it : filaCabercera) {
-            modeloTicketsPorFecha.addColumn(it);
-        }
         jTtiketsPorFecha.setModel(modeloTicketsPorFecha);
     }
 
     private void tablaTicketsPorPelicula() {
-        ArrayList<Object> filaCabercera = new ArrayList<>();
         modeloTicketsPorPeliculas.addColumn("Fecha de Compra");
         modeloTicketsPorPeliculas.addColumn("Fecha de la Funcion");
         modeloTicketsPorPeliculas.addColumn("Comprador");
         modeloTicketsPorPeliculas.addColumn("Tipo de Compra");
         modeloTicketsPorPeliculas.addColumn("Codigo de Venta");
         modeloTicketsPorPeliculas.addColumn("Monto Total");
-        for (Object it : filaCabercera) {
-            modeloTicketsPorPeliculas.addColumn(it);
-        }
         jTticketsPorPelicula.setModel(modeloTicketsPorPeliculas);
     }
 
     private void tablaCompradoresPorFecha() {
-        ArrayList<Object> filaCabercera = new ArrayList<>();
         modeloCompradoresPorFecha.addColumn("DNI del Comprador");
         modeloCompradoresPorFecha.addColumn("Nombre");
         modeloCompradoresPorFecha.addColumn("Fecha de Nacimiento");
         modeloCompradoresPorFecha.addColumn("Medio de Pago");
-        for (Object it : filaCabercera) {
-            modeloCompradoresPorFecha.addColumn(it);
-        }
         jTcompradoresPorFecha.setModel(modeloCompradoresPorFecha);
     }
 
@@ -369,11 +357,11 @@ public class VistaEstadisticas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jdcCompradoresPropertyChange
 
     private void jbLimpiarFechas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarFechas1ActionPerformed
-        // TODO add your handling code here:
+        modeloTicketsPorPeliculas.setRowCount(0);
     }//GEN-LAST:event_jbLimpiarFechas1ActionPerformed
 
     private void jbLimpiarFechas2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarFechas2ActionPerformed
-        // TODO add your handling code here:
+        modeloCompradoresPorFecha.setRowCount(0);
     }//GEN-LAST:event_jbLimpiarFechas2ActionPerformed
 
     public void cargarTablaPorCompradores(){

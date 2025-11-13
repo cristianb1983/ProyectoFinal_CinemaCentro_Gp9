@@ -105,7 +105,6 @@ public class TicketData {
     }
 
     public boolean anularTicket(int idTicket) {
-
         // Obtenemos detalle para poder liberar
         try {
             TicketCompra ticket = buscarTicketPorId(idTicket);
@@ -119,6 +118,8 @@ public class TicketData {
                     }
                     detalleData.borrarDetalleTicketPorId(det.getIdDetalle());
                 }
+            }else {
+                return false;
             }
 
             //Borramos el ticket
@@ -131,7 +132,6 @@ public class TicketData {
             ps.executeUpdate();
             ps.close();
             return true;
-
         } catch (SQLException e) {
             System.out.println("Error al anular ticket: " + e.getMessage());
             return false;
