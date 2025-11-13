@@ -152,6 +152,45 @@ public class ProyeccionData {
         return listarProyecciones;
     }
     
+    public List<Proyeccion> listarProyeccionesPorPelicula(int idpelicula){
+        List<Proyeccion> listarProyecciones = new ArrayList<>();
+        try {
+            String query = "SELECT proyeccion.*, sala.nroSala " +
+                            "FROM proyeccion " +
+                            "JOIN sala ON sala.idSala = proyeccion.idSala " +
+                            "WHERE idPelicula = ?;";
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, idpelicula);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                proyeccion = new Proyeccion();
+                
+                Pelicula pelicula = new Pelicula();
+                pelicula.setIdPelicula(rs.getInt("idPelicula"));
+                
+                Sala sala = new Sala();
+                sala.setIdSala(rs.getInt("idSala"));
+                sala.setNroSala(rs.getInt("nroSala"));
+                  
+                proyeccion.setPelicula(pelicula);
+                proyeccion.setSala(sala);
+                proyeccion.setIdioma(rs.getString("idioma"));
+                proyeccion.setEs3D(rs.getBoolean("es3D"));
+                proyeccion.setSubtitulada(rs.getBoolean("subtitulada"));
+                proyeccion.setHoraInicio(rs.getTime("horaInicio").toLocalTime());
+                proyeccion.setHoraFin(rs.getTime("horaFin").toLocalTime());
+                proyeccion.setPrecio(rs.getDouble("precioLugar"));    
+                
+                listarProyecciones.add(proyeccion);
+            }
+            ps.close();
+        } catch (SQLException e) {
+            System.out.println("Error al listar las proyecciones. Verificar." + e.getMessage());
+            e.getMessage();
+        }
+        return listarProyecciones;
+    }
+    
     public void actualizarPrecio2D3D(int idProyeccion, boolean es3D, double nuevoPrecio) {
         String query = "UPDATE proyeccion SET precio = ?, es3D = ? WHERE idProyeccion = ?";
 

@@ -6,11 +6,17 @@
 package vistas;
 
 import entidades.Comprador;
+import entidades.Pelicula;
+import entidades.Proyeccion;
 import java.sql.Connection;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import persistencias.CompradorData;
 import persistencias.Conexion;
 import persistencias.PeliculasData;
+import persistencias.ProyeccionData;
 
 /**
  *
@@ -21,10 +27,12 @@ public class VistaCompra extends javax.swing.JInternalFrame {
     /**
      * Creates new form VistaCompra
      */
+    PeliculasData peliculaD = new PeliculasData();
+    ProyeccionData proyeccionD = new ProyeccionData();
     public VistaCompra() {
         initComponents();
-//      
-
+        cargarPelisEnCartelera();
+//        cargarProyeccionPorPelicula();
     }
 
     CompradorData compradores = new CompradorData();
@@ -87,16 +95,16 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel5.setText("Asientos Disponibles :");
 
-        jCBpelicula.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCBpelicula.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCBpeliculaMouseClicked(evt);
+            }
+        });
         jCBpelicula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCBpeliculaActionPerformed(evt);
             }
         });
-
-        jCBsalas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jCBhorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel11.setText("Cantidad de tickets :");
@@ -322,17 +330,44 @@ public class VistaCompra extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBverificarActionPerformed
 
     private void jCBpeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBpeliculaActionPerformed
-
+        Pelicula pelicula = (Pelicula) jCBpelicula.getSelectedItem();
+        int idPelicula = pelicula.getIdPelicula();
+        System.out.println(idPelicula);
+        
+        List<Proyeccion> proyecciones = proyeccionD.listarProyeccionesPorPelicula(idPelicula);
+        jCBsalas.removeAllItems();
+        for(Proyeccion aux : proyecciones){
+            jCBsalas.addItem(aux.getSala().getNroSala());
+        }
+        
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("hh:mm");
+        jCBhorario.removeAllItems();
+        for(Proyeccion aux : proyecciones){
+            String horario = aux.getHoraInicio().format(formato);
+            jCBhorario.addItem(horario);
+        }
+        
     }//GEN-LAST:event_jCBpeliculaActionPerformed
 
+    private void jCBpeliculaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCBpeliculaMouseClicked
 
+    }//GEN-LAST:event_jCBpeliculaMouseClicked
+    
+    private void cargarPelisEnCartelera(){
+        List<Pelicula> peliculas = peliculaD.listarPeliculasenCartelera();
+        for(Pelicula aux : peliculas){
+            jCBpelicula.addItem(aux);
+        }
+    }
+
+            
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBcomprar;
     private javax.swing.JButton jBverificar;
     private javax.swing.JComboBox<String> jCBasientos;
     private javax.swing.JComboBox<String> jCBhorario;
-    private javax.swing.JComboBox<String> jCBpelicula;
-    private javax.swing.JComboBox<String> jCBsalas;
+    private javax.swing.JComboBox<Pelicula> jCBpelicula;
+    private javax.swing.JComboBox<Integer> jCBsalas;
     private com.toedter.calendar.JDateChooser jDCfecha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;

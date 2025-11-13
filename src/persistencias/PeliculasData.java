@@ -101,6 +101,7 @@ public class PeliculasData {
         }
         return p;
     }
+    
     public void EliminarPelicula(int idPelicula){
          String query = "DELETE FROM pelicula WHERE idPelicula = ?";
         try {
@@ -113,7 +114,8 @@ public class PeliculasData {
             e.getMessage();
         }    
     }
-      public ArrayList<Pelicula> listarPeliculasenCartelera() {
+    
+    public ArrayList<Pelicula> listarPeliculasenCartelera() {
         Pelicula p = null;
         ArrayList<Pelicula> peliculas = new ArrayList<>();
         try {
