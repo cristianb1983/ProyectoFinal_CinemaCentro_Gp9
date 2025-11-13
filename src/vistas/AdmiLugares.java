@@ -10,6 +10,7 @@ import entidades.Proyeccion;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import persistencias.LugarData;
+import persistencias.ProyeccionData;
 
 /**
  *
@@ -22,10 +23,14 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
      */
     DefaultTableModel modTabla = new DefaultTableModel();
     LugarData lugarD = new LugarData();
+    ProyeccionData proyeccionD = new ProyeccionData();
     public AdmiLugares() {
         initComponents();
         cargarOpciones();
         cargarEstado();
+        cargarColumnasTabla();
+        cargarProyecciones();
+        cargarFilas();
         cargarColumnas();
     }
 
@@ -47,10 +52,7 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jcbOpciones = new javax.swing.JComboBox<>();
         jtfIdLugar = new javax.swing.JTextField();
-        jtfFila = new javax.swing.JTextField();
-        jtfColumna = new javax.swing.JTextField();
         jcbEstado = new javax.swing.JComboBox<>();
-        jtfIdProyeccion = new javax.swing.JTextField();
         Opciones = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jlFila = new javax.swing.JLabel();
@@ -59,6 +61,9 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtTable = new javax.swing.JTable();
+        jcbProyeccion = new javax.swing.JComboBox<>();
+        jcbFila = new javax.swing.JComboBox<>();
+        jcbColumna = new javax.swing.JComboBox<>();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 30)); // NOI18N
         jLabel1.setText("Administracion Lugares");
@@ -151,7 +156,7 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 713, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -159,14 +164,18 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
                                 .addGap(35, 35, 35)
                                 .addComponent(jcbOpciones, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jtfColumna, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtfIdLugar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jtfIdLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jtfIdProyeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel5)
+                                            .addGap(18, 18, 18))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(53, 53, 53)))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jcbProyeccion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jcbColumna, 0, 220, Short.MAX_VALUE))))
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(50, 50, 50)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,8 +183,8 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jcbEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jtfFila, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jcbEstado, 0, 220, Short.MAX_VALUE)
+                            .addComponent(jcbFila, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(20, 20, 20))
         );
         jPanel1Layout.setVerticalGroup(
@@ -189,26 +198,25 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlFila, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcbFila, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jtfIdLugar))
                         .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfColumna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(31, 31, 31))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlFila, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfFila, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jcbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jtfIdProyeccion))
-                .addGap(30, 30, 30)
+                            .addComponent(jcbColumna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
+                        .addComponent(jcbProyeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(32, 32, 32)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
@@ -264,10 +272,10 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
         switch(opciones){
             case "Guardar":
                 jtfIdLugar.setEnabled(false);
-                jtfFila.setEnabled(true);
-                jtfColumna.setEnabled(true);
+                jcbFila.setEnabled(true);
+                jcbColumna.setEnabled(true);
                 jcbEstado.setEnabled(true);
-                jtfIdProyeccion.setEnabled(true);
+                jcbProyeccion.setEnabled(true);
                 jbGuardar.setEnabled(true);
                 jbBuscar.setEnabled(false);
                 jbActualizar.setEnabled(false);
@@ -275,10 +283,10 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
                 break;
             case "Buscar":
                 jtfIdLugar.setEnabled(true);
-                jtfFila.setEnabled(false);
-                jtfColumna.setEnabled(false);
+                jcbFila.setEnabled(false);
+                jcbColumna.setEnabled(false);
                 jcbEstado.setEnabled(false);
-                jtfIdProyeccion.setEnabled(false);
+                jcbProyeccion.setEnabled(false);
                 jbGuardar.setEnabled(false);
                 jbBuscar.setEnabled(true);
                 jbActualizar.setEnabled(false);
@@ -286,10 +294,10 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
                 break;
             case "Actualizar":
                 jtfIdLugar.setEnabled(true);
-                jtfFila.setEnabled(true);
-                jtfColumna.setEnabled(true);
+                jcbFila.setEnabled(true);
+                jcbColumna.setEnabled(true);
                 jcbEstado.setEnabled(true);
-                jtfIdProyeccion.setEnabled(true);
+                jcbProyeccion.setEnabled(true);
                 jbGuardar.setEnabled(false);
                 jbBuscar.setEnabled(false);
                 jbActualizar.setEnabled(true);
@@ -297,10 +305,10 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
                 break;
             case "Borrar":
                 jtfIdLugar.setEnabled(true);
-                jtfFila.setEnabled(false);
-                jtfColumna.setEnabled(false);
+                jcbFila.setEnabled(false);
+                jcbColumna.setEnabled(false);
                 jcbEstado.setEnabled(false);
-                jtfIdProyeccion.setEnabled(false);
+                jcbProyeccion.setEnabled(false);
                 jbGuardar.setEnabled(false);
                 jbBuscar.setEnabled(false);
                 jbActualizar.setEnabled(false);
@@ -311,21 +319,23 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
 
     private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
         jtfIdLugar.setText("");
-        jtfFila.setText("");
-        jtfColumna.setText("");
-        jtfIdProyeccion.setText("");
+        modTabla.setRowCount(0);
     }//GEN-LAST:event_LimpiarActionPerformed
 
     private void jbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBorrarActionPerformed
         //Validacion de campos vacios
         if(jtfIdLugar.getText().trim().isEmpty()){
-            JOptionPane.showMessageDialog(this, "El campos no puede estar vacio");
+            JOptionPane.showMessageDialog(this, "El campo no puede estar vacio");
             return;
         }
         
         try{
             int idLugar = Integer.parseInt(jtfIdLugar.getText());
-            lugarD.eliminarLugar(idLugar);
+            if(lugarD.eliminarLugar(idLugar)){
+                JOptionPane.showMessageDialog(this, "Lugar eliminado");
+            }else {
+                JOptionPane.showMessageDialog(this, "No se pudo borrar el lugar");
+            }
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(this, "Error de formato" + e.getMessage());
         }
@@ -333,24 +343,27 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
 
     private void jbActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarActionPerformed
         //Validacion de campos vacios
-        if(jtfIdLugar.getText().trim().isEmpty() || jtfFila.getText().trim().isEmpty()
-           || jtfColumna.getText().trim().isEmpty() || jtfIdProyeccion.getText().trim().isEmpty()){
+        if(jtfIdLugar.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(this, "Los campos no pueden estar vacios");
             return;
         }
         
         try{
             int idLugar = Integer.parseInt(jtfIdLugar.getText());
-            String fila = jtfFila.getText();
-            int columna = Integer.parseInt(jtfColumna.getText());
+            String fila = (String) jcbFila.getSelectedItem();
+            int columna = Integer.parseInt((String) jcbColumna.getSelectedItem());
             String estado = (String)jcbEstado.getSelectedItem();
-            int idProyeccion = Integer.parseInt(jtfIdProyeccion.getText());
+            int idProyeccion = Integer.parseInt((String) jcbProyeccion.getSelectedItem());
 
             Proyeccion proy = new Proyeccion();
             proy.setIdProyeccion(idProyeccion);
 
             LugarAsiento lugar = new LugarAsiento(idLugar, fila, columna, estado, proy);
-            lugarD.actualizarLugar(lugar);
+            if(lugarD.actualizarLugar(lugar)){
+                JOptionPane.showMessageDialog(this, "Lugar actualizado");
+            }else {
+                JOptionPane.showMessageDialog(this, "No se pudo actualizar el lugar");
+            }
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(this, "Error de formato" + e.getMessage());
         }
@@ -358,18 +371,17 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         //Validacion de campos vacios
-        if(jtfFila.getText().trim().isEmpty() || jtfColumna.getText().trim().isEmpty()
-           || jtfIdProyeccion.getText().trim().isEmpty()){
-            JOptionPane.showMessageDialog(this, "Los campos no pueden estar vacios");
-            return;
-        }
+//        if(jtfFila.getText().trim().isEmpty() || jtfColumna.getText().trim().isEmpty()){
+//            JOptionPane.showMessageDialog(this, "Los campos no pueden estar vacios");
+//            return;
+//        }
         
         try {
-            String fila = jtfFila.getText();
-            int columna = Integer.parseInt(jtfColumna.getText());
+            String fila = (String) jcbFila.getSelectedItem();
+            int columna = Integer.parseInt((String) jcbColumna.getSelectedItem());
             String estado = (String)jcbEstado.getSelectedItem();
-            int idProyeccion = Integer.parseInt(jtfIdProyeccion.getText());
-
+            int idProyeccion = Integer.parseInt((String) jcbProyeccion.getSelectedItem());
+            
             LugarAsiento lugar = new LugarAsiento();
             lugar.setFila(fila);
             lugar.setNumero(columna);
@@ -377,16 +389,38 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
 
             Proyeccion proy = new Proyeccion();
             proy.setIdProyeccion(idProyeccion);
-
             lugar.setProyeccion(proy);
-            lugarD.guardarLugar(lugar);
+            
+            if(lugarD.guardarLugar(lugar)){
+                JOptionPane.showMessageDialog(this, "Lugar guardado");
+            }else {
+                JOptionPane.showMessageDialog(this, "No se pudo guardar el lugar");
+            }
         }catch(NumberFormatException e){
              JOptionPane.showMessageDialog(this, "Error de formato" + e.getMessage());
         }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
-        cargarFilas();
+        if(jtfIdLugar.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "El campo no puede estar vacio");
+            return;
+        }
+        try{
+            int idLugar = Integer.parseInt(jtfIdLugar.getText());
+            LugarAsiento lugar = lugarD.buscarLugar(idLugar);
+            modTabla.addRow(new Object[] {
+                lugar.getIdLugar(),
+                lugar.getFila(),
+                lugar.getNumero(),
+                lugar.getEstado(),
+                lugar.getProyeccion().getIdProyeccion()
+            });
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Error de formato, debe ingresar un numero");
+        }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(this, "El id ingresado no existe");
+        }
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void cargarOpciones(){
@@ -402,7 +436,7 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
         jcbEstado.addItem("Deshabilitado");
     }
     
-    private void cargarColumnas(){
+    private void cargarColumnasTabla(){
         modTabla.addColumn("Id lugar");
         modTabla.addColumn("Fila");
         modTabla.addColumn("Columna");
@@ -411,19 +445,59 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
         jtTable.setModel(modTabla);
     }
     
-    private void cargarFilas(){
-        int idLugar = Integer.parseInt(jtfIdLugar.getText());
-        LugarAsiento lugar = lugarD.buscarLugar(idLugar);
-        modTabla.addRow(new Object[] {
-            lugar.getIdLugar(),
-            lugar.getFila(),
-            lugar.getNumero(),
-            lugar.getEstado(),
-            lugar.getProyeccion().getIdProyeccion()
-        });
-        
+    private void cargarProyecciones(){
+        jcbProyeccion.addItem("1");
+        jcbProyeccion.addItem("2");
+        jcbProyeccion.addItem("3");
+        jcbProyeccion.addItem("4");
+        jcbProyeccion.addItem("5");
+        jcbProyeccion.addItem("6");
+        jcbProyeccion.addItem("7");
+        jcbProyeccion.addItem("8");
+        jcbProyeccion.addItem("9");
+        jcbProyeccion.addItem("10");
+        jcbProyeccion.addItem("11");
+        jcbProyeccion.addItem("12");
+        jcbProyeccion.addItem("13");
+        jcbProyeccion.addItem("14");
+        jcbProyeccion.addItem("15");
+        jcbProyeccion.addItem("16");
+        jcbProyeccion.addItem("17");
+        jcbProyeccion.addItem("18");
     }
     
+    private void cargarFilas(){
+        jcbFila.addItem("A");
+        jcbFila.addItem("B");
+        jcbFila.addItem("C");
+        jcbFila.addItem("D");
+        jcbFila.addItem("E");
+        jcbFila.addItem("F");
+        jcbFila.addItem("G");
+        jcbFila.addItem("H");
+        jcbFila.addItem("I");
+        jcbFila.addItem("J");
+    }
+    
+    private void cargarColumnas(){
+        jcbColumna.addItem("1");
+        jcbColumna.addItem("2");
+        jcbColumna.addItem("3");
+        jcbColumna.addItem("4");
+        jcbColumna.addItem("5");
+        jcbColumna.addItem("6");
+        jcbColumna.addItem("7");
+        jcbColumna.addItem("8");
+        jcbColumna.addItem("9");
+        jcbColumna.addItem("10");
+        jcbColumna.addItem("11");
+        jcbColumna.addItem("12");
+        jcbColumna.addItem("13");
+        jcbColumna.addItem("14");
+        jcbColumna.addItem("15");
+        jcbColumna.addItem("16");
+        jcbColumna.addItem("17");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Limpiar;
     private javax.swing.JLabel Opciones;
@@ -438,13 +512,13 @@ public class AdmiLugares extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbBorrar;
     private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbGuardar;
+    private javax.swing.JComboBox<String> jcbColumna;
     private javax.swing.JComboBox<String> jcbEstado;
+    private javax.swing.JComboBox<String> jcbFila;
     private javax.swing.JComboBox<String> jcbOpciones;
+    private javax.swing.JComboBox<String> jcbProyeccion;
     private javax.swing.JLabel jlFila;
     private javax.swing.JTable jtTable;
-    private javax.swing.JTextField jtfColumna;
-    private javax.swing.JTextField jtfFila;
     private javax.swing.JTextField jtfIdLugar;
-    private javax.swing.JTextField jtfIdProyeccion;
     // End of variables declaration//GEN-END:variables
 }

@@ -148,7 +148,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="jScrollPane1" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="713" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
@@ -157,17 +157,24 @@
                                   <Component id="jcbOpciones" max="32767" attributes="0"/>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="jtfColumna" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jtfIdLugar" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jtfIdProyeccion" min="-2" pref="220" max="-2" attributes="0"/>
+                                  <Component id="jtfIdLugar" min="-2" pref="220" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel3" min="-2" pref="87" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jcbProyeccion" max="32767" attributes="0"/>
+                                          <Component id="jcbColumna" pref="220" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
-                              <Component id="jLabel3" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
                               <Component id="jLabel2" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
@@ -177,8 +184,8 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jcbEstado" max="32767" attributes="0"/>
-                              <Component id="jtfFila" min="-2" pref="220" max="-2" attributes="0"/>
+                              <Component id="jcbEstado" pref="220" max="32767" attributes="0"/>
+                              <Component id="jcbFila" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -198,20 +205,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel2" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                              <Component id="jtfIdLugar" alignment="3" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel3" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                              <Component id="jtfColumna" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlFila" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="jtfFila" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jcbFila" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -219,13 +214,23 @@
                               <Component id="jcbEstado" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jLabel5" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel2" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="jtfIdLugar" alignment="3" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel3" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                              <Component id="jcbColumna" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <Component id="jcbProyeccion" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel5" alignment="3" max="32767" attributes="0"/>
-                      <Component id="jtfIdProyeccion" alignment="3" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="192" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
@@ -248,10 +253,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jtfIdLugar">
         </Component>
-        <Component class="javax.swing.JTextField" name="jtfFila">
-        </Component>
-        <Component class="javax.swing.JTextField" name="jtfColumna">
-        </Component>
         <Component class="javax.swing.JComboBox" name="jcbEstado">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -261,8 +262,6 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jtfIdProyeccion">
         </Component>
         <Component class="javax.swing.JLabel" name="Opciones">
           <Properties>
@@ -333,6 +332,36 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JComboBox" name="jcbProyeccion">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jcbFila">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jcbColumna">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

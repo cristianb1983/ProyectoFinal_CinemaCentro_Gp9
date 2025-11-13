@@ -22,13 +22,12 @@ import java.util.List;
  */
 public class ProyeccionData {
     private Proyeccion proyeccion;
-
-    public ProyeccionData(Conexion con) {
+    Connection con;
+    public ProyeccionData() {
+        this.con = Conexion.buscarConexion();
     }
     
-    Connection con = Conexion.buscarConexion();
-    
-        public boolean crearProyeccion(Proyeccion p){
+    public boolean crearProyeccion(Proyeccion p){
         String query = "INSERT INTO proyeccion (idPelicula, idSala, idioma, es3D, subtitulada, horaInicio, horaFin, precioLugar) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try{
             PreparedStatement ps = con.prepareStatement(query);
@@ -52,7 +51,7 @@ public class ProyeccionData {
         }
         }
         
-        public void actualizarProyeccion(Proyeccion p){
+    public void actualizarProyeccion(Proyeccion p){
         String query = "UPDATE proyeccion SET idPelicula = ?, idSala = ?, idioma = ?, es3D = ?, subtitulada = ?, horaInicio = ?, horaFin = ?, precioLugar = ?";
          
         try {
@@ -75,7 +74,7 @@ public class ProyeccionData {
         }
     }
         
-        public void borrarProyeccion(int idProyeccion){
+    public void borrarProyeccion(int idProyeccion){
         String query = "DELETE FROM proyeccion WHERE idProyeccion = ?";
         
         try {

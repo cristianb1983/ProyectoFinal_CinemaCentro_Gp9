@@ -23,7 +23,7 @@ public class LugarData {
 
     public boolean guardarLugar(LugarAsiento lugar) {
         String sql = "INSERT INTO lugar (fila, numero, estado, idProyeccion) "
-                + "VALUES (?,?,?,?";
+                + "VALUES (?,?,?,?)";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -82,7 +82,7 @@ public class LugarData {
     public boolean actualizarLugar(LugarAsiento lugar) {
 
         String sql = "UPDATE lugar "
-                + "SET fila = ?, numero = ?, estado = ?, idProyeccion = ?"
+                + "SET fila = ?, numero = ?, estado = ?, idProyeccion = ? "
                 + "WHERE idLugar = ?";
 
         try {
