@@ -405,7 +405,7 @@ public class DetalleTicketData {
         List<DetalleTicket> detalles = new ArrayList<>();
 
         String sql = "SELECT dt.idDetalle, dt.idTicket, dt.idProyeccion, dt.cantidad, dt.subtotal, "
-                + "l.idLugar, l.fila, l.numero, "
+                + "l.idLugar, l.fila, l.numero, p.horaInicio, p.horaFin, "
                 + "s.nroSala, "
                 + "p.idProyeccion, "
                 + "pel.titulo "
@@ -444,6 +444,8 @@ public class DetalleTicketData {
 
                         Proyeccion proyeccion = new Proyeccion();
                         proyeccion.setIdProyeccion(rs.getInt("idProyeccion"));
+                        proyeccion.setHoraInicio(rs.getTime("horaInicio").toLocalTime());
+                        proyeccion.setHoraFin(rs.getTime("horaFin").toLocalTime());
 
                         Sala sala = new Sala();
                         sala.setNroSala(rs.getInt("nroSala"));

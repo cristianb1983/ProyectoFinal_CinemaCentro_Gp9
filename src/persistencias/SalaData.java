@@ -12,6 +12,11 @@ import java.util.List;
 public class SalaData {
     private Sala sala;
 
+    public SalaData() {
+    }
+    
+    
+
     public SalaData(Conexion con) {
     }
     
