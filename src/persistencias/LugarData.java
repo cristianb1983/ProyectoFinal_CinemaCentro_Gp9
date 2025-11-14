@@ -228,11 +228,10 @@ public class LugarData {
                 + "FROM lugar "
                 + "WHERE idProyeccion = ?";
 
-        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            try {
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, proy.getIdProyeccion());
-
-            try (ResultSet rs = ps.executeQuery()) {
-
+            ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
                     LugarAsiento lugar = new LugarAsiento(
                             rs.getInt("idLugar"),
@@ -242,8 +241,6 @@ public class LugarData {
                             proy);
                     lista.add(lugar);
                 }
-            }
-
         } catch (SQLException e) {
             System.out.println("Error al obtener lugares: " + e.getMessage());
         }

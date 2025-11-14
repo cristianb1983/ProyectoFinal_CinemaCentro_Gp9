@@ -7,11 +7,18 @@ package vistas;
 
 import com.sun.imageio.plugins.jpeg.JPEG;
 import entidades.Comprador;
+import entidades.LugarAsiento;
+import entidades.Pelicula;
+import entidades.Proyeccion;
 import java.sql.Connection;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 import javax.swing.JOptionPane;
 import persistencias.CompradorData;
 import persistencias.Conexion;
+import persistencias.LugarData;
 import persistencias.PeliculasData;
+import persistencias.ProyeccionData;
 
 /**
  *
@@ -22,9 +29,12 @@ public class VistaCompra extends javax.swing.JInternalFrame {
     /**
      * Creates new form VistaCompra
      */
+    PeliculasData peliculaD = new PeliculasData();
+    ProyeccionData proyeccionD = new ProyeccionData();
+    LugarData lugarD = new LugarData();
     public VistaCompra() {
         initComponents();
-//      
+        cargarPelisEnCartelera();
 
     }
 
@@ -41,7 +51,6 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jCBpelicula = new javax.swing.JComboBox<>();
         jCBsalas = new javax.swing.JComboBox<>();
         jDCfecha = new com.toedter.calendar.JDateChooser();
         jCBhorario = new javax.swing.JComboBox<>();
@@ -58,8 +67,9 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         jRadioButton3 = new javax.swing.JRadioButton();
         jLabel8 = new javax.swing.JLabel();
         jBcomprar = new javax.swing.JButton();
-        jCBascientos = new javax.swing.JComboBox<>();
+        jcbAsientos = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
+        jCBpelicula = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
@@ -81,17 +91,6 @@ public class VistaCompra extends javax.swing.JInternalFrame {
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel5.setText("Asientos Disponibles :");
-
-        jCBpelicula.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jCBpelicula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCBpeliculaActionPerformed(evt);
-            }
-        });
-
-        jCBsalas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jCBhorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel11.setText("Cantidad de tickets :");
@@ -132,11 +131,15 @@ public class VistaCompra extends javax.swing.JInternalFrame {
             }
         });
 
-        jCBascientos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("COMPRAR ENTRADAS");
+
+        jCBpelicula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBpeliculaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -144,15 +147,6 @@ public class VistaCompra extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jCBpelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(74, 74, 74)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jCBsalas, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(88, 88, 88)
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -182,7 +176,7 @@ public class VistaCompra extends javax.swing.JInternalFrame {
                                 .addGap(397, 397, 397)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jCBascientos, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jcbAsientos, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -192,15 +186,27 @@ public class VistaCompra extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jCBhorario, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(298, 298, 298)
-                        .addComponent(jLdni, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64)
-                        .addComponent(jTFdni, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(71, 71, 71)
-                        .addComponent(jBverificar, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(331, 331, 331)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(88, 88, 88)
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jCBpelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addGap(298, 298, 298)
+                                .addComponent(jLdni, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(64, 64, 64)
+                                .addComponent(jTFdni, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(71, 71, 71)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jBverificar, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jCBsalas, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(50, 50, 50))
         );
         jPanel2Layout.setVerticalGroup(
@@ -219,10 +225,9 @@ public class VistaCompra extends javax.swing.JInternalFrame {
                     .addComponent(jBverificar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jCBpelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(jCBpelicula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel2)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
@@ -247,7 +252,7 @@ public class VistaCompra extends javax.swing.JInternalFrame {
                         .addComponent(jScantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jCBascientos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jcbAsientos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -301,7 +306,7 @@ public class VistaCompra extends javax.swing.JInternalFrame {
 
                 jCBpelicula.setEnabled(false);
                 jCBsalas.setEnabled(false);
-                jCBascientos.setEnabled(false);
+                jcbAsientos.setEnabled(false);
                 jCBhorario.setEnabled(false);
                 jDCfecha.setEnabled(false);
                 jScantidad.setEnabled(false);
@@ -310,7 +315,7 @@ public class VistaCompra extends javax.swing.JInternalFrame {
 
                 jCBpelicula.setEnabled(true);
                 jCBsalas.setEnabled(true);
-                jCBascientos.setEnabled(true);
+                jcbAsientos.setEnabled(true);
                 jCBhorario.setEnabled(true);
                 jDCfecha.setEnabled(true);
                 jScantidad.setEnabled(true);
@@ -321,25 +326,55 @@ public class VistaCompra extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Ingrese un DNI válido (solo números).");
         }
     }//GEN-LAST:event_jBverificarActionPerformed
-
-    private void jCBpeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBpeliculaActionPerformed
-
-    }//GEN-LAST:event_jCBpeliculaActionPerformed
-
+    
+    private void cargarPelisEnCartelera(){
+        List<Pelicula> peliculas = peliculaD.listarPeliculasenCartelera();
+        for(Pelicula aux : peliculas){
+            jCBpelicula.addItem(aux);
+        }
+    }
+        
     private void jBcomprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcomprarActionPerformed
           VistaFinalizarCompra cargarTarjeta = new VistaFinalizarCompra();
           getDesktopPane().add(cargarTarjeta);
           cargarTarjeta.setVisible(true);
     }//GEN-LAST:event_jBcomprarActionPerformed
 
+    private void jCBpeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBpeliculaActionPerformed
+        Pelicula pelicula = (Pelicula) jCBpelicula.getSelectedItem();
+        int idPelicula = pelicula.getIdPelicula();
+        System.out.println(idPelicula);
+        
+        List<Proyeccion> proyecciones = proyeccionD.listarProyeccionesPorPelicula(idPelicula);
+        jCBsalas.removeAllItems();
+        for(Proyeccion aux : proyecciones){
+            jCBsalas.addItem(aux.getSala().getNroSala());
+        }
+        
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm");
+        jCBhorario.removeAllItems();
+        for(Proyeccion aux : proyecciones){
+            String horario = aux.getHoraInicio().format(formato);
+            jCBhorario.addItem(horario);
+        }
+
+        Pelicula idProy = (Pelicula) jCBpelicula.getSelectedItem();
+        Proyeccion proy = proyeccionD.ProyeccionPorPelicula2(idPelicula);  
+        System.out.println(proy);
+        List<LugarAsiento> lugares = lugarD.obtenerLugarPorProyeccion(proy);
+        System.out.println(lugares);
+        for(LugarAsiento aux : lugares){
+            jcbAsientos.addItem(aux);
+        }
+    }//GEN-LAST:event_jCBpeliculaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBcomprar;
     private javax.swing.JButton jBverificar;
-    private javax.swing.JComboBox<String> jCBascientos;
     private javax.swing.JComboBox<String> jCBhorario;
-    private javax.swing.JComboBox<String> jCBpelicula;
-    private javax.swing.JComboBox<String> jCBsalas;
+    private javax.swing.JComboBox<Pelicula> jCBpelicula;
+    private javax.swing.JComboBox<Integer> jCBsalas;
     private com.toedter.calendar.JDateChooser jDCfecha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -360,5 +395,6 @@ public class VistaCompra extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTFdni;
     private javax.swing.JTextField jTFprecio;
+    private javax.swing.JComboBox<LugarAsiento> jcbAsientos;
     // End of variables declaration//GEN-END:variables
 }

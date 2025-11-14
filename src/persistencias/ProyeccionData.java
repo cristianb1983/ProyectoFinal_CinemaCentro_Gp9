@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -206,6 +207,41 @@ public class ProyeccionData {
             e.getMessage();
         }
     }
-    
+ 
+    public Proyeccion ProyeccionPorPelicula2(int idpelicula){
+        Proyeccion Proyecciones = new Proyeccion();
+        try {
+            String query = "SELECT * " +
+                            "FROM proyeccion " +
+                            "WHERE idPelicula = ?;";
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, idpelicula);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                proyeccion = new Proyeccion();
+                
+                Pelicula pelicula = new Pelicula();
+                pelicula.setIdPelicula(rs.getInt("idPelicula"));
+                
+                Sala sala = new Sala();
+                sala.setIdSala(rs.getInt("idSala"));
+                  
+                proyeccion.setPelicula(pelicula);
+                proyeccion.setSala(sala);
+                proyeccion.setIdioma(rs.getString("idioma"));
+                proyeccion.setEs3D(rs.getBoolean("es3D"));
+                proyeccion.setSubtitulada(rs.getBoolean("subtitulada"));
+                proyeccion.setHoraInicio(rs.getTime("horaInicio").toLocalTime());
+                proyeccion.setHoraFin(rs.getTime("horaFin").toLocalTime());
+                proyeccion.setPrecio(rs.getDouble("precioLugar"));    
+                
+            }
+            ps.close();
+        } catch (SQLException e) {
+            System.out.println("Error al listar las proyecciones. Verificar." + e.getMessage());
+            e.getMessage();
+        }
+        return Proyecciones;
+    }
 }
     
