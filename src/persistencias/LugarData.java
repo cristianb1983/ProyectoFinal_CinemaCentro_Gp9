@@ -164,8 +164,8 @@ public class LugarData {
 
         String sql = "SELECT * "
                 + "FROM lugar "
-                + "WHERE idProyeccion =? "
-                + "AND estado = 'DISPONIBLE'";
+                + "WHERE idProyeccion = ? "
+                + "AND estado = 'Disponible'";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);

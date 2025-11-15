@@ -92,6 +92,12 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel5.setText("Asientos Disponibles :");
 
+        jCBhorario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBhorarioActionPerformed(evt);
+            }
+        });
+
         jLabel11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel11.setText("Cantidad de tickets :");
 
@@ -346,6 +352,7 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         System.out.println(idPelicula);
         
         List<Proyeccion> proyecciones = proyeccionD.listarProyeccionesPorPelicula(idPelicula);
+        System.out.println(proyecciones);
         jCBsalas.removeAllItems();
         for(Proyeccion aux : proyecciones){
             jCBsalas.addItem(aux.getSala().getNroSala());
@@ -353,20 +360,44 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm");
         jCBhorario.removeAllItems();
+        String horario = null;
         for(Proyeccion aux : proyecciones){
-            String horario = aux.getHoraInicio().format(formato);
+            horario = aux.getHoraInicio().format(formato);
             jCBhorario.addItem(horario);
         }
 
-        Pelicula idProy = (Pelicula) jCBpelicula.getSelectedItem();
-        Proyeccion proy = proyeccionD.ProyeccionPorPelicula2(idPelicula);  
+//        Proyeccion proy = proyeccionD.ProyeccionPorPelicula2(idPelicula);  
+//        System.out.println(proy);
+//        List<LugarAsiento> lugares = lugarD.obtenerLugaresDisponibles(proy);
+//        System.out.println(lugares);
+//        for(LugarAsiento aux : lugares){
+//            jcbAsientos.addItem(aux);
+//        }
+        
+        //Buscar en base al horario
+        Proyeccion proy = proyeccionD.ProyeccionPorPeliculaHorario(idPelicula, horario);  
         System.out.println(proy);
-        List<LugarAsiento> lugares = lugarD.obtenerLugarPorProyeccion(proy);
+        List<LugarAsiento> lugares = lugarD.obtenerLugaresDisponibles(proy);
         System.out.println(lugares);
         for(LugarAsiento aux : lugares){
             jcbAsientos.addItem(aux);
         }
     }//GEN-LAST:event_jCBpeliculaActionPerformed
+
+    private void jCBhorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBhorarioActionPerformed
+        Pelicula pelicula = (Pelicula) jCBpelicula.getSelectedItem();
+        int idPelicula = pelicula.getIdPelicula();
+
+        String horario = (String)jCBhorario.getSelectedItem();
+        Proyeccion proy = proyeccionD.ProyeccionPorPeliculaHorario(idPelicula, horario);  
+//        System.out.println(proy);
+        List<LugarAsiento> lugares = lugarD.obtenerLugaresDisponibles(proy);
+//        System.out.println(lugares);
+        jcbAsientos.removeAllItems();
+        for(LugarAsiento aux : lugares){
+            jcbAsientos.addItem(aux);
+        }
+    }//GEN-LAST:event_jCBhorarioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
