@@ -295,6 +295,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JSpinner" name="jScantidad">
+              <Events>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jScantidadStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel12">
               <Properties>

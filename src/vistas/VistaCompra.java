@@ -108,6 +108,12 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         jLabel11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel11.setText("Cantidad de tickets :");
 
+        jScantidad.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jScantidadStateChanged(evt);
+            }
+        });
+
         jLabel12.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel12.setText("Precio:");
 
@@ -441,6 +447,20 @@ public class VistaCompra extends javax.swing.JInternalFrame {
             jrbDebito.setEnabled(false);
         }
     }//GEN-LAST:event_jrbCreditoActionPerformed
+
+    private void jScantidadStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jScantidadStateChanged
+        //Habilitar combos y calcular el precio
+        int cantidad = (int)jScantidad.getValue();
+        
+        Pelicula pelicula = (Pelicula) jCBpelicula.getSelectedItem();
+        int idPelicula = pelicula.getIdPelicula();
+        
+        String horario = (String)jCBhorario.getSelectedItem();
+        Proyeccion proy = proyeccionD.ProyeccionPorPeliculaHorario(idPelicula, horario);
+        
+        String precio = String.format("%.2f", proy.getPrecio() * cantidad);
+        jTFprecio.setText(precio);
+    }//GEN-LAST:event_jScantidadStateChanged
 
     private void setearFecha(){
         LocalDate fechaActual = LocalDate.now();
