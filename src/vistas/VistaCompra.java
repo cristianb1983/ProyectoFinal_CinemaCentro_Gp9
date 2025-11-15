@@ -11,9 +11,14 @@ import entidades.LugarAsiento;
 import entidades.Pelicula;
 import entidades.Proyeccion;
 import java.sql.Connection;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import static java.time.temporal.TemporalQueries.localDate;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.SpinnerNumberModel;
 import persistencias.CompradorData;
 import persistencias.Conexion;
 import persistencias.LugarData;
@@ -32,10 +37,12 @@ public class VistaCompra extends javax.swing.JInternalFrame {
     PeliculasData peliculaD = new PeliculasData();
     ProyeccionData proyeccionD = new ProyeccionData();
     LugarData lugarD = new LugarData();
+    SpinnerNumberModel spinnerModelo = new SpinnerNumberModel();
     public VistaCompra() {
         initComponents();
         cargarPelisEnCartelera();
-
+        setearFecha();
+        setearSpinner();
     }
 
     CompradorData compradores = new CompradorData();
@@ -62,9 +69,9 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         jTFdni = new javax.swing.JTextField();
         jBverificar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        jrbEfectivo = new javax.swing.JRadioButton();
+        jrbDebito = new javax.swing.JRadioButton();
+        jrbCredito = new javax.swing.JRadioButton();
         jLabel8 = new javax.swing.JLabel();
         jBcomprar = new javax.swing.JButton();
         jcbAsientos = new javax.swing.JComboBox<>();
@@ -119,11 +126,26 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel7.setText("Forma de pago :");
 
-        jRadioButton1.setText("Efectivo");
+        jrbEfectivo.setText("Efectivo");
+        jrbEfectivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbEfectivoActionPerformed(evt);
+            }
+        });
 
-        jRadioButton2.setText("Tarjeta de debito");
+        jrbDebito.setText("Tarjeta de debito");
+        jrbDebito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbDebitoActionPerformed(evt);
+            }
+        });
 
-        jRadioButton3.setText("Tarjeta de credito(solo compra online)");
+        jrbCredito.setText("Tarjeta de credito(solo compra online)");
+        jrbCredito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbCreditoActionPerformed(evt);
+            }
+        });
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/movie-seats-booking-interface-vector.jpg"))); // NOI18N
 
@@ -161,11 +183,11 @@ public class VistaCompra extends javax.swing.JInternalFrame {
                         .addGap(102, 102, 102)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
-                        .addComponent(jRadioButton1)
+                        .addComponent(jrbEfectivo)
                         .addGap(12, 12, 12)
-                        .addComponent(jRadioButton2)
+                        .addComponent(jrbDebito)
                         .addGap(28, 28, 28)
-                        .addComponent(jRadioButton3))
+                        .addComponent(jrbCredito))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(168, 168, 168)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 939, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -270,13 +292,13 @@ public class VistaCompra extends javax.swing.JInternalFrame {
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addComponent(jRadioButton1))
+                        .addComponent(jrbEfectivo))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addComponent(jRadioButton2))
+                        .addComponent(jrbDebito))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addComponent(jRadioButton3)))
+                        .addComponent(jrbCredito)))
                 .addGap(32, 32, 32)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 866, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -399,7 +421,42 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jCBhorarioActionPerformed
 
+    private void jrbEfectivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbEfectivoActionPerformed
+        if(jrbEfectivo.isSelected()){
+            jrbDebito.setEnabled(false);
+            jrbCredito.setEnabled(false);
+        }
+    }//GEN-LAST:event_jrbEfectivoActionPerformed
 
+    private void jrbDebitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbDebitoActionPerformed
+        if(jrbDebito.isSelected()){
+            jrbEfectivo.setEnabled(false);
+            jrbCredito.setEnabled(false);
+        }
+    }//GEN-LAST:event_jrbDebitoActionPerformed
+
+    private void jrbCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCreditoActionPerformed
+        if(jrbCredito.isSelected()){
+            jrbEfectivo.setEnabled(false);
+            jrbDebito.setEnabled(false);
+        }
+    }//GEN-LAST:event_jrbCreditoActionPerformed
+
+    private void setearFecha(){
+        LocalDate fechaActual = LocalDate.now();
+        LocalDate fechaMaxima = fechaActual.plusDays(6);
+        Date fechaMin = Date.from(fechaActual.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        Date fechaMax = Date.from(fechaMaxima.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        jDCfecha.setMinSelectableDate(fechaMin);
+        jDCfecha.setMaxSelectableDate(fechaMax);
+    }
+    
+    private void setearSpinner(){
+        spinnerModelo.setMaximum(8);
+        spinnerModelo.setMinimum(0);
+        jScantidad.setModel(spinnerModelo);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBcomprar;
     private javax.swing.JButton jBverificar;
@@ -419,13 +476,13 @@ public class VistaCompra extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLdni;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JSpinner jScantidad;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTFdni;
     private javax.swing.JTextField jTFprecio;
     private javax.swing.JComboBox<LugarAsiento> jcbAsientos;
+    private javax.swing.JRadioButton jrbCredito;
+    private javax.swing.JRadioButton jrbDebito;
+    private javax.swing.JRadioButton jrbEfectivo;
     // End of variables declaration//GEN-END:variables
 }
