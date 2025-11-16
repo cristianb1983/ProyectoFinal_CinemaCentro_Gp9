@@ -6,10 +6,15 @@
 package vistas;
 
 import entidades.Comprador;
+import entidades.DetalleTicket;
+import entidades.LugarAsiento;
 import entidades.TicketCompra;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import persistencias.LugarData;
 import persistencias.TicketData;
 
 /**
@@ -20,9 +25,12 @@ public class VistaFinalizarCompra extends javax.swing.JInternalFrame {
 
     private TicketCompra ticket;
     private TicketData ticketD = new TicketData();
-    public VistaFinalizarCompra(TicketCompra ticket) {
+    List<LugarAsiento> lugares;
+    LugarData lugarD = new LugarData();
+    public VistaFinalizarCompra(TicketCompra ticket, List<LugarAsiento> lugares) {
         initComponents();
         this.ticket = ticket;
+        this.lugares = lugares;
     }
 
     private String generarNumeroRegistro() {
@@ -226,6 +234,9 @@ public class VistaFinalizarCompra extends javax.swing.JInternalFrame {
         ticket.setComprador(comprador);
         ticketD.generarTicket(ticket);
         
+        for(LugarAsiento aux : lugares){
+            lugarD.ocuparLugar(aux.getIdLugar());
+        }
     }//GEN-LAST:event_jBfinalizarCompraActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -513,7 +513,7 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         ticket.setMonto(precio);
         ticket.setTipoCompra(opciones);
         
-        VistaFinalizarCompra cargarTarjeta = new VistaFinalizarCompra(ticket);
+        VistaFinalizarCompra cargarTarjeta = new VistaFinalizarCompra(ticket, lugares);
         getDesktopPane().add(cargarTarjeta);
         cargarTarjeta.setVisible(true);
     }//GEN-LAST:event_jBcomprarActionPerformed
