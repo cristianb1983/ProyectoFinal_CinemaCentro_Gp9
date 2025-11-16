@@ -7,17 +7,24 @@ package vistas;
 
 /**
  *
- * @author pc
+ * @author julianEsquiaga
  */
+import entidades.Proyeccion;
+import persistencias.ProyeccionData;
+
 public class AdmiProyecciones extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form AdmiProyecciones
      */
+    ProyeccionData ProyeccionD = new ProyeccionData();
     public AdmiProyecciones() {
         initComponents();
+        cargarComboOpcion();
+       // cargarComboEstado();
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,10 +34,10 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        jButtonBuscar = new javax.swing.JButton();
         jbActualizar = new javax.swing.JButton();
         jbLimpiar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButtonBorrar = new javax.swing.JButton();
         jpDatos = new javax.swing.JPanel();
         jlIdProyeccion = new javax.swing.JLabel();
         jlIdPelicula = new javax.swing.JLabel();
@@ -51,9 +58,9 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         jrbSIEs3d = new javax.swing.JRadioButton();
         jlEs3d = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        JComboBoxOpciones = new javax.swing.JComboBox<>();
+        jComboBox2idPelicula = new javax.swing.JComboBox<>();
+        jComboBox3idSala = new javax.swing.JComboBox<>();
         jbGuardar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -63,21 +70,20 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("ADMINISTRACION - CARGA DE PROYECCIONES");
 
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/zoom_magnyfying_glass_search_icon_231650.png"))); // NOI18N
-        jButton1.setText("Buscar");
+        jButtonBuscar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButtonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/zoom_magnyfying_glass_search_icon_231650.png"))); // NOI18N
+        jButtonBuscar.setText("Buscar");
 
         jbActualizar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jbActualizar.setIcon(new javax.swing.ImageIcon("C:\\Users\\crb_p\\OneDrive\\Documentos\\practicos java\\ProyectoFinal_CinemaCentro_Gp9\\src\\iconos\\pen_pencil_write_edit_icon_231611 (1).png")); // NOI18N
         jbActualizar.setText("Actualizar");
 
         jbLimpiar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jbLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/brush_paint_icon_231542.png"))); // NOI18N
         jbLimpiar.setText("Limpiar");
 
-        jButton2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/trash_can_rubish_paper_bin_icon_231400.png"))); // NOI18N
-        jButton2.setText("Borrar");
+        jButtonBorrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButtonBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/trash_can_rubish_paper_bin_icon_231400.png"))); // NOI18N
+        jButtonBorrar.setText("Borrar");
 
         jpDatos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -133,11 +139,16 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         jLabel2.setText("elija una opcion ");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        JComboBoxOpciones.setToolTipText("");
+        JComboBoxOpciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JComboBoxOpcionesActionPerformed(evt);
+            }
+        });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2idPelicula.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox3idSala.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jpDatosLayout = new javax.swing.GroupLayout(jpDatos);
         jpDatos.setLayout(jpDatosLayout);
@@ -161,7 +172,7 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
                     .addGroup(jpDatosLayout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(JComboBoxOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpDatosLayout.createSequentialGroup()
                         .addComponent(jlIdPelicula)
                         .addGap(66, 66, 66)
@@ -170,7 +181,7 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
                             .addComponent(jtfHoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jrbSIEs3d)
                             .addGroup(jpDatosLayout.createSequentialGroup()
-                                .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jComboBox2idPelicula, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(2, 2, 2)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,7 +202,7 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
                         .addGap(1, 1, 1)
                         .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jtfIdProyeccion, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-                            .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jComboBox3idSala, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(41, 41, 41))
         );
         jpDatosLayout.setVerticalGroup(
@@ -207,13 +218,13 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
                         .addGap(31, 31, 31)
                         .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(JComboBoxOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlIdSala)
                     .addComponent(jlIdPelicula)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox2idPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox3idSala, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlSubtitulada)
@@ -259,11 +270,11 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
                         .addGap(40, 40, 40)
                         .addComponent(jbGuardar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jbActualizar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jbLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -282,9 +293,9 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
@@ -292,6 +303,24 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+        private void jrbSIEs3dActionPerformed(java.awt.event.ActionEvent evt) {                                               
+        jrbSIEs3d.setSelected(false);
+        jrbSIEs3d.setEnabled(false);
+        }     
+        private void jrbNoEs3dActionPerformed(java.awt.event.ActionEvent evt) {                                               
+        jrbNoEs3d.setSelected(false);
+        jrbNoEs3d.setEnabled(false);
+        }  
+        private void SISubtituladaActionPerformed(java.awt.event.ActionEvent evt) {                                               
+        jrbSISubtitulada.setSelected(false);
+        jrbSISubtitulada.setEnabled(false);
+        }     
+        private void jrbNoSubtituladActionPerformed(java.awt.event.ActionEvent evt) {                                               
+        jrbNoSubtitulada.setSelected(false);
+        jrbNoSubtitulada.setEnabled(false);
+        }  
+        
+    
     private void jtfHoraInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfHoraInicioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfHoraInicioActionPerformed
@@ -300,13 +329,77 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfIdiomaActionPerformed
 
+    private void JComboBoxOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JComboBoxOpcionesActionPerformed
+        String opciones = (String)JComboBoxOpciones.getSelectedItem();
+        switch (opciones) {
+            case "Guardar":
+                jtfIdProyeccion.setEnabled(true);
+                jComboBox2idPelicula.setEnabled(true);
+                jComboBox3idSala.setEnabled(true);
+                jrbSISubtitulada.setEnabled(true);
+                jrbNoSubtitulada.setEnabled(true);
+                jtfIdioma.setEnabled(true);
+                jtfHoraFin.setEnabled(true);
+                jtfHoraInicio.setEnabled(true);
+                jrbSIEs3d.setEnabled(true);
+                jrbNoEs3d.setEnabled(true);
+                jtfPrecio.setEnabled(true);
+                jbGuardar.setEnabled(true);
+                jButtonBuscar.setEnabled(true);
+                jbActualizar.setEnabled(false);
+                jButtonBorrar.setEnabled(false);
+                jbLimpiar.setEnabled(true);
+                break;
+            case "Modificar":
+                jtfIdProyeccion.setEnabled(true);
+                jComboBox2idPelicula.setEnabled(true);
+                jComboBox3idSala.setEnabled(true);
+                jrbSISubtitulada.setEnabled(true);
+                jrbNoSubtitulada.setEnabled(true);
+                jtfIdioma.setEnabled(true);
+                jtfHoraInicio.setEnabled(true);
+                jrbSIEs3d.setEnabled(true);
+                jrbNoEs3d.setEnabled(true);
+                jtfPrecio.setEnabled(true);
+                jbGuardar.setEnabled(false);
+                jButtonBuscar.setEnabled(true);
+                jbActualizar.setEnabled(true);
+                jButtonBorrar.setEnabled(false);
+                jbLimpiar.setEnabled(true);
+                break;
+            case "Eliminar":
+                jtfIdProyeccion.setEnabled(true);
+                jComboBox2idPelicula.setEnabled(true);
+                jComboBox3idSala.setEnabled(true);
+                jrbSISubtitulada.setEnabled(false);
+                jrbNoSubtitulada.setEnabled(false);
+                jtfIdioma.setEnabled(false);
+                jtfHoraInicio.setEnabled(false);
+                jtfHoraInicio.setEnabled(false);
+                jrbSIEs3d.setEnabled(false);
+                jrbNoEs3d.setEnabled(false);
+                jtfPrecio.setEnabled(false);
+                jbGuardar.setEnabled(false);
+                jButtonBuscar.setEnabled(false);
+                jbActualizar.setEnabled(false);
+                jButtonBorrar.setEnabled(true);
+                jbLimpiar.setEnabled(true);
+                break;
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_JComboBoxOpcionesActionPerformed
+
+    public void cargarComboOpcion(){
+        JComboBoxOpciones.addItem("Guardar");
+        JComboBoxOpciones.addItem("Modificar");
+        JComboBoxOpciones.addItem("Eliminar");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> JComboBoxOpciones;
+    private javax.swing.JButton jButtonBorrar;
+    private javax.swing.JButton jButtonBuscar;
+    private javax.swing.JComboBox<String> jComboBox2idPelicula;
+    private javax.swing.JComboBox<String> jComboBox3idSala;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton jbActualizar;

@@ -36,11 +36,11 @@
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="jbGuardar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="135" max="-2" attributes="0"/>
+                      <Component id="jButtonBuscar" min="-2" pref="135" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jbActualizar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" pref="165" max="-2" attributes="0"/>
+                      <Component id="jButtonBorrar" min="-2" pref="165" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jbLimpiar" min="-2" pref="146" max="-2" attributes="0"/>
                   </Group>
@@ -64,9 +64,9 @@
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jbGuardar" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
-                  <Component id="jButton1" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
+                  <Component id="jButtonBuscar" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
                   <Component id="jbActualizar" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
+                  <Component id="jButtonBorrar" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
                   <Component id="jbLimpiar" alignment="3" pref="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="28" max="32767" attributes="0"/>
@@ -75,7 +75,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="jButtonBuscar">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="14" style="1"/>
@@ -91,9 +91,6 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="14" style="1"/>
         </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\crb_p\OneDrive\Documentos\practicos java\ProyectoFinal_CinemaCentro_Gp9\src\iconos\pen_pencil_write_edit_icon_231611 (1).png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Actualizar"/>
       </Properties>
     </Component>
@@ -108,7 +105,7 @@
         <Property name="text" type="java.lang.String" value="Limpiar"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="jButtonBorrar">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="14" style="1"/>
@@ -154,7 +151,7 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel2" min="-2" pref="122" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jComboBox1" min="-2" pref="144" max="-2" attributes="0"/>
+                          <Component id="JComboBoxOpciones" min="-2" pref="144" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jlIdPelicula" min="-2" max="-2" attributes="0"/>
@@ -164,7 +161,7 @@
                               <Component id="jtfHoraFin" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
                               <Component id="jrbSIEs3d" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jComboBox2" max="32767" attributes="0"/>
+                                  <Component id="jComboBox2idPelicula" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -192,7 +189,7 @@
                           <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jtfIdProyeccion" pref="144" max="32767" attributes="0"/>
-                              <Component id="jComboBox3" max="32767" attributes="0"/>
+                              <Component id="jComboBox3idSala" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -215,7 +212,7 @@
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel2" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="jComboBox1" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="JComboBoxOpciones" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -223,8 +220,8 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jlIdSala" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jlIdPelicula" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jComboBox3" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="jComboBox2idPelicula" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="jComboBox3idSala" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -378,7 +375,21 @@
             <Property name="text" type="java.lang.String" value="elija una opcion "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="JComboBoxOpciones">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JComboBoxOpcionesActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jComboBox2idPelicula">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -393,22 +404,7 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox2">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox3">
+        <Component class="javax.swing.JComboBox" name="jComboBox3idSala">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
