@@ -66,7 +66,7 @@ public class VistaFinalizarCompra extends javax.swing.JInternalFrame {
         return false;
     }
 
-    return true; // Todo OK
+    return true;
 }
 
 
