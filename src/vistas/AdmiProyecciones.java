@@ -10,19 +10,35 @@ package vistas;
  * @author julianEsquiaga
  */
 import entidades.Proyeccion;
+import entidades.Proyeccion;
 import persistencias.ProyeccionData;
+import entidades.Pelicula;
+import entidades.Sala;
+import persistencias.PeliculasData;
+import persistencias.SalaData;
+import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 public class AdmiProyecciones extends javax.swing.JInternalFrame {
-
+    
+    ProyeccionData proyeccionD = new ProyeccionData();
+    PeliculasData peliculasD = new PeliculasData();
+    SalaData salaD = new SalaData();
     /**
      * Creates new form AdmiProyecciones
      */
     ProyeccionData ProyeccionD = new ProyeccionData();
+    
     public AdmiProyecciones() {
         initComponents();
         cargarComboOpcion();
-       // cargarComboEstado();
-    }
+        //cargarComboPeliculas();
+        //cargarComboSalas();
+        //limpiarFormulario();
+        }
 
     
     /**
@@ -319,8 +335,7 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         jrbNoSubtitulada.setSelected(false);
         jrbNoSubtitulada.setEnabled(false);
         }  
-        
-    
+            
     private void jtfHoraInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfHoraInicioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfHoraInicioActionPerformed
@@ -329,6 +344,7 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfIdiomaActionPerformed
 
+    
     private void JComboBoxOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JComboBoxOpcionesActionPerformed
         String opciones = (String)JComboBoxOpciones.getSelectedItem();
         switch (opciones) {
@@ -388,11 +404,17 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         }        // TODO add your handling code here:
     }//GEN-LAST:event_JComboBoxOpcionesActionPerformed
 
+
+    
+
+
     public void cargarComboOpcion(){
         JComboBoxOpciones.addItem("Guardar");
         JComboBoxOpciones.addItem("Modificar");
         JComboBoxOpciones.addItem("Eliminar");
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> JComboBoxOpciones;
