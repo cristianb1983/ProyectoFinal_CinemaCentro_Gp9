@@ -25,6 +25,7 @@ public class VistaPeliculas extends javax.swing.JInternalFrame {
     public VistaPeliculas() {
         initComponents();
         Conexion.buscarConexion();
+        cargarCombo();
     }
 
 
@@ -57,7 +58,7 @@ public class VistaPeliculas extends javax.swing.JInternalFrame {
         jLpelicula = new javax.swing.JLabel();
         jTFidPelicula = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jcbOpciones = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -113,12 +114,21 @@ public class VistaPeliculas extends javax.swing.JInternalFrame {
         jBeliminar.setText("ELIMINAR");
         jBeliminar.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         jBeliminar.setIconTextGap(6);
+        jBeliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBeliminarActionPerformed(evt);
+            }
+        });
 
         jLpelicula.setText("ID PELICULA:");
 
         jLabel2.setText("ELIJA UNA OPCION:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbOpciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbOpcionesActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -188,7 +198,7 @@ public class VistaPeliculas extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jcbOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(169, 169, 169)
@@ -202,7 +212,7 @@ public class VistaPeliculas extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcbOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -321,12 +331,69 @@ public class VistaPeliculas extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jBmodificarActionPerformed
 
+    private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
+        int idPelicula = Integer.parseInt(jTFidPelicula.getText());
+        pelid.EliminarPelicula(idPelicula);
+    }//GEN-LAST:event_jBeliminarActionPerformed
+
+    private void jcbOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbOpcionesActionPerformed
+        String opciones = (String)jcbOpciones.getSelectedItem();
+        switch(opciones){
+            case "Cargar":
+                jTFidPelicula.setEnabled(false);
+                jTtitulo.setEnabled(true);
+                jTdirector.setEnabled(true);
+                jTactores.setEnabled(true);
+                jTorigen.setEnabled(true);
+                jTgenero.setEnabled(true);
+                jDestreno.setEnabled(true);
+                jRBsi.setEnabled(true);
+                jRBno.setEnabled(true);
+                jBcargar.setEnabled(true);
+                jBmodificar.setEnabled(false);
+                jBeliminar.setEnabled(false);
+                break;
+            case "Modificar":
+                jTFidPelicula.setEnabled(true);
+                jTtitulo.setEnabled(true);
+                jTdirector.setEnabled(true);
+                jTactores.setEnabled(true);
+                jTorigen.setEnabled(true);
+                jTgenero.setEnabled(true);
+                jDestreno.setEnabled(true);
+                jRBsi.setEnabled(true);
+                jRBno.setEnabled(true);
+                jBcargar.setEnabled(false);
+                jBmodificar.setEnabled(true);
+                jBeliminar.setEnabled(false);
+                break;
+            case "Eliminar":
+                jTFidPelicula.setEnabled(true);
+                jTtitulo.setEnabled(false);
+                jTdirector.setEnabled(false);
+                jTactores.setEnabled(false);
+                jTorigen.setEnabled(false);
+                jTgenero.setEnabled(false);
+                jDestreno.setEnabled(false);
+                jRBsi.setEnabled(false);
+                jRBno.setEnabled(false);
+                jBcargar.setEnabled(false);
+                jBmodificar.setEnabled(false);
+                jBeliminar.setEnabled(true);            
+                break;
+        }
+    }//GEN-LAST:event_jcbOpcionesActionPerformed
+
+    private void cargarCombo(){
+        jcbOpciones.addItem("Cargar");
+        jcbOpciones.addItem("Modificar");
+        jcbOpciones.addItem("Eliminar");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBcargar;
     private javax.swing.JButton jBeliminar;
     private javax.swing.JButton jBmodificar;
-    private javax.swing.JComboBox<String> jComboBox1;
     private com.toedter.calendar.JDateChooser jDestreno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -347,5 +414,6 @@ public class VistaPeliculas extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTgenero;
     private javax.swing.JTextField jTorigen;
     private javax.swing.JTextField jTtitulo;
+    private javax.swing.JComboBox<String> jcbOpciones;
     // End of variables declaration//GEN-END:variables
 }

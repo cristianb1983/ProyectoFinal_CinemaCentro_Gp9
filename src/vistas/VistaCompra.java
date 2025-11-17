@@ -28,6 +28,7 @@ import persistencias.Conexion;
 import persistencias.LugarData;
 import persistencias.PeliculasData;
 import persistencias.ProyeccionData;
+import persistencias.TicketData;
 
 /**
  *
@@ -41,6 +42,7 @@ public class VistaCompra extends javax.swing.JInternalFrame {
     PeliculasData peliculaD = new PeliculasData();
     ProyeccionData proyeccionD = new ProyeccionData();
     LugarData lugarD = new LugarData();
+    TicketData ticketD = new TicketData();
     SpinnerNumberModel spinnerModelo = new SpinnerNumberModel();
     public VistaCompra() {
         initComponents();
@@ -345,12 +347,12 @@ public class VistaCompra extends javax.swing.JInternalFrame {
                     .addComponent(jcbAsientos6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jcbAsientos7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jrbDebito)
                         .addComponent(jrbCredito)
-                        .addComponent(jrbEfectivo)))
+                        .addComponent(jrbEfectivo))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 866, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
@@ -416,6 +418,15 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         
     private void jBcomprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcomprarActionPerformed
         //Obtenemos los datos para cargar el ticket
+        if(jDCfecha.getDate() == null || jScantidad.getValue().equals(0) || jTFdni.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Debe elegir una fecha/cantidad de entradas/Colocar su dni");
+            return;
+        }
+        
+        if(!jrbEfectivo.isSelected() || !jrbDebito.isSelected() || !jrbCredito.isSelected()){
+            JOptionPane.showMessageDialog(this, "Debe elegir una forma de pago");
+        }
+        
         LocalDate fechaFuncion = jDCfecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         System.out.println(fechaFuncion);
         String precioLugar = jTFprecio.getText().replace(",", ".");
@@ -476,24 +487,52 @@ public class VistaCompra extends javax.swing.JInternalFrame {
                 lugares.add(lugar1);
                 break;
             case 2:
+                lugares.add(lugar1);
                 lugares.add(lugar2);
                 break;
             case 3:
+                lugares.add(lugar1);
+                lugares.add(lugar2);
                 lugares.add(lugar3);
                 break;
             case 4:
+                lugares.add(lugar1);
+                lugares.add(lugar2);
+                lugares.add(lugar3);
                 lugares.add(lugar4);
                 break;
             case 5:
+                lugares.add(lugar1);
+                lugares.add(lugar2);
+                lugares.add(lugar3);
+                lugares.add(lugar4);
                 lugares.add(lugar5);
                 break;
             case 6:
+                lugares.add(lugar1);
+                lugares.add(lugar2);
+                lugares.add(lugar3);
+                lugares.add(lugar4);
+                lugares.add(lugar5);
                 lugares.add(lugar6);
                 break;
             case 7:
+                lugares.add(lugar1);
+                lugares.add(lugar2);
+                lugares.add(lugar3);
+                lugares.add(lugar4);
+                lugares.add(lugar5);
+                lugares.add(lugar6);
                 lugares.add(lugar7);
                 break;
             case 8:
+                lugares.add(lugar1);
+                lugares.add(lugar2);
+                lugares.add(lugar3);
+                lugares.add(lugar4);
+                lugares.add(lugar5);
+                lugares.add(lugar6);
+                lugares.add(lugar7);
                 lugares.add(lugar8);
                 break;
         }
@@ -513,7 +552,19 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         ticket.setMonto(precio);
         ticket.setTipoCompra(opciones);
         
-        VistaFinalizarCompra cargarTarjeta = new VistaFinalizarCompra(ticket, lugares);
+        long dni = Long.parseLong(jTFdni.getText());
+        Comprador comprador = new Comprador();
+        comprador.setDniComprador(dni); //parsear long
+        
+        if(ticket.getTipoCompra().equals("Online")){
+            String codigoVenta = generarCodigoVenta();
+            ticket.setCodigoVenta(codigoVenta);
+        }
+        
+        ticket.setComprador(comprador);
+        ticketD.generarTicket(ticket);
+        
+        VistaFinalizarCompra cargarTarjeta = new VistaFinalizarCompra();
         getDesktopPane().add(cargarTarjeta);
         cargarTarjeta.setVisible(true);
     }//GEN-LAST:event_jBcomprarActionPerformed
@@ -726,6 +777,11 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         spinnerModelo.setMaximum(8);
         spinnerModelo.setMinimum(0);
         jScantidad.setModel(spinnerModelo);
+    }
+    
+    private String generarCodigoVenta() {
+        int numero = (int) (Math.random() * 10_000_000); // 0 a 9.999.999
+        return String.format("%07d", numero); // completa con ceros a la izquierda
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

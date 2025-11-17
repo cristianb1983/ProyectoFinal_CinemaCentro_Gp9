@@ -23,14 +23,8 @@ import persistencias.TicketData;
  */
 public class VistaFinalizarCompra extends javax.swing.JInternalFrame {
 
-    private TicketCompra ticket;
-    private TicketData ticketD = new TicketData();
-    List<LugarAsiento> lugares;
-    LugarData lugarD = new LugarData();
-    public VistaFinalizarCompra(TicketCompra ticket, List<LugarAsiento> lugares) {
+    public VistaFinalizarCompra() {
         initComponents();
-        this.ticket = ticket;
-        this.lugares = lugares;
     }
 
     private String generarNumeroRegistro() {
@@ -217,25 +211,10 @@ public class VistaFinalizarCompra extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBfinalizarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBfinalizarCompraActionPerformed
-         if (validarCampos()) {
+        if (validarCampos()) {
             // Genera número de registro
             String numeroRegistro = generarNumeroRegistro();
             JOptionPane.showMessageDialog(this, "Compra finalizada correctamente.\nNúmero de registro: " + numeroRegistro);
-        }
-        long dni = Long.parseLong(jTFdni.getText());
-        Comprador comprador = new Comprador();
-        comprador.setDniComprador(dni); //parsear long
-        
-        if(ticket.getTipoCompra().equals("Online")){
-            String codigoVenta = generarNumeroRegistro();
-            ticket.setTipoCompra(codigoVenta);
-        }
-        
-        ticket.setComprador(comprador);
-        ticketD.generarTicket(ticket);
-        
-        for(LugarAsiento aux : lugares){
-            lugarD.ocuparLugar(aux.getIdLugar());
         }
     }//GEN-LAST:event_jBfinalizarCompraActionPerformed
 
