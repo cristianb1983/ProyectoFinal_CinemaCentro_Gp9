@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/vistas/VistaCompra.java</file>
+            <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/persistencias/CompradorData.java</file>
+            <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/vistas/VistaRegistro.java</file>
+            <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/vistas/VistaPeliculas.java</file>
             <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/persistencias/PeliculasData.java</file>
             <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/vistas/VistaMenu.java</file>
-            <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/entidades/Pelicula.java</file>
-            <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/vistas/ListasPeliculas.java</file>
-            <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/vistas/VistaFinalizarCompra.java</file>
+            <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/vistas/AdmiCompradores.java</file>
+            <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/entidades/Comprador.java</file>
         </group>
     </open-files>
 </project-private>

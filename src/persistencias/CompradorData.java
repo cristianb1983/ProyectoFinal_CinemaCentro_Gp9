@@ -9,12 +9,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class CompradorData {
-    private Comprador comprador;
-    private final Connection conex; 
+
     public CompradorData() {
-        conex = Conexion.buscarConexion();
+        Conexion.buscarConexion();
     }
-//    Connection conex = Conexion.buscarConexion();
+    public CompradorData(Connection buscarConexion) {
+    }
+    Connection conex = Conexion.buscarConexion();
     public boolean RegistrarComprador(Comprador com) {
         String query = "INSERT INTO comprador (dni, nombre, fechaNac, password, medioPago) VALUES(?, ?, ?, ?, ?)";
         try {
@@ -30,7 +31,7 @@ public class CompradorData {
             System.out.println("Guardado");
             return true;
         } catch (SQLException e) {
-            System.out.println("No se pudo insertar al alumno");
+            System.out.println("No se pudo registrar al usuario.");
             return false;
         }
 
