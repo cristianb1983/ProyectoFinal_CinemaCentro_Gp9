@@ -62,6 +62,11 @@ public class AdmiCompradores extends javax.swing.JInternalFrame {
         jbBorrar = new javax.swing.JButton();
         Limpiar = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+
         jlTitulo.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jlTitulo.setForeground(new java.awt.Color(0, 0, 0));
         jlTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
