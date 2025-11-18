@@ -399,7 +399,7 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
             String horaFin = jtfHoraFin.getText();
             LocalTime hora2 = LocalTime.parse(horaFin, formatter);
             int idSala = Integer.parseInt((String) jComboBox3idSala.getSelectedItem());
-            String precio = jtfPrecio.getText();
+            double precio = Double.parseDouble(jtfPrecio.getText());
 
             
             Proyeccion proyec = new Proyeccion(idProy, idioma, seleccion, seleccionSubtitulada, hora, hora2, idSala, precio);

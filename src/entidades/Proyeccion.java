@@ -32,6 +32,10 @@ public class Proyeccion {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public Proyeccion(int idProy, String idioma, boolean seleccion, boolean seleccionSubtitulada, LocalTime hora, LocalTime hora2, int idSala, double precio) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public Pelicula getPelicula() {
         return pelicula;
     }
