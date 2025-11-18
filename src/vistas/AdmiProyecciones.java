@@ -88,6 +88,11 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
 
         jbActualizar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jbActualizar.setText("Actualizar");
+        jbActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbActualizarActionPerformed(evt);
+            }
+        });
 
         jbLimpiar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jbLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/brush_paint_icon_231542.png"))); // NOI18N
@@ -407,6 +412,52 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         }
                     
     }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jbActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarActionPerformed
+        int idProy = Integer.parseInt(jtfIdProyeccion.getText());
+        
+        Pelicula peli = new Pelicula();
+        int pelicula = Integer.parseInt((String) jComboBox2idPelicula.getSelectedItem());
+        peli.setIdPelicula(pelicula);
+        
+        Sala sala = new Sala();
+        int idSala = Integer.parseInt((String) jComboBox3idSala.getSelectedItem());
+        sala.setIdSala(idSala);
+        
+        String idioma = jtfIdioma.getText();
+        
+        String horaInicio = jtfHoraInicio.getText();      
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        LocalTime horaInicioParseo = LocalTime.parse(horaInicio, formatter);
+        
+        String horaFin = jtfHoraFin.getText();
+        LocalTime horaFinParseo = LocalTime.parse(horaFin, formatter);
+        
+        double precio = Double.parseDouble(jtfPrecio.getText());
+        boolean es3D;
+        boolean subtitulada;
+        if(jrbSIEs3d.isSelected()){
+            es3D = true;
+        }else{
+            es3D = false;
+        }
+        if(jrbSISubtitulada.isSelected()){
+            subtitulada = true;
+        }else{
+            subtitulada = false;
+        }
+        Proyeccion proy = new Proyeccion();
+        proy.setIdProyeccion(idProy);
+        proy.setSala(sala);
+        proy.setPelicula(peli);
+        proy.setHoraInicio(horaFinParseo);
+        proy.setHoraFin(horaFinParseo);
+        proy.setEs3D(es3D);
+        proy.setIdioma(idioma);
+        proy.setPrecio(precio);
+        proy.setSubtitulada(subtitulada);
+        proyeccionD.actualizarProyeccion(proy);
+    }//GEN-LAST:event_jbActualizarActionPerformed
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {                                              
         // TODO add your handling code here:
