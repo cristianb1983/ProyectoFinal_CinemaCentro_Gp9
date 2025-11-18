@@ -408,6 +408,66 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
                     
     }//GEN-LAST:event_jbGuardarActionPerformed
 
+    private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        // TODO add your handling code here:
+        //valido que no este vacio el campo idproyeccion
+        if (jtfIdProyeccion.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un idProyeccion para buscar.");
+            return;
+        }
+        
+        try {
+            int idProyeccion = Integer.parseInt(jtfIdProyeccion.getText());
+            Proyeccion proy = proyeccionD.buscarProyeccion(idProyeccion);
+
+            if (proy == null) {
+                JOptionPane.showMessageDialog(this, "No se encontró la proyección.");
+                return;
+            }
+
+            //carga datos
+            if (proy.getPelicula() != null) {
+                jComboBox2idPelicula.setSelectedItem(String.valueOf(proy.getPelicula().getIdPelicula()));
+            }
+
+            if (proy.getSala() != null) {
+                jComboBox3idSala.setSelectedItem(String.valueOf(proy.getSala().getIdSala()));
+            }
+
+            jtfIdioma.setText(proy.getIdioma());
+
+            if (proy.isSubtitulada()) {
+                jrbSISubtitulada.setSelected(true);
+                jrbNoSubtitulada.setSelected(false);
+            } else {
+                jrbSISubtitulada.setSelected(false);
+                jrbNoSubtitulada.setSelected(true);
+            }
+
+            if (proy.isEs3D()) {
+                jrbSIEs3d.setSelected(true);
+                jrbNoEs3d.setSelected(false);
+            } else {
+                jrbSIEs3d.setSelected(false);
+                jrbNoEs3d.setSelected(true);
+            }
+
+            if (proy.getHoraInicio() != null) {
+                jtfHoraInicio.setText(proy.getHoraInicio().toString());
+            }
+
+            if (proy.getHoraFin() != null) {
+                jtfHoraFin.setText(proy.getHoraFin().toString());
+            }
+
+            jtfPrecio.setText(String.valueOf(proy.getPrecio()));
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "ID Invalido: " + e.getMessage());
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(this, "Error al cargar la proyeccion.");
+        }
+    }
     
      private void cargarComboOpcion(){
         ComboBoxOpciones.removeAllItems();
