@@ -23,9 +23,9 @@ import java.util.List;
  */
 public class ProyeccionData {
     private Proyeccion proyeccion;
-    Connection con;
+    Connection con = Conexion.buscarConexion();
     public ProyeccionData() {
-        this.con = Conexion.buscarConexion();
+        this.con = con;
     }
     
     public boolean crearProyeccion(Proyeccion p){

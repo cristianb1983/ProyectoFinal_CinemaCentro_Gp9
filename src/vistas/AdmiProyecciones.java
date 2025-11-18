@@ -91,10 +91,20 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         jbLimpiar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jbLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/brush_paint_icon_231542.png"))); // NOI18N
         jbLimpiar.setText("Limpiar");
+        jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbLimpiarActionPerformed(evt);
+            }
+        });
 
         jButtonBorrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButtonBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/trash_can_rubish_paper_bin_icon_231400.png"))); // NOI18N
         jButtonBorrar.setText("Borrar");
+        jButtonBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBorrarActionPerformed(evt);
+            }
+        });
 
         jpDatos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -333,6 +343,22 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
     private void jtfIdiomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfIdiomaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfIdiomaActionPerformed
+
+    private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
+         int idProyeccion = Integer.parseInt(jtfIdProyeccion.getText());
+         ProyeccionD.borrarProyeccion(idProyeccion);
+    }//GEN-LAST:event_jButtonBorrarActionPerformed
+
+    private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
+        ComboBoxOpciones.removeAllItems();
+        jComboBox2idPelicula.removeAllItems();
+        jComboBox3idSala.removeAllItems();
+        jtfIdProyeccion.setText("");
+        jtfHoraFin.setText("");
+        jtfHoraInicio.setText("");
+        jtfIdioma.setText("");
+        jtfPrecio.setText("");
+    }//GEN-LAST:event_jbLimpiarActionPerformed
 
     
      private void cargarComboOpcion(){
