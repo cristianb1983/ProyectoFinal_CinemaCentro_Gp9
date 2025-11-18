@@ -356,9 +356,7 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonBorrarActionPerformed
 
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
-        ComboBoxOpciones.removeAllItems();
-        jComboBox2idPelicula.removeAllItems();
-        jComboBox3idSala.removeAllItems();
+
         jtfIdProyeccion.setText("");
         jtfHoraFin.setText("");
         jtfHoraInicio.setText("");
