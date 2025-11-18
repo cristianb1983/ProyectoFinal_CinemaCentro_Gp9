@@ -17,6 +17,7 @@ import entidades.Sala;
 import persistencias.PeliculasData;
 import persistencias.SalaData;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -268,6 +269,11 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         jbGuardar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jbGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/new_file_add_paper_icon_231603.png"))); // NOI18N
         jbGuardar.setText("Guardar");
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -359,6 +365,48 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         jtfIdioma.setText("");
         jtfPrecio.setText("");
     }//GEN-LAST:event_jbLimpiarActionPerformed
+
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        boolean seleccion;
+        
+        if (jrbSIEs3d.isSelected()) {
+            seleccion = false;
+        }else{
+            seleccion = true;
+        }
+        
+        boolean seleccionSubtitulada;
+        
+        if (jrbSISubtitulada.isSelected()) {
+            seleccionSubtitulada = false;
+        }else{
+            seleccionSubtitulada = true;
+        }
+    
+        
+        try {
+            int IdProyeccion = Integer.parseInt(jtfIdProyeccion.getText());
+            int idProy = Integer.parseInt(jtfIdProyeccion.getText());
+            String idioma = jtfIdioma.getText();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+            String horaInicio = jtfHoraInicio.getText();
+            LocalTime hora = LocalTime.parse(horaInicio, formatter);
+            String horaFin = jtfHoraFin.getText();
+            LocalTime hora2 = LocalTime.parse(horaFin, formatter);
+            int idSala = Integer.parseInt((String) jComboBox3idSala.getSelectedItem());
+            String precio = jtfPrecio.getText();
+
+            
+            Proyeccion proyec = new Proyeccion(idProy, idioma, seleccion, seleccionSubtitulada, hora, hora2, idSala, precio);
+            ProyeccionD.crearProyeccion(proyec);
+            JOptionPane.showMessageDialog(this, "Proyeccion Guardada");
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Error de formato");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Error");
+        }
+                    
+    }//GEN-LAST:event_jbGuardarActionPerformed
 
     
      private void cargarComboOpcion(){
