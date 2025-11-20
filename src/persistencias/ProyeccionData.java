@@ -30,7 +30,7 @@ public class ProyeccionData {
     
     public boolean crearProyeccion(Proyeccion p){
         String query = "INSERT INTO proyeccion (idPelicula, idSala, idioma, es3D, subtitulada, horaInicio, horaFin, precioLugar) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        try{
+        try {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1, p.getPelicula().getIdPelicula());
             ps.setInt(2, p.getSala().getIdSala());
@@ -40,7 +40,7 @@ public class ProyeccionData {
             ps.setTime(6, Time.valueOf(p.getHoraInicio()));
             ps.setTime(7, Time.valueOf(p.getHoraFin()));
             ps.setDouble(8, p.getPrecio());
-            
+
             ps.executeUpdate();
 
             ps.close();

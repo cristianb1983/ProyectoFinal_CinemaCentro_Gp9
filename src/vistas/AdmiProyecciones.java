@@ -370,42 +370,45 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-        boolean seleccion;
         
-        if (jrbSIEs3d.isSelected()) {
-            seleccion = false;
-        }else{
-            seleccion = true;
+        if (jtfIdProyeccion.getText().trim().isEmpty() ||
+        jtfIdioma.getText().trim().isEmpty() ||
+        jtfHoraInicio.getText().trim().isEmpty() ||
+        jtfHoraFin.getText().trim().isEmpty() ||
+        jtfPrecio.getText().trim().isEmpty()) 
+        {
+        JOptionPane.showMessageDialog(this, "Debe completar todos los campos.");
+        return;
         }
-        
-        boolean seleccionSubtitulada;
-        
-        if (jrbSISubtitulada.isSelected()) {
-            seleccionSubtitulada = false;
-        }else{
-            seleccionSubtitulada = true;
-        }
-    
+
         
         try {
-            int IdProyeccion = Integer.parseInt(jtfIdProyeccion.getText());
-            int idProy = Integer.parseInt(jtfIdProyeccion.getText());
-            String idioma = jtfIdioma.getText();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-            String horaInicio = jtfHoraInicio.getText();
-            LocalTime hora = LocalTime.parse(horaInicio, formatter);
-            String horaFin = jtfHoraFin.getText();
-            LocalTime hora2 = LocalTime.parse(horaFin, formatter);
-            int idSala = Integer.parseInt((String) jComboBox3idSala.getSelectedItem());
-            double precio = Double.parseDouble(jtfPrecio.getText());
+           int idPelicula = Integer.parseInt((String) jComboBox2idPelicula.getSelectedItem());
+           int idSala = Integer.parseInt((String) jComboBox3idSala.getSelectedItem());
 
+           Pelicula peli = new Pelicula();
+           peli.setIdPelicula(idPelicula);
+
+           Sala sala = new Sala();
+           sala.setIdSala(idSala);
+
+           String idioma = jtfIdioma.getText();
+           double precio = Double.parseDouble(jtfPrecio.getText());
+
+           DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+           LocalTime horaInicio = LocalTime.parse(jtfHoraInicio.getText(), formatter);
+           LocalTime horaFin = LocalTime.parse(jtfHoraFin.getText(), formatter);
+
+           boolean es3D = jrbSIEs3d.isSelected();
+           boolean subtitulada = jrbSISubtitulada.isSelected();
             
-            Proyeccion proyec = new Proyeccion(idProy, idioma, seleccion, seleccionSubtitulada, hora, hora2, idSala, precio);
-            ProyeccionD.crearProyeccion(proyec);
+           Proyeccion proyeccion = new Proyeccion(peli, idioma, es3D, subtitulada, horaInicio, horaFin, sala, precio);
+           ProyeccionD.crearProyeccion(proyeccion);
             JOptionPane.showMessageDialog(this, "Proyeccion Guardada");
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(this, "Error de formato");
         }catch(Exception e){
+            System.out.println(e.getMessage());
             JOptionPane.showMessageDialog(this, "Error");
         }
                     
