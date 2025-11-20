@@ -91,8 +91,8 @@ public static void main(String[] args) {
 //    System.out.println(detalleD.buscarDetalleTicket(26));
 //    System.out.println(detalleD.buscarDetallePorComprador(33456789));
    
-      int id = 6;
-      System.out.println(detalleD.buscarDetalleTicketPorProyeccion(6));
+      int id = 1;
+      System.out.println(detalleD.buscarDetalleTicketPorProyeccion(id));
     } 
     
 }

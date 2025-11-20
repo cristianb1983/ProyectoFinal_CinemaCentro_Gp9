@@ -24,10 +24,10 @@ public class VistaRegistro extends javax.swing.JInternalFrame {
      * Creates new form VistaRegistro
      */
     public VistaRegistro() {
-        initComponents();
+       initComponents();
        cargarComboOpcion();
-        Conexion.buscarConexion();
-        jDCfechaNac.setMaxSelectableDate(new Date());
+       Conexion.buscarConexion();
+       setearFecha();
     }
 
     Connection con= Conexion.buscarConexion();
@@ -292,6 +292,15 @@ private void cargarComboOpcion() {
         jCBmedioPago.addItem("Debito");
         jCBmedioPago.addItem("Credito");
         
+    }
+
+private void setearFecha(){
+        LocalDate fechaMinima = LocalDate.of(1940, 1, 1);
+        LocalDate fechaMaxima = LocalDate.of(2008, 1, 1);
+        Date fechaMin = Date.from(fechaMinima.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        Date fechaMax = Date.from(fechaMaxima.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        jDCfechaNac.setMinSelectableDate(fechaMin);
+        jDCfechaNac.setMaxSelectableDate(fechaMax);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -78,6 +78,30 @@ public class LugarData {
 
         return false;
     }
+    
+    public boolean eliminarLugarPorProyeccion(int idProy) {
+        String sql = "DELETE "
+                + "FROM lugar "
+                + "WHERE idProyeccion = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idProy);
+
+            int filas = ps.executeUpdate();
+
+            if (filas > 0) {
+                System.out.println("Lugar eliminado correctamente. ");
+                return true;
+            } else {
+                System.out.println("No se encontró el lugar para eliminar.");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar lugar: " + e.getMessage());
+        }
+
+        return false;
+    }
 
     public boolean actualizarLugar(LugarAsiento lugar) {
 

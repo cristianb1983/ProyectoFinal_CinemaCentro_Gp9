@@ -404,7 +404,7 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
             int idProyeccion = Integer.parseInt(jtfIdProyeccion.getText());
             DetalleTicket detalle = detalleD.buscarDetalleTicketPorProyeccion(idProyeccion);
             int idTicket = detalle.getTicket().getIdTicket();
-            ticketD.anularTicket(idTicket);
+            ticketD.anularTicket2(idTicket);
             ProyeccionD.borrarProyeccion(idProyeccion);
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(this, "No se pudo borrar la proyeccion");

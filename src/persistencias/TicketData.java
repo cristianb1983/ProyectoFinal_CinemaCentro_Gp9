@@ -4,6 +4,7 @@ import entidades.Comprador;
 import entidades.DetalleTicket;
 import entidades.TicketCompra;
 import entidades.LugarAsiento;
+import entidades.Proyeccion;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -117,6 +118,40 @@ public class TicketData {
                         }
                     }
                     detalleData.borrarDetalleTicketPorId(det.getIdDetalle());
+                }
+            }else {
+                return false;
+            }
+
+            //Borramos el ticket
+            String sql = "DELETE "
+                    + "FROM ticketcompra "
+                    + "WHERE idTicket = ?";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idTicket);
+            ps.executeUpdate();
+            ps.close();
+            return true;
+        } catch (SQLException e) {
+            System.out.println("Error al anular ticket: " + e.getMessage());
+            return false;
+        }
+    }
+    
+    public boolean anularTicket2(int idTicket) {
+        // Obtenemos detalle para poder liberar
+        try {
+            TicketCompra ticket = buscarTicketPorId(idTicket);
+
+            if (ticket != null && ticket.getDetalles() != null) {
+                for (DetalleTicket det : ticket.getDetalles()) {
+                    if (det.getLugares() != null) {
+                        int proy = det.getProyeccion().getIdProyeccion();
+                        detalleData.borrarDetalleTicketPorId(det.getIdDetalle());
+                        lugarData.eliminarLugarPorProyeccion(proy);
+                    }
+//                    detalleData.borrarDetalleTicketPorId(det.getIdDetalle());
                 }
             }else {
                 return false;
