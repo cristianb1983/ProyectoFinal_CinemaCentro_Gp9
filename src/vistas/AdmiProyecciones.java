@@ -506,7 +506,7 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
             proy.setSubtitulada(subtitulada);
             
             ProyeccionD.actualizarProyeccion(proy);
-            JOptionPane.showMessageDialog(this, "Proyeccion Guardada");
+            JOptionPane.showMessageDialog(this, "Proyeccion Actualizada");
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Error de formato");
         } catch (Exception e) {

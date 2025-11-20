@@ -94,6 +94,7 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         jcbAsientos5 = new javax.swing.JComboBox<>();
         jcbAsientos6 = new javax.swing.JComboBox<>();
         jcbAsientos7 = new javax.swing.JComboBox<>();
+        jbLimpiar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -208,18 +209,19 @@ public class VistaCompra extends javax.swing.JInternalFrame {
 
         jcbAsientos7.setEnabled(false);
 
+        jbLimpiar.setText("Limpiar");
+        jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbLimpiarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 939, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(470, 470, 470)
-                        .addComponent(jBcomprar, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(331, 331, 331)
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -290,7 +292,16 @@ public class VistaCompra extends javax.swing.JInternalFrame {
                                 .addGap(29, 29, 29)
                                 .addComponent(jrbDebito)
                                 .addGap(29, 29, 29)
-                                .addComponent(jrbCredito)))))
+                                .addComponent(jrbCredito))))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(470, 470, 470)
+                            .addComponent(jBcomprar, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jbLimpiar))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(125, 125, 125)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 939, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(88, 88, 88))
         );
         jPanel2Layout.setVerticalGroup(
@@ -360,7 +371,9 @@ public class VistaCompra extends javax.swing.JInternalFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 866, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(jBcomprar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBcomprar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbLimpiar))
                 .addGap(32, 32, 32))
         );
 
@@ -780,6 +793,19 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jScantidadStateChanged
 
+    private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
+        jrbEfectivo.setEnabled(true);
+        jrbDebito.setEnabled(true);
+        jrbCredito.setEnabled(true);
+        jrbCredito.setSelected(false);
+        jrbEfectivo.setSelected(false);
+        jrbDebito.setSelected(false);
+        jrbCredito.setSelected(false);
+        jDCfecha.setDate(null);
+        jScantidad.setValue(0);
+        jTFdni.setText("");
+    }//GEN-LAST:event_jbLimpiarActionPerformed
+
     private void setearFecha(){
         LocalDate fechaActual = LocalDate.now();
         LocalDate fechaMaxima = fechaActual.plusDays(6);
@@ -823,6 +849,7 @@ public class VistaCompra extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTFdni;
     private javax.swing.JTextField jTFprecio;
+    private javax.swing.JButton jbLimpiar;
     private javax.swing.JComboBox<LugarAsiento> jcbAsientos;
     private javax.swing.JComboBox<LugarAsiento> jcbAsientos1;
     private javax.swing.JComboBox<LugarAsiento> jcbAsientos2;
