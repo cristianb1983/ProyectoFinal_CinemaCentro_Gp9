@@ -43,6 +43,7 @@ public class VistaDetalleTicket extends javax.swing.JInternalFrame {
         modeloTabla.addColumn("Cantidad de Tickets");
         modeloTabla.addColumn("Hora de inicio");
         modeloTabla.addColumn("Hora de fin");
+        modeloTabla.addColumn("Fecha de funcion");
         modeloTabla.addColumn("Subtotal");
         for (Object it : filaCabercera) {
             modeloTabla.addColumn(it);
@@ -198,6 +199,7 @@ public class VistaDetalleTicket extends javax.swing.JInternalFrame {
                                     aux.getCantidad(),
                                     aux.getProyeccion().getHoraInicio(),
                                     aux.getProyeccion().getHoraFin(),
+                                    aux.getTicket().getFechaFuncion(),
                                     aux.getSubtotal()
                                 });
                             } 
@@ -222,6 +224,7 @@ public class VistaDetalleTicket extends javax.swing.JInternalFrame {
                                     aux.getCantidad(),
                                     aux.getProyeccion().getHoraInicio(),
                                     aux.getProyeccion().getHoraFin(),
+                                    aux.getTicket().getFechaFuncion(),
                                     aux.getSubtotal()
                                 });
                             }    

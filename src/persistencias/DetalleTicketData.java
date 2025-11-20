@@ -464,7 +464,7 @@ public class DetalleTicketData {
     public List<DetalleTicket> listarDetallePorCodigoVenta(int codigoVenta) {
         //faltan cambios
         List<DetalleTicket> listaDetalles = new ArrayList();
-        String query = "SELECT detalleticket.*, idLugar, fila, numero, nroSala, titulo, horaInicio, HoraFin "
+        String query = "SELECT detalleticket.*, idLugar, fila, numero, nroSala, titulo, horaInicio, HoraFin, fechaFuncion "
                 + "FROM detalleticket "
                 + "JOIN lugar_detalleticket ON lugar_detalleticket.detalleId = detalleticket.idDetalle "
                 + "JOIN lugar ON lugar.idLugar = lugar_detalleticket.lugarId "
@@ -489,6 +489,7 @@ public class DetalleTicketData {
                     detalle.setIdDetalle(idActual);
                     TicketCompra ticket = new TicketCompra();
                     ticket.setIdTicket(rs.getInt("idTicket"));
+                    ticket.setFechaFuncion(rs.getDate("fechaFuncion").toLocalDate());
                     detalle.setTicket(ticket);
 
                     Proyeccion proyeccion = new Proyeccion();
@@ -529,7 +530,7 @@ public class DetalleTicketData {
     public List<DetalleTicket> buscarDetallePorComprador(long dniComprador) {
         List<DetalleTicket> detalles = new ArrayList<>();
 
-        String sql = "SELECT dt.idDetalle, dt.idTicket, dt.idProyeccion, dt.cantidad, dt.subtotal, "
+        String sql = "SELECT dt.idDetalle, dt.idTicket, dt.idProyeccion, dt.cantidad, dt.subtotal, t.fechaFuncion, "
                 + "l.idLugar, l.fila, l.numero, p.horaInicio, p.horaFin, "
                 + "s.nroSala, "
                 + "p.idProyeccion, "
@@ -565,6 +566,7 @@ public class DetalleTicketData {
 
                         TicketCompra ticket = new TicketCompra();
                         ticket.setIdTicket(rs.getInt("idTicket"));
+                        ticket.setFechaFuncion(rs.getDate("fechaFuncion").toLocalDate());
                         detalleActual.setTicket(ticket);
 
                         Proyeccion proyeccion = new Proyeccion();
