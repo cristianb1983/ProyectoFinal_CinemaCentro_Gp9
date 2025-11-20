@@ -48,7 +48,7 @@
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="254" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="187" max="32767" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="394" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="246" max="-2" attributes="0"/>
           </Group>
@@ -85,6 +85,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Buscar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonBuscarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbActualizar">
       <Properties>
@@ -143,9 +146,9 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jlSubtitulada" min="-2" max="-2" attributes="0"/>
-                              <Component id="jlHoraDeFin" min="-2" max="-2" attributes="0"/>
                               <Component id="jlEs3d" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
@@ -162,47 +165,42 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="ComboBoxOpciones" min="-2" pref="144" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jlIdPelicula" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jrbSISubtitulada" min="-2" max="-2" attributes="0"/>
-                              <Component id="jtfHoraFin" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                              <Component id="jrbSIEs3d" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jComboBox2idPelicula" max="32767" attributes="0"/>
-                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jlIdPelicula" min="-2" max="-2" attributes="0"/>
+                              <Component id="jlHoraDeInicio" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jtfHoraInicio" min="-2" pref="146" max="-2" attributes="0"/>
+                              <Component id="jComboBox2idPelicula" alignment="0" min="-2" pref="144" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jrbSISubtitulada" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jrbSIEs3d" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="72" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jlHoraDeInicio" min="-2" max="-2" attributes="0"/>
-                              <Component id="jlPrecio" min="-2" max="-2" attributes="0"/>
-                              <Component id="jlIdioma" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Component id="jlIdSala" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlIdSala" min="-2" max="-2" attributes="0"/>
                       <Component id="jlIdProyeccion" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlIdioma" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlHoraDeFin" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlPrecio" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jtfHoraInicio" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                      <Component id="jtfPrecio" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                      <Component id="jtfIdioma" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jtfIdProyeccion" pref="144" max="32767" attributes="0"/>
-                              <Component id="jComboBox3idSala" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
+                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jComboBox3idSala" min="-2" pref="144" max="-2" attributes="0"/>
+                      <Component id="jtfIdProyeccion" min="-2" pref="144" max="-2" attributes="0"/>
+                      <Component id="jtfIdioma" alignment="1" min="-2" pref="145" max="-2" attributes="0"/>
+                      <Component id="jtfHoraFin" alignment="1" min="-2" pref="146" max="-2" attributes="0"/>
+                      <Component id="jtfPrecio" min="-2" pref="146" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -241,13 +239,11 @@
                       <Component id="jtfIdioma" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jtfHoraFin" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="jlHoraDeInicio" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jtfHoraInicio" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="jlHoraDeFin" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jtfHoraInicio" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="jlHoraDeFin" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlHoraDeInicio" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jtfHoraFin" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -315,14 +311,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfIdiomaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jlHoraDeInicio">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Dialog" size="16" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="hora de inicio"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JTextField" name="jtfHoraInicio">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfHoraInicioActionPerformed"/>
@@ -335,8 +323,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="hora del fin"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jtfHoraFin">
         </Component>
         <Component class="javax.swing.JTextField" name="jtfPrecio">
         </Component>
@@ -428,6 +414,16 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlHoraDeInicio">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="16" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="hora de inicio"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jtfHoraFin">
         </Component>
       </SubComponents>
     </Container>
