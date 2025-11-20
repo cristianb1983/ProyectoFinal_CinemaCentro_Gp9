@@ -303,9 +303,9 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
                     .addComponent(jrbNoEs3d)
                     .addComponent(jtfPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlPrecio))
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46))
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
 
         jbGuardar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -360,7 +360,7 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
                     .addComponent(jbActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -400,12 +400,12 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonBorrarActionPerformed
 
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
-
         jtfIdProyeccion.setText("");
         jtfHoraFin.setText("");
         jtfHoraInicio.setText("");
         jtfIdioma.setText("");
         jtfPrecio.setText("");
+        modeloTabla.setRowCount(0);
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed

@@ -105,10 +105,15 @@ public class ProyeccionData {
                 p = new Proyeccion();
                 Pelicula pelicula = new Pelicula();
                 Sala sala = new Sala();
-                pelicula.setIdPelicula(rs.getInt("idPelicula"));
-                sala.setIdSala(rs.getInt("idSala"));
+                
+                p.setIdProyeccion(idProyeccion);
+                
+                pelicula.setIdPelicula(rs.getInt("idPelicula"));         
                 p.setPelicula(pelicula);
+                
+                sala.setIdSala(rs.getInt("idSala"));
                 p.setSala(sala);
+                
                 p.setIdioma(rs.getString("Idioma"));
                 p.setEs3D(rs.getBoolean("Es3D"));
                 p.setSubtitulada(rs.getBoolean("Subtitulada"));
