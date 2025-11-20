@@ -55,7 +55,7 @@ public class ProyeccionData {
         }
         
     public void actualizarProyeccion(Proyeccion p){
-        String query = "UPDATE proyeccion SET idPelicula = ?, idSala = ?, idioma = ?, es3D = ?, subtitulada = ?, horaInicio = ?, horaFin = ?, precioLugar = ?";
+        String query = "UPDATE proyeccion SET idPelicula = ?, idSala = ?, idioma = ?, es3D = ?, subtitulada = ?, horaInicio = ?, horaFin = ?, precioLugar = ? WHERE idProyeccion = ?";
          
         try {
             PreparedStatement ps = con.prepareStatement(query);
@@ -67,6 +67,7 @@ public class ProyeccionData {
             ps.setTime(6, Time.valueOf(p.getHoraInicio()));
             ps.setTime(7, Time.valueOf(p.getHoraFin()));
             ps.setDouble(8, p.getPrecio());
+            ps.setInt(9, p.getIdProyeccion());
             
             ps.executeUpdate();
             
