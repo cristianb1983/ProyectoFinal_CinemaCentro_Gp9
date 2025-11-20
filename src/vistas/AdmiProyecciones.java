@@ -209,12 +209,8 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
             .addGroup(jpDatosLayout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpDatosLayout.createSequentialGroup()
-                        .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlSubtitulada)
-                            .addComponent(jlEs3d))
-                        .addGap(40, 40, 40)
-                        .addComponent(jrbNoSubtitulada))
+                    .addComponent(jlSubtitulada)
+                    .addComponent(jlEs3d)
                     .addGroup(jpDatosLayout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -227,7 +223,10 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
                         .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtfHoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox2idPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jrbSISubtitulada)
+                            .addGroup(jpDatosLayout.createSequentialGroup()
+                                .addComponent(jrbSISubtitulada)
+                                .addGap(32, 32, 32)
+                                .addComponent(jrbNoSubtitulada))
                             .addGroup(jpDatosLayout.createSequentialGroup()
                                 .addComponent(jrbSIEs3d)
                                 .addGap(18, 18, 18)
@@ -501,7 +500,7 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         String opciones = (String) ComboBoxOpciones.getSelectedItem();
         switch (opciones) {
             case "Guardar":
-                jtfIdProyeccion.setEnabled(true);
+                jtfIdProyeccion.setEnabled(false);
                 jComboBox2idPelicula.setEnabled(true);
                 jComboBox3idSala.setEnabled(true);
                 jrbSIEs3d.setEnabled(true);
