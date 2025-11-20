@@ -264,6 +264,7 @@ public class VistaRegistro extends javax.swing.JInternalFrame {
                  limpiarCampos();
             }else{
                 JOptionPane.showMessageDialog(this, "el Usuario ya existe.");
+                limpiarCampos();
             }
             }catch (NumberFormatException e) {
         JOptionPane.showMessageDialog(this, "El dni solo debe poseer numeros.");
