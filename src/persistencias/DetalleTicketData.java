@@ -222,6 +222,66 @@ public class DetalleTicketData {
         return detalle;
     }
 
+    public DetalleTicket buscarDetalleTicketPorProyeccion(int idProy) {
+        String query = "SELECT detalleticket.*, idLugar, fila, numero, nroSala, titulo "
+                + "FROM detalleticket "
+                + "JOIN lugar_detalleticket ON lugar_detalleticket.detalleId = detalleticket.idDetalle "
+                + "JOIN lugar ON lugar.idLugar = lugar_detalleticket.lugarId "
+                + "JOIN proyeccion ON proyeccion.idProyeccion = detalleticket.idProyeccion "
+                + "JOIN pelicula ON pelicula.idPelicula = proyeccion.idPelicula "
+                + "JOIN sala ON sala.idSala = proyeccion.idSala "
+                + "WHERE proyeccion.idProyeccion = ?;";
+        DetalleTicket detalle = null;
+        try {
+            PreparedStatement ps = conex.prepareStatement(query);
+            ps.setInt(1, idProy);
+            ResultSet rs = ps.executeQuery();
+            
+            int idAnterior = -1;
+            
+            while (rs.next()) {
+                int idActual = rs.getInt("idDetalle");
+                
+                if(idActual != idAnterior){
+                    detalle = new DetalleTicket();
+                    
+                    detalle.setIdDetalle(idActual);
+                    TicketCompra ticket = new TicketCompra();
+                    ticket.setIdTicket(rs.getInt("idTicket"));
+                    detalle.setTicket(ticket);
+
+                    Proyeccion proyeccion = new Proyeccion();
+                    proyeccion.setIdProyeccion(idProy);
+                    Sala sala = new Sala();
+                    sala.setNroSala(rs.getInt("nroSala"));
+                    Pelicula pelicula = new Pelicula();
+                    pelicula.setTitulo(rs.getString("titulo"));
+
+                    proyeccion.setSala(sala);
+                    proyeccion.setPelicula(pelicula);
+                    detalle.setProyeccion(proyeccion);
+
+                    detalle.setCantidad(rs.getInt("cantidad"));
+                    detalle.setSubtotal(rs.getDouble("subTotal"));
+                    
+                    detalle.setLugares(new ArrayList());
+                    
+                    idAnterior = detalle.getIdDetalle();
+                }
+
+                LugarAsiento lugar = new LugarAsiento();
+                lugar.setIdLugar(rs.getInt("idLugar"));
+                lugar.setFila(rs.getString("fila"));
+                lugar.setNumero(rs.getInt("numero"));
+                detalle.getLugares().add(lugar);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error no se pudo obtener la lista");
+            System.out.println(e.getMessage());
+        }
+        return detalle;
+    }
+    
     public DetalleTicket buscarDetallePorCompradorB(int dniComprador) {
         DetalleTicket detallesDni = null;
         String query = "SELECT detalleticket.*, idLugar, fila, numero, nroSala, titulo "

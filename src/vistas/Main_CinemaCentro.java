@@ -57,27 +57,27 @@ public static void main(String[] args) {
 //    detalleD.borrarDetalleTicketPorId(23);
 
     //Prueba de actualizar
-    List<Integer> listaLugaresId = new ArrayList();
-    int idlugar1 = 12;
-    int idlugar2 = 13;
-    listaLugaresId.add(idlugar1);
-    listaLugaresId.add(idlugar2);
-//    TicketCompra ticket, Proyeccion proyeccion, int cantidad, double subtotal, List<LugarAsiento> lugares
-    
-    TicketCompra ticket = new TicketCompra();
-    ticket.setIdTicket(13);
-
-    Proyeccion proyeccion = new Proyeccion();
-    proyeccion.setIdProyeccion(68);
-
-    Sala sala = new Sala();
-    sala.setNroSala(2);
-    
-    Pelicula pelicula = new Pelicula();
-    pelicula.setTitulo("");
-
-    proyeccion.setSala(sala);
-    proyeccion.setPelicula(pelicula);
+//    List<Integer> listaLugaresId = new ArrayList();
+//    int idlugar1 = 12;
+//    int idlugar2 = 13;
+//    listaLugaresId.add(idlugar1);
+//    listaLugaresId.add(idlugar2);
+////    TicketCompra ticket, Proyeccion proyeccion, int cantidad, double subtotal, List<LugarAsiento> lugares
+//    
+//    TicketCompra ticket = new TicketCompra();
+//    ticket.setIdTicket(13);
+//
+//    Proyeccion proyeccion = new Proyeccion();
+//    proyeccion.setIdProyeccion(68);
+//
+//    Sala sala = new Sala();
+//    sala.setNroSala(2);
+//    
+//    Pelicula pelicula = new Pelicula();
+//    pelicula.setTitulo("");
+//
+//    proyeccion.setSala(sala);
+//    proyeccion.setPelicula(pelicula);
     
     
 //    LugarAsiento lugar1 = new LugarAsiento(59, "c", 1, "ocupado", proyeccion);
@@ -91,6 +91,8 @@ public static void main(String[] args) {
 //    System.out.println(detalleD.buscarDetalleTicket(26));
 //    System.out.println(detalleD.buscarDetallePorComprador(33456789));
    
+      int id = 6;
+      System.out.println(detalleD.buscarDetalleTicketPorProyeccion(6));
     } 
     
 }

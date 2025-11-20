@@ -9,6 +9,7 @@ package vistas;
  *
  * @author julianEsquiaga
  */
+import entidades.DetalleTicket;
 import entidades.Proyeccion;
 import persistencias.ProyeccionData;
 import entidades.Pelicula;
@@ -20,6 +21,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import persistencias.DetalleTicketData;
+import persistencias.TicketData;
 
 public class AdmiProyecciones extends javax.swing.JInternalFrame {
 
@@ -28,6 +31,8 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
     SalaData salaD = new SalaData();
     DefaultTableModel modeloTabla = new DefaultTableModel();
     ProyeccionData ProyeccionD = new ProyeccionData();
+    DetalleTicketData detalleD = new DetalleTicketData();
+    TicketData ticketD = new TicketData();
 
     public AdmiProyecciones() {
         initComponents();
@@ -395,8 +400,15 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtfIdiomaActionPerformed
 
     private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
-        int idProyeccion = Integer.parseInt(jtfIdProyeccion.getText());
-        ProyeccionD.borrarProyeccion(idProyeccion);
+        try {
+            int idProyeccion = Integer.parseInt(jtfIdProyeccion.getText());
+            DetalleTicket detalle = detalleD.buscarDetalleTicketPorProyeccion(idProyeccion);
+            int idTicket = detalle.getTicket().getIdTicket();
+            ticketD.anularTicket(idTicket);
+            ProyeccionD.borrarProyeccion(idProyeccion);
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "No se pudo borrar la proyeccion");
+        }
     }//GEN-LAST:event_jButtonBorrarActionPerformed
 
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
@@ -464,7 +476,7 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         try {
             int idPelicula = Integer.parseInt((String) jComboBox2idPelicula.getSelectedItem());
             int idSala = Integer.parseInt((String) jComboBox3idSala.getSelectedItem());
-            
+            int idProyeccion = Integer.parseInt(jtfIdProyeccion.getText());
 
             Pelicula peli = new Pelicula();
             peli.setIdPelicula(idPelicula);
@@ -482,8 +494,18 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
             boolean es3D = jrbSIEs3d.isSelected();
             boolean subtitulada = jrbSISubtitulada.isSelected();
 
-            Proyeccion proyeccion = new Proyeccion(peli, idioma, es3D, subtitulada, horaInicio, horaFin, sala, precio);
-            ProyeccionD.crearProyeccion(proyeccion);
+            Proyeccion proy = new Proyeccion();
+            proy.setIdProyeccion(idProyeccion);
+            proy.setPelicula(peli);
+            proy.setSala(sala);
+            proy.setEs3D(es3D);
+            proy.setHoraInicio(horaInicio);
+            proy.setHoraFin(horaFin);
+            proy.setIdioma(idioma);
+            proy.setPrecio(precio);
+            proy.setSubtitulada(subtitulada);
+            
+            ProyeccionD.actualizarProyeccion(proy);
             JOptionPane.showMessageDialog(this, "Proyeccion Guardada");
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Error de formato");

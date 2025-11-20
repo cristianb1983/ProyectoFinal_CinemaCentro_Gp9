@@ -113,7 +113,7 @@ public class TicketData {
                 for (DetalleTicket det : ticket.getDetalles()) {
                     if (det.getLugares() != null) {
                         for (LugarAsiento lugar : det.getLugares()) {
-                            lugarData.liberarLugar(lugar.getIdLugar());
+                            lugarData.eliminarLugar(lugar.getIdLugar());
                         }
                     }
                     detalleData.borrarDetalleTicketPorId(det.getIdDetalle());
