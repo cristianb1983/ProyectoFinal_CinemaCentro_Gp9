@@ -19,6 +19,7 @@ import persistencias.SalaData;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import persistencias.DetalleTicketData;
@@ -40,6 +41,13 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         cargarComboIdPeliculas();
         cargarComboIdSalas();
         cargarColumnas();
+         ButtonGroup grupo3D = new ButtonGroup();
+    grupo3D.add(jrbSIEs3d);
+    grupo3D.add(jrbNoEs3d);
+
+    ButtonGroup grupoSub = new ButtonGroup();
+    grupoSub.add(jrbSISubtitulada);
+    grupoSub.add(jrbNoSubtitulada);
     }
 
     void cargarColumnas() {
@@ -485,13 +493,19 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
             sala.setIdSala(idSala);
 
             String idioma = jtfIdioma.getText();
+            
             double precio = Double.parseDouble(jtfPrecio.getText());
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
             LocalTime horaInicio = LocalTime.parse(jtfHoraInicio.getText(), formatter);
             LocalTime horaFin = LocalTime.parse(jtfHoraFin.getText(), formatter);
 
-            boolean es3D = jrbSIEs3d.isSelected();
+            boolean es3D ;
+             if(jrbSIEs3d.isSelected()){
+                es3D = true;
+            }else{
+                es3D = false;
+            }
             boolean subtitulada = jrbSISubtitulada.isSelected();
 
             Proyeccion proy = new Proyeccion();
