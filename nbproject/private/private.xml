@@ -4,9 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/entidades/Proyeccion.java</file>
-            <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/vistas/VistaPeliculas.java</file>
+            <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/entidades/LugarAsiento.java</file>
             <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/persistencias/PeliculasData.java</file>
+            <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/vistas/AdmiCompradores.java</file>
             <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/persistencias/ProyeccionData.java</file>
+            <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/vistas/AdmiLugares.java</file>
             <file>file:/C:/Users/crb_p/OneDrive/Documentos/practicos%20java/ProyectoFinal_CinemaCentro_Gp9/src/vistas/AdmiProyecciones.java</file>
         </group>
     </open-files>
