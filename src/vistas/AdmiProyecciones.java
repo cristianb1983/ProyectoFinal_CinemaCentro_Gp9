@@ -209,8 +209,12 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
             .addGroup(jpDatosLayout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlSubtitulada)
-                    .addComponent(jlEs3d)
+                    .addGroup(jpDatosLayout.createSequentialGroup()
+                        .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlSubtitulada)
+                            .addComponent(jlEs3d))
+                        .addGap(40, 40, 40)
+                        .addComponent(jrbNoSubtitulada))
                     .addGroup(jpDatosLayout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -223,10 +227,7 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
                         .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtfHoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox2idPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jpDatosLayout.createSequentialGroup()
-                                .addComponent(jrbSISubtitulada)
-                                .addGap(32, 32, 32)
-                                .addComponent(jrbNoSubtitulada))
+                            .addComponent(jrbSISubtitulada)
                             .addGroup(jpDatosLayout.createSequentialGroup()
                                 .addComponent(jrbSIEs3d)
                                 .addGap(18, 18, 18)
@@ -324,32 +325,33 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(425, 425, 425))
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jpDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jbGuardar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbActualizar)
-                        .addGap(52, 52, 52)
-                        .addComponent(jButtonBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
-                        .addComponent(jbLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(51, 51, 51)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jpDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jbGuardar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jbActualizar)
+                                .addGap(52, 52, 52)
+                                .addComponent(jButtonBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(45, 45, 45)
+                                .addComponent(jbLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(300, 300, 300)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(22, 22, 22)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(31, 31, 31)
                 .addComponent(jpDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -578,25 +580,9 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_ComboBoxOpcionesActionPerformed
 
-//    public void cargarFilas(int idProyeccion) {
-//
-//        Proyeccion p = ProyeccionD.buscarProyeccion(idProyeccion);
-//
-//        modeloTabla.addRow(new Object[]{
-//            p.getIdProyeccion(),
-//            p.getPeliculaID(),
-//            p.getSalaID(),
-//            p.getIdioma(),
-//            p.isEs3D(),
-//            p.isSubtitulada(),
-//            p.getHoraInicio(),
-//            p.getHoraFin(),
-//            p.getPrecio(),});
-//    }
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-        //valido que no este vacio el campo idproyeccion
+       
         if (jtfIdProyeccion.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Debe ingresar un idProyeccion para buscar.");
             return;
@@ -615,7 +601,8 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
                 p.isSubtitulada(),
                 p.getHoraInicio(),
                 p.getHoraFin(),
-                p.getPrecio(),});
+                p.getPrecio(),
+            });
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "ID Invalido: " + e.getMessage());

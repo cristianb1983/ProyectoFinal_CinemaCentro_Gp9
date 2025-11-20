@@ -114,7 +114,7 @@ public class ProyeccionData {
                 p.setSubtitulada(rs.getBoolean("Subtitulada"));
                 p.setHoraInicio(rs.getTime("HoraInicio").toLocalTime());
                 p.setHoraFin(rs.getTime("HoraFin").toLocalTime());
-                p.setPrecio(rs.getDouble("Precio"));
+                p.setPrecio(rs.getDouble("PrecioLugar"));
             }
             ps.close();
         } catch (SQLException e) {

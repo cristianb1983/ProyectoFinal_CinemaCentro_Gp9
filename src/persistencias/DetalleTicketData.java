@@ -168,7 +168,7 @@ public class DetalleTicketData {
     
     public DetalleTicket buscarDetalleTicket(int idDetalle) {
         DetalleTicket detalle = null;
-        String query = "SELECT detalleticket.*, idLugar, fila, numero, nroSala, titulo "
+        String query = "SELECT detalleticket.*, idLugar, fila, numero, nroSala, titulo"
                 + "FROM detalleticket "
                 + "JOIN lugar_detalleticket ON lugar_detalleticket.detalleId = detalleticket.idDetalle "
                 + "JOIN lugar ON lugar.idLugar = lugar_detalleticket.lugarId "
