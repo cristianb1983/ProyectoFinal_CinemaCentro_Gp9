@@ -24,7 +24,7 @@ public class VistaRegistro extends javax.swing.JInternalFrame {
      */
     public VistaRegistro() {
         initComponents();
-        validarCampos();
+       cargarComboOpcion();
         Conexion.buscarConexion();
     }
 
@@ -33,7 +33,7 @@ public class VistaRegistro extends javax.swing.JInternalFrame {
  
     private boolean validarCampos() {
 
-    if (!jtfDni.getText().matches("[0-9]")) {
+    if (!jtfDni.getText().matches("[\\d+]+")) {
         JOptionPane.showMessageDialog(this, "El DNI debe contener solo números.");
        return false;
     }
@@ -57,10 +57,10 @@ public class VistaRegistro extends javax.swing.JInternalFrame {
         jtfDni = new javax.swing.JTextField();
         jtfNombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTFmedioPago = new javax.swing.JTextField();
         jDCfechaNac = new com.toedter.calendar.JDateChooser();
         jPFpassword = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
+        jCBmedioPago = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
@@ -105,6 +105,13 @@ public class VistaRegistro extends javax.swing.JInternalFrame {
             }
         });
 
+        jCBmedioPago.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jCBmedioPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBmedioPagoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpDatosLayout = new javax.swing.GroupLayout(jpDatos);
         jpDatos.setLayout(jpDatosLayout);
         jpDatosLayout.setHorizontalGroup(
@@ -124,9 +131,9 @@ public class VistaRegistro extends javax.swing.JInternalFrame {
                             .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jtfDni, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jtfNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTFmedioPago, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jDCfechaNac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPFpassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jDCfechaNac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPFpassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCBmedioPago, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(17, Short.MAX_VALUE))
@@ -158,11 +165,14 @@ public class VistaRegistro extends javax.swing.JInternalFrame {
                     .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jlPass)
                         .addComponent(jPFpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFmedioPago, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jpDatosLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpDatosLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jCBmedioPago)))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -201,22 +211,26 @@ public class VistaRegistro extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void jbRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistrarActionPerformed
         if((jtfDni.getText().isEmpty())|| (jtfNombre.getText().isEmpty())|| (jDCfechaNac.getDate()== null)
-            || (new String(jPFpassword.getPassword()).isEmpty())|| (jTFmedioPago.getText().isEmpty())){
+            || (new String(jPFpassword.getPassword()).isEmpty())){
             
             JOptionPane.showMessageDialog(this, "Debe completar todos los campos.");
             jtfDni.requestFocus();
             return;
-        }if (validarCampos()== true) {
-            
         }
+        if (!validarCampos()) {
+    return;
+}
+
         try{
             long dni = Long.parseLong(jtfDni.getText());
             String nombre = jtfNombre.getText();
             LocalDate fechaNacimiento = jDCfechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             String password = new String(jPFpassword.getPassword());
-            String medioPago = jTFmedioPago.getText();
+            String medioPago = (String) jCBmedioPago.getSelectedItem();
+
             
              String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&]).{8,}$";
         if (!password.matches(regex)) {
@@ -256,14 +270,24 @@ public class VistaRegistro extends javax.swing.JInternalFrame {
                 "- Mínimo 8 caracteres");
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jCBmedioPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBmedioPagoActionPerformed
+      
+    }//GEN-LAST:event_jCBmedioPagoActionPerformed
+private void cargarComboOpcion() {
+
+        jCBmedioPago.addItem("Efectivo");
+        jCBmedioPago.addItem("Debito");
+        jCBmedioPago.addItem("Credito");
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jCBmedioPago;
     private com.toedter.calendar.JDateChooser jDCfechaNac;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField jPFpassword;
-    private javax.swing.JTextField jTFmedioPago;
     private javax.swing.JButton jbRegistrar;
     private javax.swing.JLabel jlDni;
     private javax.swing.JLabel jlNac;
