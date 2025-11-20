@@ -83,7 +83,13 @@ public class VistaFinalizarCompra extends javax.swing.JInternalFrame {
 
     return true;
 }
-
+     private void limpiarCampos() {
+    jTFdni.setText("");
+    jTFcodseg.setText("");
+    jTFnumTarjeta.setText("");
+    jTFtitular.setText("");
+    jDCvto.setDate(null);  
+     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -220,6 +226,7 @@ public class VistaFinalizarCompra extends javax.swing.JInternalFrame {
             // Genera número de registro
 //            String numeroRegistro = generarNumeroRegistro();
             JOptionPane.showMessageDialog(this, "Compra finalizada correctamente.\nNúmero de registro: " + codigoVenta);
+            limpiarCampos();
         }
     }
         
