@@ -26,8 +26,10 @@ public class ProyeccionData {
     Connection con = Conexion.buscarConexion();
     public ProyeccionData() {
         this.con = con;
+
     }
-    
+
+   
     public boolean crearProyeccion(Proyeccion p){
         String query = "INSERT INTO proyeccion (idPelicula, idSala, idioma, es3D, subtitulada, horaInicio, horaFin, precioLugar) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try {
@@ -81,7 +83,6 @@ public class ProyeccionData {
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1, idProyeccion);
-            
             ps.executeUpdate();
             
             System.out.println("Proyeccion eliminada.");

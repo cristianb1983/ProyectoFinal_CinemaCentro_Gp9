@@ -58,10 +58,8 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         jlSubtitulada = new javax.swing.JLabel();
         jtfIdProyeccion = new javax.swing.JTextField();
         jtfIdioma = new javax.swing.JTextField();
-        jlHoraDeInicio = new javax.swing.JLabel();
         jtfHoraInicio = new javax.swing.JTextField();
         jlHoraDeFin = new javax.swing.JLabel();
-        jtfHoraFin = new javax.swing.JTextField();
         jtfPrecio = new javax.swing.JTextField();
         jlPrecio = new javax.swing.JLabel();
         jrbSISubtitulada = new javax.swing.JRadioButton();
@@ -73,6 +71,8 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         jComboBox2idPelicula = new javax.swing.JComboBox<>();
         jComboBox3idSala = new javax.swing.JComboBox<>();
         ComboBoxOpciones = new javax.swing.JComboBox<>();
+        jlHoraDeInicio = new javax.swing.JLabel();
+        jtfHoraFin = new javax.swing.JTextField();
         jbGuardar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -85,8 +85,14 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         jButtonBuscar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButtonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/zoom_magnyfying_glass_search_icon_231650.png"))); // NOI18N
         jButtonBuscar.setText("Buscar");
+        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarActionPerformed(evt);
+            }
+        });
 
         jbActualizar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jbActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/pen_pencil_write_edit_icon_231611 (1).png"))); // NOI18N
         jbActualizar.setText("Actualizar");
         jbActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,7 +111,7 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
 
         jButtonBorrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButtonBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/trash_can_rubish_paper_bin_icon_231400.png"))); // NOI18N
-        jButtonBorrar.setText("Borrar");
+        jButtonBorrar.setText("Eliminar");
         jButtonBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBorrarActionPerformed(evt);
@@ -137,9 +143,6 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
             }
         });
 
-        jlHoraDeInicio.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jlHoraDeInicio.setText("hora de inicio");
-
         jtfHoraInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfHoraInicioActionPerformed(evt);
@@ -170,7 +173,14 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
 
         jComboBox3idSala.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        ComboBoxOpciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboBoxOpciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBoxOpcionesActionPerformed(evt);
+            }
+        });
+
+        jlHoraDeInicio.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        jlHoraDeInicio.setText("hora de inicio");
 
         javax.swing.GroupLayout jpDatosLayout = new javax.swing.GroupLayout(jpDatos);
         jpDatos.setLayout(jpDatosLayout);
@@ -182,8 +192,8 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
                     .addGroup(jpDatosLayout.createSequentialGroup()
                         .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlSubtitulada)
-                            .addComponent(jlHoraDeFin)
                             .addComponent(jlEs3d))
+                        .addGap(1, 1, 1)
                         .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpDatosLayout.createSequentialGroup()
                                 .addGap(138, 138, 138)
@@ -196,36 +206,36 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(ComboBoxOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpDatosLayout.createSequentialGroup()
-                        .addComponent(jlIdPelicula)
-                        .addGap(66, 66, 66)
-                        .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jrbSISubtitulada)
-                            .addComponent(jtfHoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jrbSIEs3d)
-                            .addGroup(jpDatosLayout.createSequentialGroup()
-                                .addComponent(jComboBox2idPelicula, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(2, 2, 2)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpDatosLayout.createSequentialGroup()
-                        .addGap(7, 7, 7)
                         .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlHoraDeInicio)
-                            .addComponent(jlPrecio)
-                            .addComponent(jlIdioma)))
-                    .addComponent(jlIdSala)
-                    .addComponent(jlIdProyeccion))
-                .addGap(18, 18, 18)
+                            .addComponent(jlIdPelicula)
+                            .addComponent(jlHoraDeInicio))
+                        .addGap(40, 40, 40)
+                        .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtfHoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox2idPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jrbSISubtitulada)
+                            .addComponent(jrbSIEs3d))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
                 .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtfHoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDatosLayout.createSequentialGroup()
+                        .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlIdSala)
+                            .addComponent(jlIdProyeccion)
+                            .addComponent(jlIdioma))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDatosLayout.createSequentialGroup()
+                        .addComponent(jlHoraDeFin)
+                        .addGap(29, 29, 29))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDatosLayout.createSequentialGroup()
+                        .addComponent(jlPrecio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jComboBox3idSala, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfIdProyeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jpDatosLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtfIdProyeccion, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-                            .addComponent(jComboBox3idSala, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(41, 41, 41))
+                    .addComponent(jtfHoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18))
         );
         jpDatosLayout.setVerticalGroup(
             jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,8 +244,8 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
                     .addGroup(jpDatosLayout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlIdProyeccion)
-                            .addComponent(jtfIdProyeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jtfIdProyeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlIdProyeccion)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDatosLayout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -255,12 +265,11 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
                     .addComponent(jlIdioma)
                     .addComponent(jtfIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
-                .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jtfHoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jlHoraDeInicio)
-                        .addComponent(jtfHoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jlHoraDeFin))
+                .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfHoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlHoraDeFin)
+                    .addComponent(jlHoraDeInicio)
+                    .addComponent(jtfHoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlEs3d)
@@ -288,11 +297,12 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(246, 246, 246))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(jpDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addComponent(jbGuardar)
@@ -303,12 +313,11 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButtonBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jbLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jbLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jpDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 254, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(246, 246, 246))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -330,6 +339,7 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
         private void jrbSIEs3dActionPerformed(java.awt.event.ActionEvent evt) {                                               
         jrbSIEs3d.setSelected(false);
         jrbSIEs3d.setEnabled(false);
@@ -371,7 +381,7 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         
-        if (jtfIdProyeccion.getText().trim().isEmpty() ||
+        if (
         jtfIdioma.getText().trim().isEmpty() ||
         jtfHoraInicio.getText().trim().isEmpty() ||
         jtfHoraFin.getText().trim().isEmpty() ||
@@ -460,6 +470,89 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
         proyeccionD.actualizarProyeccion(proy);
     }//GEN-LAST:event_jbActualizarActionPerformed
 
+    private void ComboBoxOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxOpcionesActionPerformed
+         
+        String opciones = (String)ComboBoxOpciones.getSelectedItem();
+        switch(opciones){
+            case "Guardar":
+                jtfIdProyeccion.setEnabled(true);
+                jComboBox2idPelicula.setEnabled(true);
+                jComboBox3idSala.setEnabled(true);
+                jrbSIEs3d.setEnabled(true);
+                jrbNoEs3d.setEnabled(true);
+                jrbSISubtitulada.setEnabled(true);
+                jrbNoSubtitulada.setEnabled(true);
+                jtfIdioma.setEnabled(true);
+                jtfHoraInicio.setEnabled(true);
+                jtfHoraFin.setEnabled(true);
+                jtfIdioma.setEnabled(true);
+                jtfPrecio.setEnabled(true);
+                jButtonBorrar.setEnabled(false);
+                jButtonBuscar.setEnabled(false);
+                jbGuardar.setEnabled(true);
+                jbActualizar.setEnabled(false);
+                jbLimpiar.setEnabled(true);
+                break;
+            case "Actualizar":
+                jtfIdProyeccion.setEnabled(true);
+                jComboBox2idPelicula.setEnabled(true);
+                jComboBox3idSala.setEnabled(true);
+                jrbSIEs3d.setEnabled(true);
+                jrbNoEs3d.setEnabled(true);
+                jrbSISubtitulada.setEnabled(true);
+                jrbNoSubtitulada.setEnabled(true);
+                jtfIdioma.setEnabled(true);
+                jtfHoraInicio.setEnabled(true);
+                jtfHoraFin.setEnabled(true);
+                jtfIdioma.setEnabled(true);
+                jtfPrecio.setEnabled(true);
+                jButtonBorrar.setEnabled(false);
+                jButtonBuscar.setEnabled(false);
+                jbGuardar.setEnabled(false);
+                jbActualizar.setEnabled(true);
+                jbLimpiar.setEnabled(true);
+                break;
+            case "Eliminar":
+                jtfIdProyeccion.setEnabled(true);
+                jComboBox2idPelicula.setEnabled(false);
+                jComboBox3idSala.setEnabled(false);
+                jrbSIEs3d.setEnabled(false);
+                jrbNoEs3d.setEnabled(false);
+                jrbSISubtitulada.setEnabled(false);
+                jrbNoSubtitulada.setEnabled(false);
+                jtfIdioma.setEnabled(false);
+                jtfHoraInicio.setEnabled(false);
+                jtfHoraFin.setEnabled(false);
+                jtfIdioma.setEnabled(false);
+                jtfPrecio.setEnabled(false);
+                jButtonBorrar.setEnabled(true);
+                jButtonBuscar.setEnabled(false);
+                jbGuardar.setEnabled(false);
+                jbActualizar.setEnabled(false);
+                jbLimpiar.setEnabled(true);
+                break;
+             case "Buscar":
+                jtfIdProyeccion.setEnabled(true);
+                jComboBox2idPelicula.setEnabled(false);
+                jComboBox3idSala.setEnabled(false);
+                jrbSIEs3d.setEnabled(false);
+                jrbNoEs3d.setEnabled(false);
+                jrbSISubtitulada.setEnabled(false);
+                jrbNoSubtitulada.setEnabled(false);
+                jtfIdioma.setEnabled(false);
+                jtfHoraInicio.setEnabled(false);
+                jtfHoraFin.setEnabled(false);
+                jtfIdioma.setEnabled(false);
+                jtfPrecio.setEnabled(false);
+                jButtonBorrar.setEnabled(false);
+                jButtonBuscar.setEnabled(true);
+                jbGuardar.setEnabled(false);
+                jbActualizar.setEnabled(false);
+                jbLimpiar.setEnabled(true);
+                break;    
+        }
+    }//GEN-LAST:event_ComboBoxOpcionesActionPerformed
+
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {                                              
         // TODO add your handling code here:
         //valido que no este vacio el campo idproyeccion
@@ -522,10 +615,11 @@ public class AdmiProyecciones extends javax.swing.JInternalFrame {
     }
     
      private void cargarComboOpcion(){
-        ComboBoxOpciones.removeAllItems();
+//        ComboBoxOpciones.removeAllItems();
         ComboBoxOpciones.addItem("Guardar");
-        ComboBoxOpciones.addItem("Modificar");
+        ComboBoxOpciones.addItem("Actualizar");
         ComboBoxOpciones.addItem("Eliminar");
+        ComboBoxOpciones.addItem("Buscar");
     }
      private void cargarComboIdPeliculas(){
         jComboBox2idPelicula.removeAllItems();
