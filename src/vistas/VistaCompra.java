@@ -20,7 +20,11 @@ import java.time.format.DateTimeFormatter;
 import static java.time.temporal.TemporalQueries.localDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 import persistencias.CompradorData;
@@ -423,8 +427,9 @@ public class VistaCompra extends javax.swing.JInternalFrame {
             return;
         }
         
-        if(!jrbEfectivo.isSelected() || !jrbDebito.isSelected() || !jrbCredito.isSelected()){
+        if(!jrbEfectivo.isSelected() && !jrbDebito.isSelected() && !jrbCredito.isSelected()){
             JOptionPane.showMessageDialog(this, "Debe elegir una forma de pago");
+            return;
         }
         
         LocalDate fechaFuncion = jDCfecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -487,7 +492,7 @@ public class VistaCompra extends javax.swing.JInternalFrame {
                 lugares.add(lugar1);
                 break;
             case 2:
-                lugares.add(lugar1);
+                lugares.add(lugar1);                
                 lugares.add(lugar2);
                 break;
             case 3:
@@ -536,7 +541,12 @@ public class VistaCompra extends javax.swing.JInternalFrame {
                 lugares.add(lugar8);
                 break;
         }
-        
+        Set<LugarAsiento> sinDuplicados = new HashSet(lugares);
+        if (sinDuplicados.size() < lugares.size()) {
+            JOptionPane.showMessageDialog(this, "Los asientos seleccionados deben ser diferentes");
+            return;
+        }
+  
         //seteamos atributos a dealle
         detalle.setProyeccion(proy);
         detalle.setSubtotal(monto);
@@ -564,9 +574,13 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         ticket.setComprador(comprador);
         ticketD.generarTicket(ticket);
         
-        VistaFinalizarCompra cargarTarjeta = new VistaFinalizarCompra();
-        getDesktopPane().add(cargarTarjeta);
-        cargarTarjeta.setVisible(true);
+        if(jrbDebito.isSelected() || jrbCredito.isSelected()){
+            VistaFinalizarCompra cargarTarjeta = new VistaFinalizarCompra();
+            getDesktopPane().add(cargarTarjeta);
+            cargarTarjeta.setVisible(true);
+        }else {
+            JOptionPane.showMessageDialog(this, "Compra realizada con exito");
+        }
     }//GEN-LAST:event_jBcomprarActionPerformed
 
     private void jCBpeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBpeliculaActionPerformed
