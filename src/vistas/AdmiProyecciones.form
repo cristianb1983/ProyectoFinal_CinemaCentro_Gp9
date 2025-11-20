@@ -146,14 +146,8 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jlSubtitulada" min="-2" max="-2" attributes="0"/>
-                              <Component id="jlEs3d" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                          <Component id="jrbNoSubtitulada" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jlSubtitulada" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlEs3d" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="jLabel2" min="-2" pref="122" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -166,13 +160,19 @@
                           </Group>
                           <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jtfHoraInicio" min="-2" pref="146" max="-2" attributes="0"/>
                               <Component id="jComboBox2idPelicula" alignment="0" min="-2" pref="144" max="-2" attributes="0"/>
-                              <Component id="jrbSISubtitulada" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jrbSIEs3d" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jrbNoEs3d" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jrbSISubtitulada" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="jrbNoSubtitulada" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jtfHoraInicio" min="-2" pref="146" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
