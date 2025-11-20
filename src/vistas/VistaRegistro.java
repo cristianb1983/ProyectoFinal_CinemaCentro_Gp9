@@ -37,16 +37,25 @@ public class VistaRegistro extends javax.swing.JInternalFrame {
 
     if (!jtfDni.getText().matches("[\\d+]+")) {
         JOptionPane.showMessageDialog(this, "El DNI debe contener solo números.");
+        jtfDni.setText("");
        return false;
     }
      if (!jtfNombre.getText().matches("[a-zA-Z ]+")) {
-        JOptionPane.showMessageDialog(this, "El nombre del titular solo puede contener letras.");      
+        JOptionPane.showMessageDialog(this, "El nombre del titular solo puede contener letras."); 
+        jtfNombre.setText("");
         return false;
     }
-     
-       
-        return true;
+       return true;
     }
+    
+    private void limpiarCampos() {
+    jtfDni.setText("");
+    jtfNombre.setText("");
+    jPFpassword.setText("");
+    jCBmedioPago.setSelectedIndex(0); // si tu combo tiene un "Seleccione..."
+    jDCfechaNac.setDate(null);        // limpia la fecha
+}
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -252,6 +261,7 @@ public class VistaRegistro extends javax.swing.JInternalFrame {
             Comprador comprador = new Comprador(dni,nombre,fechaNacimiento,password,medioPago);
             if (compD.RegistrarComprador(comprador)) {
                 JOptionPane.showMessageDialog(this, "Usuario registrado con exito!!!");
+                 limpiarCampos();
             }else{
                 JOptionPane.showMessageDialog(this, "el Usuario ya existe.");
             }
