@@ -566,8 +566,9 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         Comprador comprador = new Comprador();
         comprador.setDniComprador(dni); //parsear long
         
+        String codigoVenta = null;
         if(ticket.getTipoCompra().equals("Online")){
-            String codigoVenta = generarCodigoVenta();
+            codigoVenta = generarCodigoVenta();
             ticket.setCodigoVenta(codigoVenta);
         }
         
@@ -575,7 +576,7 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         ticketD.generarTicket(ticket);
         
         if(jrbDebito.isSelected() || jrbCredito.isSelected()){
-            VistaFinalizarCompra cargarTarjeta = new VistaFinalizarCompra();
+            VistaFinalizarCompra cargarTarjeta = new VistaFinalizarCompra(codigoVenta);
             getDesktopPane().add(cargarTarjeta);
             cargarTarjeta.setVisible(true);
         }else {
