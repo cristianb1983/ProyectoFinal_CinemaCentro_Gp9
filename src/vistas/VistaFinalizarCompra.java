@@ -11,7 +11,9 @@ import entidades.LugarAsiento;
 import entidades.TicketCompra;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import persistencias.LugarData;
@@ -23,8 +25,11 @@ import persistencias.TicketData;
  */
 public class VistaFinalizarCompra extends javax.swing.JInternalFrame {
 
-    public VistaFinalizarCompra() {
+    String codigoVenta;
+    public VistaFinalizarCompra(String codigoVenta) {
         initComponents();
+        this.codigoVenta = codigoVenta;
+        setearFecha();
     }
 
     private String generarNumeroRegistro() {
@@ -213,9 +218,15 @@ public class VistaFinalizarCompra extends javax.swing.JInternalFrame {
     private void jBfinalizarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBfinalizarCompraActionPerformed
         if (validarCampos()) {
             // Genera número de registro
-            String numeroRegistro = generarNumeroRegistro();
-            JOptionPane.showMessageDialog(this, "Compra finalizada correctamente.\nNúmero de registro: " + numeroRegistro);
+//            String numeroRegistro = generarNumeroRegistro();
+            JOptionPane.showMessageDialog(this, "Compra finalizada correctamente.\nNúmero de registro: " + codigoVenta);
         }
+    }
+        
+    private void setearFecha(){
+        LocalDate fechaActual = LocalDate.now();
+        Date fechaMin = Date.from(fechaActual.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        jDCvto.setMinSelectableDate(fechaMin);
     }//GEN-LAST:event_jBfinalizarCompraActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -67,7 +67,7 @@ public class DetalleTicket {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
-        recalcularSubtotal();
+//        recalcularSubtotal();
     }
 
     public double getSubtotal() {
@@ -88,31 +88,31 @@ public class DetalleTicket {
         } else {
             this.lugares = new ArrayList<>();
         }
-        recalcularSubtotal();
+//        recalcularSubtotal();
     }
 
     public void agregarLugar(LugarAsiento lugar) {
         if (lugar != null) {
             this.lugares.add(lugar);
             this.cantidad = lugares.size();
-            recalcularSubtotal();
+//            recalcularSubtotal();
         }
     }
 
     public void eliminarLugar(LugarAsiento lugar) {
         if (lugar != null && lugares.remove(lugar)) {
             this.cantidad = lugares.size();
-            recalcularSubtotal();
+//            recalcularSubtotal();
         }
     }
 
-    public void recalcularSubtotal() {
-        if (proyeccion != null) {
-            this.subtotal = this.cantidad * proyeccion.getPrecio();
-        } else {
-            this.subtotal = 0;
-        }
-    }
+//    public void recalcularSubtotal() {
+//        if (proyeccion != null) {
+//            this.subtotal = this.cantidad * proyeccion.getPrecio();
+//        } else {
+//            this.subtotal = 0;
+//        }
+//    }
 
     @Override
     public int hashCode() {

@@ -187,8 +187,9 @@ public class VistaDetalleTicket extends javax.swing.JInternalFrame {
                 case "Buscar por id de compra":
                     if(!jtfIdCompra.getText().trim().isEmpty()){
                         int idTicket = Integer.parseInt(jtfIdCompra.getText());
-                        List<DetalleTicket> detalles = detalleD.listarDetallePorIdTicket(idTicket);
+                        List<DetalleTicket> detalles = detalleD.listarDetallePorCodigoVenta(idTicket);
                         if(!detalles.isEmpty()){
+                            modeloTabla.setRowCount(0);
                             for(DetalleTicket aux : detalles){
                                 modeloTabla.addRow(new Object[] {
                                     aux.getProyeccion().getPelicula().getTitulo(),
@@ -212,6 +213,7 @@ public class VistaDetalleTicket extends javax.swing.JInternalFrame {
                         int dni = Integer.parseInt(jtfDni.getText());
                         List<DetalleTicket> detallesPorDni = detalleD.buscarDetallePorComprador(dni);
                         if(!detallesPorDni.isEmpty()){
+                            modeloTabla.setRowCount(0);
                             for(DetalleTicket aux : detallesPorDni){
                                 modeloTabla.addRow(new Object[] {
                                     aux.getProyeccion().getPelicula().getTitulo(),
