@@ -9,6 +9,7 @@ import entidades.Comprador;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import persistencias.CompradorData;
 import persistencias.Conexion;
@@ -26,6 +27,7 @@ public class VistaRegistro extends javax.swing.JInternalFrame {
         initComponents();
        cargarComboOpcion();
         Conexion.buscarConexion();
+        jDCfechaNac.setMaxSelectableDate(new Date());
     }
 
     Connection con= Conexion.buscarConexion();
@@ -41,6 +43,7 @@ public class VistaRegistro extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(this, "El nombre del titular solo puede contener letras.");      
         return false;
     }
+     
        
         return true;
     }
