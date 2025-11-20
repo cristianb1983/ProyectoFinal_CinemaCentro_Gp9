@@ -389,7 +389,7 @@ public class VistaCompra extends javax.swing.JInternalFrame {
             if (!compradores.existeDni(dni)) {
 
                 JOptionPane.showMessageDialog(this, "Usuario no registrado! por favor realice el registro e intente nuevamente.");
-
+                
                 jCBpelicula.setEnabled(false);
                 jCBsalas.setEnabled(false);
                 jcbAsientos.setEnabled(false);
@@ -410,6 +410,7 @@ public class VistaCompra extends javax.swing.JInternalFrame {
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Ingrese un DNI válido (solo números).");
+            jTFdni.setText("");
         }
     }//GEN-LAST:event_jBverificarActionPerformed
     
